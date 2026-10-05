@@ -1,0 +1,54 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <section class="error-page">
+    <span class="error-page__hex error-page__hex--1" aria-hidden="true"></span>
+    <span class="error-page__hex error-page__hex--2" aria-hidden="true"></span>
+
+    <div class="container error-page__inner">
+      <p class="error-page__code">500</p>
+      <h1 class="error-page__title">Something Went Wrong on Our End</h1>
+      <p class="error-page__text">
+        This is our fault, not yours. An unexpected error occurred while loading this page and our team
+        has been notified. The fastest way to get what you need is simply to call us — we can usually
+        answer in under two minutes what the website was trying to tell you.
+      </p>
+
+      <div class="error-page__actions">
+        <a class="btn btn--primary btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> Call <%= site.phone %></a>
+        <a class="btn btn--outline-light btn--lg" href="/">Back to Homepage</a>
+      </div>
+
+      <div class="error-page__grid">
+        <% [
+          { icon: 'home', t: 'House Cleaning', d: 'Recurring home cleaning from $129', href: '/services/house-cleaning' },
+          { icon: 'sparkle', t: 'Deep Cleaning', d: 'Top-to-bottom reset from $249', href: '/services/deep-cleaning' },
+          { icon: 'truck', t: 'Move-Out Cleaning', d: 'Deposit-back cleans from $279', href: '/services/move-out-cleaning' },
+          { icon: 'building', t: 'Commercial Cleaning', d: 'Office & janitorial contracts', href: '/services/office-commercial-cleaning' },
+          { icon: 'tag', t: 'Pricing', d: 'Full transparent price guide', href: '/pricing' },
+          { icon: 'phone', t: 'Contact Us', d: 'Free quote, no obligation', href: '/contact' }
+        ].forEach(function (l) { %>
+          <a class="error-card" href="<%= l.href %>">
+            <span class="error-card__icon"><%- icon(l.icon, 24) %></span>
+            <span class="error-card__copy">
+              <strong><%= l.t %></strong>
+              <span><%= l.d %></span>
+            </span>
+            <%- icon('arrowRight', 16) %>
+          </a>
+        <% }); %>
+      </div>
+
+      <p class="error-page__note">
+        If you would rather email, write to <a href="mailto:<%= site.email %>"><%= site.email %></a> and we
+        will reply within one business hour during opening times.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

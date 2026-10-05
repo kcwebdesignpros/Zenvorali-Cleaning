@@ -1,0 +1,336 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    eyebrow: 'Free quote · No obligation',
+    eyebrowIcon: 'phone',
+    heroTitle: 'Get a Free Cleaning Quote in Kansas City',
+    heroIntro: 'Call us, email us or send the form below — a real coordinator reads every enquiry and replies within one business hour during opening times. Free walkthrough, flat-rate quote in writing, and absolutely no pressure to book.',
+    heroPoints: ['Replies within 1 business hour', 'Free on-site walkthrough', 'Written flat-rate quote', 'No obligation whatsoever'],
+    breadcrumbs: [{ name: 'Contact', href: '/contact' }]
+  }) %>
+
+  <!-- ============ CONTACT MAIN ============ -->
+  <section class="section">
+    <div class="container contact-layout">
+
+      <!-- Form -->
+      <div class="contact-form-wrap">
+        <% if (sent) { %>
+          <div class="alert alert--success reveal" role="status">
+            <span class="alert__icon"><%- icon('checkCircle', 30) %></span>
+            <div>
+              <h2 class="alert__title">Thank you — your request is with us</h2>
+              <p class="alert__text">
+                A coordinator will reply within one business hour during opening times. If your
+                enquiry is urgent, call us directly on <a href="<%= site.phoneHref %>"><%= site.phone %></a>
+                and we will deal with it immediately.
+              </p>
+              <p class="alert__text">
+                While you wait, you might want to read our
+                <a href="/pricing">price guide</a> or check whether we cover
+                <a href="/service-area">your neighbourhood</a>.
+              </p>
+            </div>
+          </div>
+        <% } else { %>
+          <div class="contact-form-head reveal">
+            <p class="eyebrow"><span class="eyebrow__icon"><%- icon('clipboard', 15) %></span> Quote request</p>
+            <h2 class="section__title">Tell Us About Your Property</h2>
+            <p class="contact-form-lede">
+              The more detail you give, the more accurate your quote. Name, phone, email and the service
+              type are all we actually need — everything else is optional but genuinely helps.
+            </p>
+          </div>
+
+          <% if (form.errors && form.errors.length) { %>
+            <div class="alert alert--error" role="alert">
+              <span class="alert__icon"><%- icon('alert', 26) %></span>
+              <div>
+                <h3 class="alert__title">Please check the following</h3>
+                <ul class="alert__list">
+                  <% form.errors.forEach(function (e) { %><li><%= e %></li><% }); %>
+                </ul>
+              </div>
+            </div>
+          <% } %>
+
+          <form class="contact-form" action="/contact" method="post" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label class="field__label" for="f-name">Full name <span class="field__req">*</span></label>
+                <input class="field__input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Whitfield" required value="<%= form.values.name || '' %>">
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-email">Email address <span class="field__req">*</span></label>
+                <input class="field__input" id="f-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required value="<%= form.values.email || '' %>">
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-phone">Phone number <span class="field__req">*</span></label>
+                <input class="field__input" id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(816) 555-0100" required value="<%= form.values.phone || '' %>">
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-city">Neighbourhood or suburb</label>
+                <input class="field__input" id="f-city" name="city" type="text" placeholder="Brookside, Overland Park…" value="<%= form.values.city || '' %>">
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-service">Service needed <span class="field__req">*</span></label>
+                <div class="field__select">
+                  <select class="field__input" id="f-service" name="service" required>
+                    <option value="">Choose a service…</option>
+                    <% site.formServices.forEach(function (s) { %>
+                      <option value="<%= s %>"<%= form.values.service === s ? ' selected' : '' %>><%= s %></option>
+                    <% }); %>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label class="field__label" for="f-frequency">How often?</label>
+                <div class="field__select">
+                  <select class="field__input" id="f-frequency" name="frequency">
+                    <option value="">Not sure yet</option>
+                    <% ['Weekly', 'Every two weeks', 'Monthly', 'One-time only', 'Nightly (commercial)', 'Several times a week'].forEach(function (f) { %>
+                      <option value="<%= f %>"<%= form.values.frequency === f ? ' selected' : '' %>><%= f %></option>
+                    <% }); %>
+                  </select>
+                </div>
+              </div>
+              <div class="field field--full">
+                <label class="field__label" for="f-property">Property details</label>
+                <input class="field__input" id="f-property" name="property" type="text" placeholder="3 bed / 2 bath house, about 1,800 sq ft" value="<%= form.values.property || '' %>">
+              </div>
+              <div class="field field--full">
+                <label class="field__label" for="f-message">Anything we should know?</label>
+                <textarea class="field__input field__textarea" id="f-message" name="message" rows="5" placeholder="Pets, allergies, hard-water build-up, upcoming guests, access details, preferred days…"><%= form.values.message || '' %></textarea>
+              </div>
+            </div>
+
+            <div class="contact-form__foot">
+              <button class="btn btn--primary btn--lg" type="submit">Send My Free Quote Request <%- icon('arrowRight', 18) %></button>
+              <p class="contact-form__note"><%- icon('lock', 15) %> Your details are never shared or sold. We reply within one business hour during opening times.</p>
+            </div>
+          </form>
+        <% } %>
+      </div>
+
+      <!-- Sidebar contact -->
+      <aside class="contact-side">
+        <div class="side-card side-card--cta reveal">
+          <h3 class="side-card__title"><%- icon('phone', 20) %> Faster to Just Call?</h3>
+          <p class="side-card__text">A real coordinator answers during opening hours — no phone tree, no ticket queue.</p>
+          <a class="btn btn--primary btn--block btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+          <a class="btn btn--outline btn--block" href="<%= site.emergencyPhoneHref %>">Emergency: <%= site.emergencyPhone %></a>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title"><%- icon('map', 20) %> Visit or Post</h3>
+          <address class="side-address">
+            <strong><%= site.legalName %></strong><br>
+            <%= site.address.street %><br>
+            <%= site.address.suite %><br>
+            <%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %><br>
+            United States
+          </address>
+          <ul class="side-contact-list">
+            <li><%- icon('mail', 17) %> <a href="mailto:<%= site.email %>"><%= site.email %></a></li>
+            <li><%- icon('mail', 17) %> <a href="mailto:<%= site.quotesEmail %>"><%= site.quotesEmail %></a></li>
+          </ul>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title"><%- icon('clock', 20) %> Opening Hours</h3>
+          <ul class="hours-list">
+            <% site.hours.forEach(function (h) { %>
+              <li<%= (h.day === 'Saturday' || h.day === 'Sunday') ? ' class="hours-list--weekend"' : '' %>>
+                <span><%= h.day %></span>
+                <span><%= h.open %> – <%= h.close %></span>
+              </li>
+            <% }); %>
+          </ul>
+          <p class="side-card__note"><%- icon('info', 14) %> Commercial clients are cleaned overnight outside these hours.</p>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title"><%- icon('share', 20) %> Follow Us</h3>
+          <div class="side-socials">
+            <% site.socials.forEach(function (s) { %>
+              <a href="<%= s.url %>" target="_blank" rel="noopener noreferrer" aria-label="<%= site.name %> on <%= s.name %>"><%- icon(s.icon, 20) %></a>
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="side-card side-card--trust reveal">
+          <h3 class="side-card__title">Why Book With Us</h3>
+          <ul class="side-trust">
+            <% site.trustBadges.forEach(function (b) { %>
+              <li>
+                <span class="side-trust__icon"><%- icon(b.icon, 19) %></span>
+                <span><strong><%= b.label %></strong><span><%= b.sub %></span></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ WHAT HAPPENS NEXT ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">What Happens After You Send This</h2>
+        <p>
+          Most companies leave you guessing about what occurs after you submit an enquiry, so here is the
+          entire sequence. It is short, it requires nothing more from you, and there is no obligation at any
+          stage.
+        </p>
+        <ul class="tick-list">
+          <li><strong>Within one business hour</strong> a real person reads your message and replies — by phone if you left a number, by email if you did not. No autoresponder, no ticket number.</li>
+          <li><strong>Same day</strong> we confirm your address sits inside our thirty-five mile radius and outline which service fits your description. If we think a different service would cost you less, we say so now rather than later.</li>
+          <li><strong>Same day, usually</strong> you receive a flat-rate quote in writing listing the exact scope, what is included, what is excluded and how long the job will take.</li>
+          <li><strong>If you want one</strong> we arrange a free walkthrough — twenty to thirty minutes, no charge, no obligation to book afterwards.</li>
+          <li><strong>On booking</strong> you get a confirmation with your arrival window and any access instructions, and the crew lead reads those notes before your visit.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">What to Include for a Faster Quote</h2>
+        <p>
+          The more you tell us up front, the more accurate the number we send back. None of it is mandatory,
+          but these five details let us quote without a visit in most cases: the size and type of property;
+          how long since it was last professionally cleaned; whether there are pets; anything specific you
+          are worried about, such as grease, grout or hard water staining; and any deadline you are working
+          to.
+        </p>
+        <p>
+          Photographs help enormously. Two or three images of the kitchen, the bathrooms and any problem
+          area will often tell us more about what a job involves than a written description can. They are
+          particularly useful for post-construction work and for properties that have been left for a long
+          period.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Other Ways to Reach Us</h2>
+        <p>
+          If you would rather talk it through than type it out, call <a href="<%= site.phoneHref %>"><%= site.phone %></a>
+          during opening hours and you will reach the office, not a call centre. For commercial enquiries,
+          including facilities that need a compliance pack or a formal proposal, email
+          <a href="mailto:<%= site.quotesEmail %>"><%= site.quotesEmail %></a> and we will respond with the
+          documentation you need rather than a generic brochure.
+        </p>
+        <p>
+          We serve the Kansas City metro across both states, within roughly thirty-five miles of downtown,
+          with no travel surcharge anywhere inside that radius. If you are outside it we will tell you
+          immediately and refer you to a company that covers your area properly — we would rather lose the
+          job than take on work we cannot service well.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('info', 15) %></span> Before you book</p>
+        <h2 class="section__title reveal">Questions People Ask Right Before Booking</h2>
+      </header>
+      <div class="faq-grid stagger">
+        <% faqGroups[0].items.concat(faqGroups[2].items.slice(0, 2)).forEach(function (f, i) { %>
+          <details class="faq reveal"<%= i === 0 ? ' open' : '' %>>
+            <summary class="faq__q"><span><%= f.q %></span><span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span></summary>
+            <div class="faq__a"><p><%= f.a %></p></div>
+          </details>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ CONTACT PROSE ============ -->
+  <section class="section">
+    <div class="container container--narrow prose">
+      <h2 class="section__title">What to Include When You Get in Touch</h2>
+      <p>
+        The fastest quotes come from messages that answer four things. What kind of property is it —
+        house, apartment, condo, office, retail unit, or a site still under construction? How large
+        is it, in bedrooms and bathrooms for residential, or square footage for commercial? When was
+        it last properly cleaned, and is anything in it right now that will need special attention,
+        such as pets, smoking residue, recent renovation dust, or a move that has just finished?
+        And when do you need it done — is there a hard deadline like a lease end, a closing date, a
+        listing photo shoot or an opening day? Those four answers let us select the right service
+        and give you a number the same day rather than booking a walkthrough to discover them.
+      </p>
+      <p>
+        Photographs are worth more than a paragraph. A handful of phone shots covering the kitchen,
+        each bathroom, the main living area and any problem area will let us see the condition
+        baseline directly. That matters because condition, not size, is what most often makes the
+        difference between a quote that holds and one that has to be revised. A 1,400 square foot
+        home that has been maintained weekly is a different job from the same footprint abandoned
+        for two years. Sending pictures lets us quote the first case at maintenance pricing instead
+        of protecting ourselves with deep-clean pricing, which is usually a saving of a few hundred
+        dollars.
+      </p>
+
+      <h3>When We Will Answer</h3>
+      <p>
+        Messages sent during working hours are usually answered within a couple of hours, and
+        almost always the same day. Messages that arrive overnight or on a Sunday get a reply first
+        thing the next working morning. If you have an urgent situation — a closing that moved up,
+        a tenant arriving sooner than expected, a commercial space that has to be ready for an
+        inspection — say so in the subject line. We hold capacity back each week specifically for
+        short-notice work and will do what we can to fit you in.
+      </p>
+      <p>
+        Phone calls during working hours usually reach a person rather than a queue. If you get
+        voicemail, leave the property type, your suburb and the timeframe; that is enough for us to
+        return the call with something useful rather than a request to repeat yourself. We do not
+        use an answering service and we do not route residential enquiries through a call centre,
+        so the person you speak to is the person who will schedule and price your job.
+      </p>
+
+      <h3>What Happens After You Send a Message</h3>
+      <p>
+        First, we read it properly and, if anything is unclear, ask a single consolidated question
+        rather than a series of them. Second, we select the service that actually fits and tell you
+        if a cheaper one would do the same job — that happens more often than you would expect,
+        particularly when someone books a deep clean for a home that only needed a first-visit
+        reset. Third, we send a flat quote in writing, itemising what is included, what is not, and
+        how long we expect the visit to take. There is no obligation attached to the quote and no
+        expiry date designed to pressure you.
+      </p>
+      <p>
+        If you accept, you choose a date and we confirm the window, the crew size and anything you
+        need to prepare. For residential work no contract is required. For commercial accounts you
+        can trial a single visit before committing to anything recurring, which is how most of our
+        office and retail contracts actually began. If you decide not to proceed, that is a
+        perfectly fine outcome and we would rather hear it than be left guessing — a clear no costs
+        us nothing and keeps our scheduling honest.
+      </p>
+
+      <h3>Serving the Whole Kansas City Metro</h3>
+      <p>
+        We work across Kansas City and the surrounding suburbs on both sides of the state line —
+        Overland Park, Leawood, Olathe, Lenexa, Shawnee and Prairie Village in Kansas; Lee's Summit,
+        Blue Springs, Liberty, Independence, North Kansas City and Parkville in Missouri. Travel
+        beyond the core metro is possible for larger or recurring jobs and is quoted with any travel
+        time shown separately rather than buried in the labour rate. If you are unsure whether your
+        address falls inside our normal radius, ask — the answer is a one-line reply.
+      </p>
+      <p>
+        If you would rather not fill in a form at all, call us. A two-minute conversation usually
+        settles which service you need, what it will cost and when we can get to you, and you will
+        leave it knowing whether you need us at all. That last part is not a formality; a
+        reasonable share of the people who call us are told they do not need a cleaning service yet,
+        and we would rather say that than take money for work that will not help.
+      </p>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Serving the metro since 2013',
+    ctaTitle: 'Prefer to Talk It Through?',
+    ctaText: 'Call us and describe the property. We will tell you which service fits, what it costs and when we can get to you — including telling you when you do not need us yet.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,229 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-commercial.webp',
+    eyebrow: 'Commercial bid request',
+    eyebrowIcon: 'building',
+    heroTitle: 'Request a Commercial Cleaning Bid in Kansas City',
+    heroIntro: 'Free site walkthrough, a written zone-by-zone scope, a certificate of insurance same day and a formal proposal within 24 hours. No obligation and no long sales process — most commercial clients are onboarded within 72 hours of accepting.',
+    heroPoints: ['Free walkthrough within a week', 'Written scope by zone and frequency', 'Certificate of insurance same day', 'Onboarding typically within 72 hours'],
+    breadcrumbs: [{ name: 'Commercial Bid', href: '/commercial-quote' }]
+  }) %>
+
+  <!-- ============ WHY ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('building', 15) %></span> Built for facilities</p>
+        <h2 class="section__title reveal">What a Zenvorali Commercial Contract Includes</h2>
+        <p class="section__lede reveal">Every commercial account gets these as standard, not as paid extras. They are the things clients tell us their previous provider never delivered.</p>
+      </header>
+
+      <ul class="includes-grid stagger">
+        <% [
+          { icon: 'clipboard', t: 'Written zone-by-zone scope', d: 'Every area, every task, every frequency — documented, so the invoice can always be reconciled against the contract.' },
+          { icon: 'users', t: 'Named account manager', d: 'One person who answers their phone and knows your site. No ticket queues, no rotating call centres.' },
+          { icon: 'list', t: 'Digital report after every visit', d: 'Time, crew lead and completed checklist, delivered automatically. The end of wondering whether anyone turned up.' },
+          { icon: 'shield', t: 'Insurance and COI on request', d: '$2M general liability, workers’ compensation and bonding. Certificates issued same day, landlord named as additional insured on request.' },
+          { icon: 'lock', t: 'Vetted, directly employed staff', d: 'Background checked, drug screened, insured and on payroll. No unvetted subcontractors on your premises, ever.' },
+          { icon: 'refresh', t: 'Quarterly account reviews', d: 'We raise problems before you have to, and adjust scope as your facility changes rather than letting standards drift.' }
+        ].forEach(function (x) { %>
+          <li class="include-card reveal">
+            <span class="include-card__icon"><%- icon(x.icon, 26) %></span>
+            <h3 class="include-card__title"><%= x.t %></h3>
+            <p class="include-card__text"><%= x.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SPACES + FORM ============ -->
+  <section class="section section--alt">
+    <div class="container contact-layout">
+      <div class="contact-form-wrap">
+        <div class="contact-form-head reveal">
+          <p class="eyebrow"><span class="eyebrow__icon"><%- icon('clipboard', 15) %></span> Bid request</p>
+          <h2 class="section__title">Tell Us About Your Facility</h2>
+          <p class="contact-form-lede">Square footage, restroom count and frequency are what drive commercial pricing most. Anything else you can tell us just makes the first proposal sharper.</p>
+        </div>
+
+        <form class="contact-form" action="/contact" method="post" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label" for="c-name">Your name <span class="field__req">*</span></label>
+              <input class="field__input" id="c-name" name="name" type="text" autocomplete="name" placeholder="Priya Nair" required>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c-company">Company</label>
+              <input class="field__input" id="c-company" name="property" type="text" placeholder="Company or building name">
+            </div>
+            <div class="field">
+              <label class="field__label" for="c-email">Work email <span class="field__req">*</span></label>
+              <input class="field__input" id="c-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c-phone">Phone <span class="field__req">*</span></label>
+              <input class="field__input" id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="(816) 555-0100" required>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c-city">Location / suburb</label>
+              <input class="field__input" id="c-city" name="city" type="text" placeholder="Downtown KC, Overland Park…">
+            </div>
+            <div class="field">
+              <label class="field__label" for="c-frequency">Cleaning frequency</label>
+              <div class="field__select">
+                <select class="field__input" id="c-frequency" name="frequency">
+                  <option value="">Not sure yet</option>
+                  <% ['Nightly (5–7 nights)', 'Several times a week', 'Weekly', 'Fortnightly', 'Monthly', 'One-off project'].forEach(function (f) { %><option value="<%= f %>"><%= f %></option><% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="c-service">Facility type</label>
+              <div class="field__select">
+                <select class="field__input" id="c-service" name="service">
+                  <% ['Office & commercial cleaning', 'Post-construction cleaning', 'Other (described below)'].forEach(function (s) { %><option value="<%= s %>"><%= s %></option><% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="c-message">Facility details</label>
+              <textarea class="field__input field__textarea" id="c-message" name="message" rows="6" placeholder="Approximate square footage, number of restrooms, kitchen or break room, floor types, current provider, any compliance requirements (medical, childcare), preferred cleaning window…"></textarea>
+            </div>
+          </div>
+
+          <div class="contact-form__foot">
+            <button class="btn btn--primary btn--lg" type="submit">Request My Commercial Bid <%- icon('arrowRight', 18) %></button>
+            <p class="contact-form__note"><%- icon('lock', 15) %> We reply within one business hour during opening times, with a walkthrough offered within a week.</p>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-side">
+        <div class="side-card side-card--cta reveal">
+          <h3 class="side-card__title"><%- icon('phone', 20) %> Speak to Commercial</h3>
+          <p class="side-card__text">Ask for our Commercial Account Director and describe the site. We will tell you straight away whether we can help.</p>
+          <a class="btn btn--primary btn--block btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+          <a class="btn btn--outline btn--block" href="mailto:<%= site.quotesEmail %>">Email the commercial team</a>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title"><%- icon('building', 20) %> Spaces We Service</h3>
+          <ul class="tick-list tick-list--compact">
+            <% ['Corporate offices & co-working', 'Medical, dental & veterinary clinics', 'Retail stores & showrooms', 'Fitness studios & gyms', 'Warehouses & light industrial', 'Churches & event venues', 'Schools, daycares & tutoring centres', 'Property management common areas', 'Restaurants (front of house)'].forEach(function (s) { %>
+              <li><%- icon('check', 15) %> <span><%= s %></span></li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <div class="side-card side-card--trust reveal">
+          <h3 class="side-card__title">Compliance &amp; Cover</h3>
+          <ul class="side-trust">
+            <li><span class="side-trust__icon"><%- icon('shield', 19) %></span><span><strong><%= site.insurance.liability %></strong><span>Certificate issued per site</span></span></li>
+            <li><span class="side-trust__icon"><%- icon('lock', 19) %></span><span><strong><%= site.insurance.workersComp %></strong><span>For all employees</span></span></li>
+            <li><span class="side-trust__icon"><%- icon('badge', 19) %></span><span><strong><%= site.insurance.bonding %></strong><span>Key and premises cover</span></span></li>
+            <li><span class="side-trust__icon"><%- icon('leaf', 19) %></span><span><strong>Green Seal &amp; Safer Choice products</strong><span>SDS sheets on request</span></span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="section section--process">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow eyebrow--light reveal"><span class="eyebrow__icon"><%- icon('refresh', 15) %></span> Onboarding</p>
+        <h2 class="section__title section__title--light reveal">From Bid Request to First Clean in Four Steps</h2>
+      </header>
+
+      <ol class="steps steps--light stagger">
+        <% [
+          { n: '01', icon: 'clipboard', t: 'Walkthrough', d: 'A 20 to 30 minute site visit to map the facility, access requirements, sensitive areas and current standards.' },
+          { n: '02', icon: 'list', t: 'Written proposal', d: 'A formal zone-by-zone scope with pricing and frequency options, sent within 24 hours of the walkthrough.' },
+          { n: '03', icon: 'shield', t: 'Compliance pack', d: 'Insurance certificates, SDS sheets and staff vetting summary issued before mobilisation so procurement is satisfied.' },
+          { n: '04', icon: 'sparkle', t: 'Supervised first clean', d: 'Your account manager attends the first clean to confirm the standard, then you move into routine reporting and quarterly reviews.' }
+        ].forEach(function (s) { %>
+          <li class="step reveal">
+            <span class="step__num"><%= s.n %></span>
+            <span class="step__icon"><%- icon(s.icon, 28) %></span>
+            <h3 class="step__title"><%= s.t %></h3>
+            <p class="step__text"><%= s.d %></p>
+          </li>
+        <% }); %>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ PROCUREMENT ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">What Procurement Usually Needs From Us</h2>
+        <p>
+          Most commercial cleaning relationships fail in the paperwork, not the cleaning. If we cannot
+          satisfy your procurement or facilities requirements before the first visit, the standard of the
+          work is irrelevant. These are the documents we issue routinely, and we would rather send them
+          before you ask than hold up mobilisation later.
+        </p>
+        <ul class="tick-list">
+          <li><strong>Certificate of insurance</strong> — general liability and workers&rsquo; compensation, with your organisation added as an additional insured where your contract requires it.</li>
+          <li><strong>Safety data sheets</strong> — for every chemical we use on site, supplied in your preferred format before the first clean.</li>
+          <li><strong>Staff vetting summary</strong> — confirmation that every cleaner assigned to your facility is a direct employee, background-checked and covered by workers&rsquo; compensation.</li>
+          <li><strong>Written scope</strong> — the zone-by-zone schedule that forms the basis of your invoice, so what you are billed for is the same document the crew works from.</li>
+          <li><strong>Complaint and escalation path</strong> — the named account manager, their direct line, and the response time we commit to for a service issue.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Contract Terms, Plainly</h2>
+        <p>
+          Commercial cleaning contracts are usually written to protect the vendor. We write ours to be
+          cancellable. There is no lock-in beyond a thirty-day notice period, no automatic annual uplift
+          buried in the small print, and no charge for a review that changes the scope. If we are not
+          performing, thirty days is enough time for you to leave — which means it is also enough time for
+          us to fix the problem and keep the account.
+        </p>
+        <p>
+          Pricing is per-visit and fixed for twelve months at a time. We do not bill hourly, because an
+          hourly commercial account rewards a crew for being slow. Monthly invoicing reconciles line by
+          line against the agreed scope, so your accounts team can check it against the contract without
+          asking us for an explanation.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Facility Types We Work With</h2>
+        <p>
+          We are set up for facilities where attendance has to be verifiable and the cleaning window is
+          constrained — offices, clinics, studios, showrooms, small warehouses and professional services
+          firms across the Kansas City metro. If your facility opens early, closes late, holds stock that
+          cannot be moved, or has areas staff must not enter, tell us on the walkthrough and it goes into
+          the written scope rather than being discovered by a crew on night one.
+        </p>
+
+        <h2 class="section__title section__title--spaced">If You Are Switching Providers</h2>
+        <p>
+          Moving from an existing vendor is the most common reason we get a commercial enquiry, and it is
+          worth doing properly. Send us the current scope and we will quote against the same specification
+          first, so you are comparing like for like rather than a detailed scope against a vague number.
+          Where the incumbent&rsquo;s scope has gaps — restroom frequency, floor care, consumable
+          restocking — we will point them out instead of quietly matching a price that does not cover them.
+        </p>
+        <p>
+          We can usually mobilise within a week of a signed proposal, and we will work around your notice
+          period so there is no gap in service between the two providers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Free walkthrough · 24-hour proposal',
+    ctaTitle: 'Get a Commercial Bid That Holds Up',
+    ctaText: 'Written scope, documented attendance, insured staff and a named person who answers the phone. That is the entire proposition, and it is why our commercial clients renew.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

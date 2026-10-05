@@ -1,0 +1,110 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-faq.webp',
+    eyebrow: 'Questions answered',
+    eyebrowIcon: 'info',
+    heroTitle: 'Frequently Asked Questions About Cleaning in Kansas City',
+    heroIntro: 'Everything clients ask us before booking — how pricing works, whether you need to be home, what is covered and what is not, how we vet our staff, which areas we reach and how commercial contracts run. If your question is not here, call us and we will answer it in two minutes.',
+    heroPoints: ['34 questions answered in detail', 'Pricing, booking & coverage', 'Trust, vetting & guarantees', 'Commercial contract questions'],
+    breadcrumbs: [{ name: 'FAQ', href: '/faq' }]
+  }) %>
+
+  <!-- ============ QUICK NAV ============ -->
+  <section class="faq-nav-band">
+    <div class="container">
+      <ul class="faq-nav stagger">
+        <% faqGroups.forEach(function (g, i) { %>
+          <li class="reveal">
+            <a href="#group-<%= i + 1 %>">
+              <span class="faq-nav__icon"><%- icon(g.icon, 20) %></span>
+              <span class="faq-nav__copy">
+                <strong><%= g.group %></strong>
+                <span><%= g.items.length %> questions</span>
+              </span>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FAQ GROUPS ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <% faqGroups.forEach(function (g, gi) { %>
+        <div class="faq-group reveal" id="group-<%= gi + 1 %>">
+          <header class="faq-group__head">
+            <span class="faq-group__icon"><%- icon(g.icon, 26) %></span>
+            <div>
+              <h2 class="faq-group__title"><%= g.group %></h2>
+              <p class="faq-group__count"><%= g.items.length %> questions</p>
+            </div>
+          </header>
+
+          <div class="faq-list">
+            <% g.items.forEach(function (f, i) { %>
+              <details class="faq"<%= gi === 0 && i === 0 ? ' open' : '' %>>
+                <summary class="faq__q">
+                  <span><%= f.q %></span>
+                  <span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span>
+                </summary>
+                <div class="faq__a"><p><%= f.a %></p></div>
+              </details>
+            <% }); %>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- ============ STILL HAVE QUESTIONS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('phone', 15) %></span> Still unsure?</p>
+        <h2 class="section__title reveal">Ask Us Directly — We Actually Answer</h2>
+        <p class="section__lede reveal">A real coordinator picks up the phone during opening hours, and every form submission gets a reply within one business hour.</p>
+      </header>
+
+      <ul class="contact-cards stagger">
+        <li class="contact-card reveal">
+          <span class="contact-card__icon"><%- icon('phone', 26) %></span>
+          <h3 class="contact-card__title">Call us</h3>
+          <p class="contact-card__text"><a href="<%= site.phoneHref %>"><%= site.phone %></a></p>
+          <p class="contact-card__note">Mon–Thu 7–8 · Fri 7–6 · Sat 8–5 · Sun 10–4</p>
+        </li>
+        <li class="contact-card reveal">
+          <span class="contact-card__icon"><%- icon('alert', 26) %></span>
+          <h3 class="contact-card__title">Urgent or emergency</h3>
+          <p class="contact-card__text"><a href="<%= site.emergencyPhoneHref %>"><%= site.emergencyPhone %></a></p>
+          <p class="contact-card__note">Same-day attendance where a crew is available</p>
+        </li>
+        <li class="contact-card reveal">
+          <span class="contact-card__icon"><%- icon('mail', 26) %></span>
+          <h3 class="contact-card__title">Email us</h3>
+          <p class="contact-card__text"><a href="mailto:<%= site.email %>"><%= site.email %></a></p>
+          <p class="contact-card__note">Replies within one business hour</p>
+        </li>
+        <li class="contact-card reveal">
+          <span class="contact-card__icon"><%- icon('map', 26) %></span>
+          <h3 class="contact-card__title">Visit or post</h3>
+          <p class="contact-card__text"><%= site.address.street %><br><%= site.address.suite %><br><%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %></p>
+          <p class="contact-card__note">Serving the metro within <%= site.serviceArea.radiusMiles %> miles</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'No obligation',
+    ctaTitle: 'Got Your Answer? Let’s Get You Booked',
+    ctaText: 'Free walkthrough, a written flat-rate quote the same day, and no pressure to proceed. That is how we prefer to work.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

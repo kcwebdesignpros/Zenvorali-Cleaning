@@ -1,0 +1,163 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-careers.webp',
+    eyebrow: 'We are hiring',
+    eyebrowIcon: 'team',
+    heroTitle: 'Cleaning Jobs in Kansas City — Done Right',
+    heroIntro: 'If you have worked in cleaning before, you already know which companies treat their staff properly and which ones churn through people. We are firmly in the first category, and it costs us more per hour to stay there. Direct employment, paid training, real schedules and above-market pay.',
+    heroPoints: ['Direct employment, never gig work', 'Paid training from day one', 'Above-market hourly rates', 'Consistent schedules & routes'],
+    breadcrumbs: [{ name: 'Careers', href: '/careers' }]
+  }) %>
+
+  <!-- ============ WHY WORK HERE ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('heart', 15) %></span> Why Zenvorali</p>
+        <h2 class="section__title reveal">What Makes This Different From Other Cleaning Jobs</h2>
+        <p class="section__lede reveal">The cleaning industry has a reputation for poor pay, no training and unreliable hours. That reputation is deserved in a lot of companies and it is entirely avoidable.</p>
+      </header>
+
+      <ul class="benefit-grid stagger">
+        <% [
+          { icon: 'tag', t: 'Above-market pay', d: 'We pay above the local Kansas City rate for cleaning work and review it annually. We would rather pay properly and keep good people than constantly recruit replacements.' },
+          { icon: 'users', t: 'You are an employee', d: 'On payroll, with workers’ compensation, not a subcontractor or gig worker. If you are injured on a job you are covered, and you are not chasing invoices.' },
+          { icon: 'calendar', t: 'Consistent schedules', d: 'Fixed routes and predictable hours. You know your week in advance rather than being called the night before, and you are not sent across the metro at short notice.' },
+          { icon: 'medal', t: 'Paid training', d: 'Surface safety, chemical dilution and dwell times, material-specific technique, the 48-point checklist and client confidentiality — all paid, all from day one.' },
+          { icon: 'shield', t: 'Proper equipment', d: 'Commercial-grade HEPA vacuums, steamers and colour-coded microfiber. You are not expected to do a professional job with a bucket and a broken mop.' },
+          { icon: 'arrowRight', t: 'Real progression', d: 'Cleaner to crew lead to supervisor to account manager. Several of our current leads started as cleaners, and we promote from inside before hiring outside.' },
+          { icon: 'heart', t: 'Respect for the work', d: 'Our clients are told the crew&rsquo;s name. You are not anonymous, and if a client is unreasonable with you, we back you rather than apologise and rebook.' },
+          { icon: 'leaf', t: 'Products that are safe', d: 'EPA Safer Choice certified solutions as default, and fragrance-free kits available. You are not breathing bleach vapour for eight hours a day.' }
+        ].forEach(function (b) { %>
+          <li class="benefit-card reveal">
+            <span class="benefit-card__icon"><%- icon(b.icon, 26) %></span>
+            <h3 class="benefit-card__title"><%= b.t %></h3>
+            <p class="benefit-card__text"><%= b.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ OPEN ROLES ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> Open positions</p>
+        <h2 class="section__title reveal">Current Openings in Kansas City</h2>
+        <p class="section__lede reveal">We hire continuously across the metro. If your hours do not match a listing perfectly, apply anyway — schedules can often be built around the right person.</p>
+      </header>
+
+      <div class="jobs">
+        <% [
+          { title: 'Residential Cleaner', type: 'Full-time · $19–$23 / hr', loc: 'Kansas City metro', desc: 'Cleaning homes on recurring routes with a two-person crew. Experience preferred but not required — we train properly. Must pass a background check, have reliable transport and be comfortable with pets and children.', tags: ['Paid training', 'Fixed routes', 'Weekly pay'] },
+          { title: 'Crew Lead', type: 'Full-time · $23–$28 / hr', loc: 'Kansas City & Johnson County', desc: 'Leading a two-person crew on residential and light commercial jobs, accountable for the checklist and the client handover. Requires at least one year of professional cleaning experience and a clean driving record.', tags: ['Leadership', 'Bonus eligible', 'Company vehicle'] },
+          { title: 'Commercial Night Cleaner', type: 'Part-time / Full-time · $18–$22 / hr', loc: 'Downtown KC & Overland Park', desc: 'Evening and overnight cleaning of offices, clinics and studios. Ideal for someone wanting evening hours that fit around study or family commitments. Premium rate for overnight shifts.', tags: ['Evening hours', 'Shift premium', 'Weekend optional'] },
+          { title: 'Post-Construction Cleaner', type: 'Full-time · $21–$26 / hr', loc: 'Metro-wide', desc: 'Working new-build and renovation sites on the rough, final and white-glove stages. Requires comfort with PPE and site safety rules, and an eye for detail. Hazmat awareness training provided.', tags: ['Site safety training', 'PPE provided', 'Varied work'] },
+          { title: 'Quality Assurance Inspector', type: 'Full-time · $24–$29 / hr', loc: 'Kansas City metro', desc: 'Reinspecting completed jobs on a rotating basis, handling guarantee claims and running refresher training. Requires at least two years of professional cleaning experience and excellent attention to detail.', tags: ['Leadership track', 'Company vehicle', 'Daytime hours'] },
+          { title: 'Client Care Coordinator', type: 'Full-time · $40–$48k', loc: 'Kansas City, MO office', desc: 'Answering calls, booking jobs, resolving client questions and coordinating schedules with the ops team. Needs to be genuinely good on the phone and calm under pressure. No cleaning required.', tags: ['Office based', 'Salaried', 'Career growth'] }
+        ].forEach(function (j) { %>
+          <article class="job-card reveal">
+            <div class="job-card__head">
+              <div>
+                <h3 class="job-card__title"><%= j.title %></h3>
+                <p class="job-card__meta">
+                  <span><%- icon('tag', 14) %> <%= j.type %></span>
+                  <span><%- icon('map', 14) %> <%= j.loc %></span>
+                </p>
+              </div>
+              <a class="btn btn--primary" href="mailto:<%= site.email %>?subject=Application%3A%20<%= encodeURIComponent(j.title) %>">Apply Now <%- icon('arrowRight', 16) %></a>
+            </div>
+            <p class="job-card__desc"><%= j.desc %></p>
+            <ul class="job-card__tags">
+              <% j.tags.forEach(function (t) { %><li><%= t %></li><% }); %>
+            </ul>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">What Applying Involves</h2>
+        <p>
+          Send your details to <a href="mailto:<%= site.email %>"><%= site.email %></a> with a short note
+          about your experience and your availability. There is no lengthy online form to complete and no
+          automated personality test. A real person reads every application.
+        </p>
+        <p>
+          If your experience fits, you will get a structured phone call covering your background,
+          reliability and comfort with pets and children. From there we run a criminal background check,
+          identity verification and a drug screen. Then paid training begins, followed by a period of
+          supervised work alongside an experienced lead before you work independently. We take the hiring
+          process seriously because we are sending people into clients' homes with their keys.
+        </p>
+        <p>
+          We hire people who take pride in doing a job properly. If that describes you, and you would like
+          steady hours, fair pay and equipment that actually works, we would like to hear from you. Even if
+          nothing on this page matches exactly, email us — we would rather hear from a good cleaner with
+          unusual availability than miss them entirely.
+        </p>
+
+        <h2 class="section__title section__title--spaced">What the Work Is Actually Like</h2>
+        <p>
+          Job adverts for cleaning work tend to be vague, so here is the honest version. A residential shift
+          is two cleaners working a route of two to four homes across the metro. You will start at the first
+          property with a briefing from the lead, work through the room checklist systematically, and finish
+          with a walkthrough against the same list. The work is physical — bending, reaching, carrying
+          equipment up stairs, standing for most of the shift — and it is steady rather than frantic because
+          we build honest durations into the schedule.
+        </p>
+        <p>
+          Commercial shifts run in the evening, usually two to two and a half hours per facility, cleaning
+          to a written zone scope rather than a residential checklist. Post-construction work is heavier and
+          less repetitive, often involving fine dust, overspray removal and floor detail, and crews on those
+          jobs are typically three people over a day or two.
+        </p>
+        <p>
+          What it is not: gig work with unpredictable hours, a cash-in-hand arrangement with no cover, or a
+          job where you are sent somewhere different every day without warning. You are on payroll, you know
+          your week in advance, and if a client is unreasonable with you we back you rather than apologise
+          and rebook.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Pay, Hours and Progression</h2>
+        <p>
+          Rates are above the local Kansas City market for cleaning work and reviewed annually. Pay is
+          weekly, on payroll, with workers&rsquo; compensation from day one — including during the paid
+          training period, which most cleaning companies do not offer at all.
+        </p>
+        <p>
+          Schedules are fixed routes with predictable start and finish times rather than a rota published
+          the night before. Full-time residential roles typically run four or five days a week within
+          standard hours; commercial and post-construction shifts include evening and occasional weekend
+          work, which pays a premium. If you need a schedule built around study, school pickups or another
+          commitment, say so in your application — we build around the right person far more often than
+          people expect.
+        </p>
+        <p>
+          Progression is real and it is internal. Cleaner to crew lead to supervisor to account manager is
+          the standard path, and we promote from inside before hiring outside. Several of our current leads
+          started with us as cleaners with no professional experience, which is the clearest evidence we can
+          offer that the training and progression here are genuine rather than a recruiting line.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Hiring across the metro',
+    ctaTitle: 'Ready to Work Somewhere That Respects the Job?',
+    ctaText: 'Email your details and availability and a real person will reply. Paid training, fixed routes, above-market pay and progression from inside the company.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,245 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-projects.webp',
+    eyebrow: 'Real results',
+    eyebrowIcon: 'brush',
+    heroTitle: 'Before & After Cleaning Projects Across Kansas City',
+    heroIntro: 'Every project below is a real job with a real address and a real timeline. We publish the scope, the crew size, what we found on arrival and what the client said afterwards — because a gallery of cropped close-ups tells you nothing.',
+    heroPoints: ['Documented before and after images', 'Real scopes, crews and durations', 'Residential and commercial work', 'Client quotes on every project'],
+    breadcrumbs: [{ name: 'Projects', href: '/projects' }]
+  }) %>
+
+  <!-- ============ INTRO ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose prose--lead reveal">
+        <p>
+          Cleaning is one of the few services where the result is genuinely visible, and yet most company
+          websites show a handful of stock photographs of spotless kitchens that no one on the team has
+          ever touched. We take the opposite approach. Every project here was photographed on site, and we
+          show the before alongside the after, because the before is where the actual work is.
+        </p>
+        <p>
+          We also publish the unflattering details. The 1920s bungalow that had not been professionally
+          cleaned in four years. The new build with paint overspray on fourteen windows and grout haze
+          across 900 square feet of tile, handed over on a fixed date that could not move. The downtown
+          loft with a property manager known for thorough inspections. Those are the jobs where a cleaning
+          company either performs or does not, and they are the ones worth showing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS GRID ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> Case studies</p>
+        <h2 class="section__title reveal">Browse Our Cleaning Projects</h2>
+        <p class="section__lede reveal"><%= projects.length %> detailed case studies from across the Kansas City metro, covering residential, commercial and construction work.</p>
+      </header>
+
+      <div class="projects-grid projects-grid--full stagger">
+        <% projects.forEach(function (p) { %>
+          <article class="project-card reveal">
+            <a class="project-card__link" href="/projects/<%= p.slug %>">
+              <div class="project-card__media">
+                <img class="project-card__after" src="<%= p.after %>" alt="<%= p.title %> after cleaning by Zenvorali Cleaning" width="720" height="500" loading="lazy" decoding="async"
+                     srcset="<%= srcset(p.after) %>" sizes="(min-width: 1040px) 32vw, (min-width: 640px) 48vw, 92vw">
+                <img class="project-card__before" src="<%= p.before %>" alt="<%= p.title %> before cleaning" width="720" height="500" loading="lazy" decoding="async">
+                <span class="project-card__tag">Before &amp; After</span>
+                <span class="project-card__cat"><%= p.category %></span>
+              </div>
+              <div class="project-card__body">
+                <p class="project-card__loc"><%- icon('map', 14) %> <%= p.location %></p>
+                <h3 class="project-card__title"><%= p.title %></h3>
+                <p class="project-card__text"><%= p.summary %></p>
+                <ul class="project-card__stats">
+                  <% p.stats.forEach(function (st) { %>
+                    <li><strong><%= st.value %></strong><span><%= st.label %></span></li>
+                  <% }); %>
+                </ul>
+                <span class="project-card__more">Read the case study <%- icon('arrowRight', 16) %></span>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BY SERVICE ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> Explore by service</p>
+        <h2 class="section__title reveal">Looking for a Specific Type of Work?</h2>
+      </header>
+      <div class="related-grid stagger">
+        <% services.forEach(function (s) { %>
+          <article class="related-card reveal">
+            <a class="related-card__link" href="/services/<%= s.slug %>">
+              <span class="related-card__icon"><%- icon(s.icon, 26) %></span>
+              <h3 class="related-card__title"><%= s.name %></h3>
+              <p class="related-card__text"><%= s.tagline %></p>
+              <span class="related-card__more">View service <%- icon('arrowRight', 16) %></span>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READING A CASE STUDY ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">What to Look For in a Cleaning Case Study</h2>
+        <p>
+          Most cleaning companies show you a photograph of someone else's clean room and leave it at that.
+          A photograph on its own tells you almost nothing, because you cannot see the scope behind it,
+          how long the job took, what condition it started in or what happened when something went wrong.
+          These case studies are written around those details instead, because the detail is the only part
+          that helps you decide whether to hire us.
+        </p>
+        <p>
+          When you compare our projects against another company's gallery, these are the four things worth
+          checking. They are also the four things we deliberately include in every write-up here.
+        </p>
+        <ul class="tick-list">
+          <li><strong>Starting condition, not just the finished room.</strong> Every project below has a genuine before-and-after pair. A deep clean of a well-kept home and a deep clean of a house left four years are entirely different jobs at very different prices, and only the "before" image shows which one you are looking at.</li>
+          <li><strong>Scope in writing.</strong> Each case study lists the actual work carried out line by line — trim hand-wiped, grout steam-treated, overspray removed from fourteen windows. If a company cannot list what it did, it cannot quote what it will do for you.</li>
+          <li><strong>Time on site and crew size.</strong> Duration tells you what the job really costs to deliver. A price that looks low against a two-day, three-person scope is not a bargain, it is a shortcut you will discover later.</li>
+          <li><strong>What happened afterwards.</strong> The outcome matters more than the reveal. A deposit returned, an inspection passed with zero notes, a contract renewed — those are the results a client actually buys.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Why We Publish the Difficult Ones</h2>
+        <p>
+          It would be easy to publish only the dramatic transformations, because those are the most
+          flattering. We include the jobs with real constraints instead: a downtown loft where the service
+          lift was the bottleneck, a new build handed over with two days' notice, a fitness studio with a
+          5&nbsp;AM opening that left a narrow overnight window.
+        </p>
+        <p>
+          Those constraints are usually what a prospective client is genuinely worried about — access,
+          timing, working around trades or staff, keeping noise and chemicals away from customers. A case
+          study where nothing was difficult says nothing about whether we could handle your property.
+        </p>
+
+        <h2 class="section__title section__title--spaced">How to Get a Quote Like These</h2>
+        <p>
+          Every project here started the same way: a message, a walkthrough, and a flat-rate quote in
+          writing the same day. We do not require a contract for residential work, and commercial accounts
+          can be trialled one visit at a time. If you send photographs of the space along with your
+          request, we can often quote without needing to visit at all — which is why most projects on this
+          page were scheduled within a week of the first enquiry.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ PROJECT HUB PROSE ============ -->
+  <section class="section">
+    <div class="container container--narrow prose">
+      <h2 class="section__title">What These Case Studies Are Actually For</h2>
+      <p>
+        A portfolio page on a cleaning website usually does one of two things. Either it shows a
+        photograph of a spotless kitchen and asks you to take it on faith, or it lists a job title and
+        a suburb and leaves you to guess. Neither helps you decide whether the company on the page can
+        handle <em>your</em> property. So we have written ours as working documents rather than
+        advertisements. Each case study below records the property type, the state it was in when we
+        arrived, what we were specifically asked to solve, how long it took, and what it cost in the
+        bands you will see on our <a href="/pricing">pricing page</a>. Where a job went sideways, we
+        say so. Where a client's expectations turned out to be unrealistic, we say that too.
+      </p>
+      <p>
+        That last point matters more than it sounds. Cleaning is a trade where the gap between what a
+        customer imagines is possible and what a space will actually yield in a given number of hours
+        is usually the whole source of friction. A vacant rental that has sat through a Kansas City
+        summer with the air conditioning off will have grout and window track problems that no
+        single visit fully solves — not because the crew was lazy, but because mineral scale and
+        mildew staining build in layers. A post-construction handover where the painters finished
+        drywall sanding the day before is a different job than one where the site was swept and
+        wiped for a week before we arrived. Reading a few of these in sequence calibrates your
+        expectations, which makes the quoting conversation shorter and the result less surprising.
+      </p>
+
+      <h3>The Variables That Change Every Quote</h3>
+      <p>
+        Almost every cleaning quote in the Kansas City metro comes down to six variables. Square
+        footage sets the floor. The number of bathrooms and kitchens sets the ceiling, because those
+        rooms carry most of the labour. The condition baseline — how long since a proper clean, and
+        whether anything has been allowed to set — determines which service is appropriate in the
+        first place. Access matters more than people expect: a third-floor walk-up, a building with
+        a single service elevator that must be reserved, a gated community with a gate code that
+        changes, or a commercial site that can only be worked between certain hours will all pull
+        the price up because the crew's productive window shrinks. Occupancy matters: an empty home
+        can be worked at full speed, while an occupied one requires moving around possessions,
+        pets and people. And finally, the finish level you want — a standard maintenance result,
+        a full deep clean, or a handover standard where someone will run a finger along a baseboard
+        — changes the labour multiplier. Those same six variables explain almost every difference
+        between the case studies below.
+      </p>
+      <p>
+        If you can answer those six questions about your property before you contact us, you will
+        get a quote that holds. If you cannot, send photographs. Photographs resolve the condition
+        baseline instantly and let us quote the right service rather than the safest one, which is
+        often a difference of several hundred dollars on a move-out.
+      </p>
+
+      <h3>Why We Publish Prices Alongside the Work</h3>
+      <p>
+        An enormous amount of consumer frustration in this industry comes from companies that will
+        not name a number until they have you on the phone. We find that approach wastes everyone's
+        time. Our pricing page publishes the actual bands we work in for each service, and the case
+        studies here say which band each project landed in and why. A 1,900 square foot Overland Park
+        ranch with three bathrooms and a recurring biweekly schedule is a completely different
+        economics problem than a 900 square foot downtown loft cleaned once a month. Publishing both
+        numbers lets you sanity-check whether we are the right company for your property before you
+        spend time on a walkthrough, and it lets you compare a quote from us against a quote from
+        anyone else on an apples-to-apples basis.
+      </p>
+      <p>
+        Two practical notes about comparing quotes. First, ask whether the number is flat or hourly.
+        A flat quote protects you from a crew that works slowly; an hourly one does not. Second,
+        ask what is <em>not</em> included. Inside appliances, inside cabinets, interior windows,
+        garage sweeping, exterior glass above ground level and stain treatment are the six items
+        most often quietly excluded from a headline price. We list them explicitly on every quote,
+        included or not, so nothing arrives as a surprise on the day.
+      </p>
+
+      <h3>How to Read a Case Study Here</h3>
+      <p>
+        Each project page follows the same structure. The summary box gives you property type,
+        location, service and turnaround at a glance. The narrative section explains what we found
+        when we arrived and what we decided to do about it. The scope list is the actual work order
+        the crew worked from — not a marketing summary of it. The lessons section records what the
+        job taught us, including the parts we would do differently. The FAQ section handles the
+        questions that project specifically tends to raise from people with similar properties.
+        And the comparable-work section points you at the nearest equivalent project if your
+        situation is close but not identical.
+      </p>
+      <p>
+        If you read two or three of these and still are not sure which service applies to you, that
+        is normal — and it is exactly what the walkthrough is for. We would rather spend fifteen
+        minutes looking at your space and then tell you the honest answer, including telling you
+        that a cheaper service will get you the result you want, than sell you the most expensive
+        thing on the menu. Several of the case studies below record precisely that conversation
+        happening.
+      </p>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Your property next',
+    ctaTitle: 'Want a Result Like These?',
+    ctaText: 'Send us photographs of the space and we will quote it flat, in writing, with realistic timing. Most projects can be scheduled within a week.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

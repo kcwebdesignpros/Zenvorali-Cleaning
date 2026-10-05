@@ -1,0 +1,262 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-blog.webp',
+    eyebrow: 'Guides & advice',
+    eyebrowIcon: 'list',
+    heroTitle: 'Cleaning Guides From Our Kansas City Team',
+    heroIntro: 'Practical, honest advice written by the people who actually do the work — pricing explained without the sales spin, deep clean versus standard, move-out checklists, pet-safe products and seasonal plans for Kansas City homes.',
+    heroPoints: ['Written by working cleaners', 'Real Kansas City prices', 'No affiliate links or filler', 'Updated for 2026'],
+    breadcrumbs: [{ name: 'Blog', href: '/blog' }]
+  }) %>
+
+  <!-- ============ FEATURED ============ -->
+  <% var featured = posts[0]; %>
+  <section class="section">
+    <div class="container">
+      <article class="featured-post reveal">
+        <div class="featured-post__media">
+          <img src="<%= featured.image %>" alt="<%= featured.imageAlt %>" width="900" height="620" fetchpriority="high" decoding="async"
+               srcset="<%= srcset(featured.image) %>" sizes="(min-width: 960px) 52vw, 92vw">
+          <span class="post-card__cat"><%= featured.category %></span>
+        </div>
+        <div class="featured-post__body">
+          <p class="featured-post__meta">
+            <span><%- icon('calendar', 14) %> <%= fmtDate(featured.date) %></span>
+            <span><%- icon('clock', 14) %> <%= featured.readTime %> min read</span>
+          </p>
+          <h2 class="featured-post__title"><a href="/blog/<%= featured.slug %>"><%= featured.title %></a></h2>
+          <p class="featured-post__text"><%= featured.excerpt %></p>
+
+          <ul class="featured-post__points">
+            <% featured.keyTakeaways.slice(0, 3).forEach(function (k) { %>
+              <li><%- icon('checkCircle', 17) %> <%= k %></li>
+            <% }); %>
+          </ul>
+
+          <a class="btn btn--primary btn--lg" href="/blog/<%= featured.slug %>">Read the Guide <%- icon('arrowRight', 18) %></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ALL POSTS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> All articles</p>
+        <h2 class="section__title reveal">Every Guide in Our Library</h2>
+        <p class="section__lede reveal"><%= posts.length %> in-depth guides covering pricing, technique, seasonal timing and the honest trade-offs behind each decision.</p>
+      </header>
+
+      <div class="blog-grid blog-grid--all stagger">
+        <% posts.forEach(function (p) { %>
+          <article class="post-card reveal">
+            <a class="post-card__link" href="/blog/<%= p.slug %>">
+              <div class="post-card__media">
+                <img src="<%= p.image %>" alt="<%= p.imageAlt %>" width="720" height="440" loading="lazy" decoding="async"
+                     srcset="<%= srcset(p.image) %>" sizes="(min-width: 1040px) 33vw, (min-width: 640px) 48vw, 92vw">
+                <span class="post-card__cat"><%= p.category %></span>
+              </div>
+              <div class="post-card__body">
+                <p class="post-card__meta"><%= fmtDate(p.date) %> · <%= p.readTime %> min read</p>
+                <h3 class="post-card__title"><%= p.title %></h3>
+                <p class="post-card__text"><%= p.excerpt %></p>
+                <span class="post-card__more">Read the guide <%- icon('arrowRight', 16) %></span>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOPICS ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('tag', 15) %></span> Browse by topic</p>
+        <h2 class="section__title reveal">What Do You Need Help With?</h2>
+      </header>
+
+      <ul class="topic-grid stagger">
+        <% [
+          { icon: 'tag', t: 'Pricing & costs', d: 'What cleaning costs in KC, how quotes are built and how to compare proposals fairly.', href: '/blog/how-much-does-house-cleaning-cost-kansas-city' },
+          { icon: 'sparkle', t: 'Deep cleaning', d: 'Deep versus standard scope, when each is worth the money and how to combine them.', href: '/blog/deep-clean-vs-standard-clean' },
+          { icon: 'truck', t: 'Moving & deposits', d: 'The move-out checklist that passes inspection and how to document your clean.', href: '/blog/move-out-cleaning-checklist-deposit' },
+          { icon: 'building', t: 'Commercial', d: 'How workplace cleanliness affects absence, focus and how clients read your business.', href: '/blog/office-cleaning-productivity-kansas-city' },
+          { icon: 'leaf', t: 'Green & pet-safe', d: 'Which chemicals genuinely harm pets, and which label claims are meaningless.', href: '/blog/pet-safe-cleaning-products-kansas-city' },
+          { icon: 'calendar', t: 'Seasonal planning', d: 'A room-by-room spring cleaning plan built for Kansas City pollen and humidity.', href: '/blog/spring-cleaning-guide-kansas-city-homes' }
+        ].forEach(function (t) { %>
+          <li class="topic-card reveal">
+            <a class="topic-card__link" href="<%= t.href %>">
+              <span class="topic-card__icon"><%- icon(t.icon, 24) %></span>
+              <h3 class="topic-card__title"><%= t.t %></h3>
+              <p class="topic-card__text"><%= t.d %></p>
+              <span class="topic-card__more"><%- icon('arrowRight', 16) %></span>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ HOW TO USE THESE GUIDES ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How to Use These Guides</h2>
+        <p>
+          Every article in this library is written by the people who actually do the work, not by a
+          content team. That means two things: the numbers are the numbers we quote in Kansas City rather
+          than national averages, and where a cheaper shortcut genuinely works, we say so instead of
+          pushing you toward the most expensive service on the menu.
+        </p>
+        <p>
+          If you are starting from scratch, the practical order is usually this: read the pricing guide
+          first so you know what a fair number looks like, then the deep-versus-standard guide so you can
+          tell which service your home actually needs, then whichever topic matches your situation. That
+          sequence takes about fifteen minutes and will save you from booking the wrong service and
+          paying for a clean you did not need.
+        </p>
+
+        <h2 class="section__title section__title--spaced">What We Do Not Do</h2>
+        <p>
+          A useful filter for any cleaning advice you read online, including ours, is whether it tells you
+          when <em>not</em> to spend money. These guides routinely do. A few examples of the honest
+          trade-offs you will find in them:
+        </p>
+        <ul class="tick-list">
+          <li>When a standard clean is genuinely sufficient and a deep clean would be wasted money on your property</li>
+          <li>Which &ldquo;pet-safe&rdquo; and &ldquo;green&rdquo; label claims are meaningless, and how to check a product claim yourself</li>
+          <li>Why some recurring plans cost more over a year than simply booking occasionally, and who should not be on a plan</li>
+          <li>The DIY tasks that are genuinely fine to do yourself, and the ones where the equipment cost exceeds what a professional charges</li>
+          <li>Where a landlord or property manager is responsible rather than you, which comes up constantly on move-out questions</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Local, Not Generic</h2>
+        <p>
+          Cleaning advice written for a national audience gets Kansas City wrong in specific ways. Our
+          pollen season runs hard from late March through May and deposits a fine yellow film on every
+          horizontal surface, which changes how often exterior-facing sills and screens need attention.
+          Summer humidity makes bathroom grout and window tracks a recurring problem rather than an
+          occasional one. Winter road salt tracks through entryways and can etch hard flooring if it sits.
+          Every guide here is written against those actual conditions rather than a generic four-season
+          template.
+        </p>
+        <p>
+          If a question you have is not covered, that is useful information for us. Call or email and we
+          will answer it directly — and if it is a question several people ask, it usually becomes the
+          next guide in the library.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ BLOG HUB PROSE ============ -->
+  <section class="section">
+    <div class="container container--narrow prose">
+      <h2 class="section__title">Why We Write These Guides at All</h2>
+      <p>
+        A cleaning company writing a blog is usually a marketing exercise in disguise. The
+        "articles" are four hundred words that circle a question without answering it, then close
+        with a call to action. We are not interested in producing that. This library exists because
+        most of the questions that reach our office are the same questions, arriving in the same
+        order, and answering them properly in writing saves everyone time. When someone calls and
+        asks how much a house clean costs, we would rather send them a guide that explains exactly
+        how the number is built — square footage, bathroom count, condition, frequency, add-ons —
+        than give a range over the phone that may or may not apply to their home.
+      </p>
+      <p>
+        The guides here are written by the people who actually do the work. That sounds like a
+        small thing. It is not. An enormous share of cleaning advice online is produced by writers
+        who have never removed a hard-water film from a glass shower door, never scraped dried
+        joint compound off a window frame, and never had to explain to a landlord why a security
+        deposit cleaning needs more hours than a standard one. The advice that results is technically
+        true and practically useless. Everything in this library is something we have done, priced
+        or fixed on a real property in the Kansas City metro.
+      </p>
+
+      <h3>What You Will Find Here</h3>
+      <p>
+        The library covers four broad areas. <strong>Cost and pricing guides</strong> break down how
+        each service is quoted, what moves the number up or down, and how to compare two quotes that
+        look different but are not. <strong>Comparison pieces</strong> answer the question we hear
+        most often — whether a given property needs a standard clean, a deep clean, or a move-out
+        level of work — with a decision framework rather than a sales pitch. <strong>Checklists</strong>
+        give you the actual room-by-room task list we work from, so you can either follow it
+        yourself or use it to audit a crew you have hired. <strong>Local guides</strong> handle the
+        things that are specific to living here: pollen season, humidity and what it does to grout
+        and window tracks, road salt in entryways, and the seasonal rhythms that actually matter in
+        this climate.
+      </p>
+      <p>
+        We do not publish a guide until we can answer the question in it completely. If a topic
+        needs twelve hundred words to be useful, it gets twelve hundred words. If it can be settled
+        in six hundred, we do not pad it. You will notice the lengths vary considerably, and that
+        is deliberate rather than careless.
+      </p>
+
+      <h3>How to Use a Guide on This Site</h3>
+      <p>
+        Read the guide for the service that matches your property first. Each one is written to be
+        read standalone, so you do not need to work through the library in any particular order. If
+        you are deciding between services, read two comparison pieces side by side — the differences
+        they describe are usually the same three or four variables, and that repetition is the point.
+        If you are trying to evaluate a quote you have already received, the pricing guides will
+        tell you which line items are negotiable and which are fixed costs that no honest company
+        can move much on labour.
+      </p>
+      <p>
+        One caution. Advice written for a national audience is often wrong here in specific ways.
+        Cleaning frequencies recommended for a dry climate will leave grout and window tracks
+        struggling through a Kansas City summer, when indoor humidity routinely sits high enough to
+        make bathrooms a recurring problem rather than an occasional one. Pollen season runs hard
+        from late March through May and leaves a fine yellow film on every horizontal surface,
+        including exterior sills and window screens that a generic annual schedule would ignore
+        entirely. Winter road salt tracks into entryways on boots and pet paws and will etch hard
+        flooring if it is allowed to sit. Every guide here is written against those actual
+        conditions, not a four-season template lifted from somewhere else.
+      </p>
+
+      <h3>Frequently Asked Questions About This Library</h3>
+      <p>
+        <strong>Can I use these guides to clean my own home?</strong> Absolutely — and we would
+        rather you did than hire someone and be disappointed. The checklists are the actual work
+        orders our crews use. The only things you cannot easily replicate are the commercial-grade
+        equipment (hot-water extraction, HEPA filtration, high-reach tools) and the two-person speed
+        that comes from doing this daily.
+      </p>
+      <p>
+        <strong>Do you update old guides?</strong> Yes. Pricing guides are reviewed whenever our
+        rates change, and local guides are updated when we learn something new about how a season
+        actually behaves in a given part of the metro. Where a guide describes market rates, we
+        refresh it annually so the numbers stay usable.
+      </p>
+      <p>
+        <strong>Why do you not have a comment section?</strong> Because the useful version of a
+        comment section is a phone call. If a guide does not answer your question, contact us and
+        ask it directly. If several people ask the same follow-up, that follow-up becomes the next
+        guide — which is genuinely how about half of what you see here came to exist.
+      </p>
+      <p>
+        <strong>Is there anything you will not write about?</strong> We do not publish guides on
+        repairing damage caused by cleaning — etching, bleached grout, warped laminate — because the
+        honest answer is usually that it needs a tradesperson, not a cleaner. We will tell you that
+        on the phone and point you at someone who can help.
+      </p>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Rather just have it done?',
+    ctaTitle: 'Skip the Weekend and Book a Crew',
+    ctaText: 'Everything in these guides is what we do for a living. If you would rather not spend your Saturday on it, we will quote it flat and get it done.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

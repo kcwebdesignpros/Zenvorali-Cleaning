@@ -1,0 +1,298 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-about.webp',
+    eyebrow: 'Since 2013',
+    eyebrowIcon: 'award',
+    heroTitle: 'A Kansas City Cleaning Company Built on Consistency',
+    heroIntro: 'Zenvorali Cleaning began with one van in Brookside in 2013 and a conviction that has not changed since: the only thing that really matters in a cleaning service is whether the crew turns up on time and does the work properly. Twelve years and 12,400+ cleans later, we still believe that and still run the business around it.',
+    heroPoints: ['Locally owned & operated in Kansas City', 'Directly employed, background-checked staff', '12+ years of continuous operation', '100% re-clean guarantee on every job'],
+    breadcrumbs: [{ name: 'About Us', href: '/about' }]
+  }) %>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
+    <div class="container">
+      <ul class="stats__grid stagger">
+        <% site.stats.forEach(function (s) { %>
+          <li class="stats__item reveal">
+            <strong class="stats__value" data-count="<%= s.value %>" data-suffix="<%= s.suffix %>"<%= s.decimals ? ' data-decimals="' + s.decimals + '"' : '' %>><%= s.count %></strong>
+            <span class="stats__label"><%= s.label %></span>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ OUR STORY ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose prose--lead reveal">
+        <p class="eyebrow"><span class="eyebrow__icon"><%- icon('heart', 15) %></span> Our story</p>
+        <h2 class="section__title">How Zenvorali Cleaning Started</h2>
+        <p>
+          The business started almost by accident. In 2013 our founder Romen Roy was helping a family
+          member clear out and clean a rental property in Brookside before a sale, and the experience
+          of trying to hire help was genuinely strange. Three companies were called. One never returned
+          the call. One quoted a very low hourly rate and then billed more than double the verbal estimate.
+          The third arrived two hours late, used a single bucket of grey water for an entire house, and
+          left the bathroom mirror streaked.
+        </p>
+        <p>
+          The insight was not complicated. The cleaning trade is full of people doing honest work and
+          undercut by a layer of operators who treat it as a volume business — pay as little as
+          possible, move as fast as possible, take the money. The customers caught in the middle want
+          one thing, which is to not have to think about it again. Zenvorali was built to be the company
+          you stop thinking about.
+        </p>
+        <p>
+          That meant some deliberately expensive decisions from day one. We employ our cleaners directly
+          rather than using subcontractors or gig platforms. We pay above the local market rate. We
+          background check every person, run paid training, and keep a supervised probation period before
+          anyone is trusted with a client's key. All of that costs considerably more per hour than the
+          alternative, and it is the entire reason our quality holds and our crews stay.
+        </p>
+        <p>
+          Twelve years on, Zenvorali runs multiple crews across the Kansas City metro, cleans homes,
+          apartments, offices, clinics, gyms and new-build construction sites, and has delivered more than
+          12,400 cleans. We have never franchised, never sold leads to third parties, and never charged a
+          client for a service they did not need. When someone calls asking for a deep clean on a home
+          that has been maintained properly, we still tell them a standard recurring clean will do the
+          same job for less money.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUES ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('shield', 15) %></span> What we stand on</p>
+        <h2 class="section__title reveal">Four Commitments We Do Not Bend On</h2>
+        <p class="section__lede reveal">These are not marketing lines. They are operational rules that cost us money and occasionally cost us work — and they are why clients stay for years.</p>
+      </header>
+
+      <ul class="values-grid stagger">
+        <% [
+          { icon: 'users', t: 'Employ people properly', d: 'Our cleaners are employees, not contractors. They get paid training, decent hourly rates, workers’ compensation and steady schedules. A cleaning company cannot deliver a consistent result with people who do not have a consistent job, and no amount of process paperwork fixes that.' },
+          { icon: 'tag', t: 'Quote flat, in writing', d: 'Hourly billing rewards slowness and pushes the risk of a bad estimate onto the client. We walk the property, count the rooms, note the condition and commit to a number. If a job takes longer than we expected, that is our problem and not an extra line on your invoice.' },
+          { icon: 'info', t: 'Tell the truth about scope', d: 'If you ask for a deep clean on a maintained home, we will tell you a standard clean will achieve the same result for less. If a service is not right for your property, we say so. Turning away work we should not be doing is the cheapest way to earn a client for a decade.' },
+          { icon: 'leaf', t: 'Use products we would use at home', d: 'Everything we bring through your door is EPA Safer Choice certified or equivalent. No chlorine bleach vapours in the bathroom, no ammonia residue on food preparation surfaces, no harsh disinfectant where a toddler crawls. Fragrance-free kits are standard on request, not a premium upgrade.' }
+        ].forEach(function (v) { %>
+          <li class="value-card reveal">
+            <span class="value-card__icon"><%- icon(v.icon, 28) %></span>
+            <h3 class="value-card__title"><%= v.t %></h3>
+            <p class="value-card__text"><%= v.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ STANDARDS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="standards">
+        <div class="standards__media reveal">
+          <img src="/img/about-standards.webp" alt="Zenvorali Cleaning supervisors reviewing a completed job checklist in Kansas City"
+               width="800" height="660" loading="lazy" decoding="async"
+               srcset="<%= srcset('/img/about-standards.webp') %>" sizes="(min-width: 960px) 45vw, 92vw">
+        </div>
+
+        <div class="standards__content">
+          <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('clipboard', 15) %></span> Our standards</p>
+          <h2 class="section__title reveal">How We Maintain Quality Across Every Crew</h2>
+          <p class="reveal">Consistency is not a personality trait, it is a system. Cleaning companies lose quality when they grow because nothing enforces the standard once the founder stops supervising every job. These are the controls we built to prevent that.</p>
+
+          <ul class="standards__list stagger">
+            <% [
+              { t: 'Written checklists, room by room', d: '48 points on a standard clean, roughly 120 on a deep clean. Crews work the list in a fixed order and mark it off as they go.' },
+              { t: 'A named crew lead on every job', d: 'Every visit has a lead accountable for the result, even when a second cleaner varies. Nobody sends unsupervised new staff into a home.' },
+              { t: 'Rotating quality inspections', d: 'Our QA lead reinspects completed jobs on a rotation and signs off on larger properties. Problems are caught before clients have to raise them.' },
+              { t: 'Post-visit client check-in', d: 'A short follow-up after the first clean and periodically thereafter, because the fastest way to lose a client is to never ask.' },
+              { t: 'Paid training and product certification', d: 'Surface safety, dilution ratios, dwell times and material-specific technique. Bleach-on-everything is not a method.' },
+              { t: 'Documented attendance', d: 'Every visit is logged with time, crew and completed checklist — for residential clients on request and for all commercial clients as standard.' }
+            ].forEach(function (x) { %>
+              <li class="standards__item reveal">
+                <span class="standards__icon"><%- icon('checkCircle', 20) %></span>
+                <span><strong><%= x.t %></strong><span><%= x.d %></span></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY DIFFERENT ============ -->
+  <section class="section section--process">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow eyebrow--light reveal"><span class="eyebrow__icon"><%- icon('award', 15) %></span> The difference</p>
+        <h2 class="section__title section__title--light reveal">What Actually Separates Us From Other KC Cleaners</h2>
+        <p class="section__lede section__lede--light reveal">If you have used a cleaning service before and been disappointed, the reason was probably one of these four things. Here is how we handle each.</p>
+      </header>
+
+      <div class="compare-grid stagger">
+        <% [
+          { bad: 'A different stranger every visit', good: 'The same named crew that learns your home', icon: 'users' },
+          { bad: 'An hourly rate that quietly grows', good: 'A flat quote you approve before we start', icon: 'tag' },
+          { bad: 'Unverified, uninsured gig labour', good: 'Directly employed, vetted, insured professionals', icon: 'shield' },
+          { bad: 'Nobody accountable when it goes wrong', good: 'A named contact and a free return within 24 hours', icon: 'refresh' }
+        ].forEach(function (c) { %>
+          <article class="compare-card reveal">
+            <span class="compare-card__icon"><%- icon(c.icon, 26) %></span>
+            <p class="compare-card__bad"><span><%- icon('close', 14) %></span> <%= c.bad %></p>
+            <p class="compare-card__good"><span><%- icon('check', 14) %></span> <%= c.good %></p>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM PREVIEW ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('team', 15) %></span> Real people</p>
+        <h2 class="section__title reveal">The People Who Will Be in Your Home</h2>
+        <p class="section__lede reveal">No subcontractors, no rotating strangers. These are the people who show up, and you are welcome to know who they are.</p>
+      </header>
+
+      <div class="team-grid stagger">
+        <% team.slice(0, 3).forEach(function (m) { %>
+          <article class="team-card reveal">
+            <div class="team-card__media">
+              <img src="<%= m.image %>" alt="<%= m.imageAlt %>" width="440" height="520" loading="lazy" decoding="async"
+                   srcset="<%= srcset(m.image) %>" sizes="(min-width: 960px) 30vw, 92vw">
+            </div>
+            <div class="team-card__body">
+              <h3 class="team-card__name"><%= m.name %></h3>
+              <p class="team-card__role"><%= m.role %></p>
+              <p class="team-card__bio"><%= m.bio %></p>
+            </div>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal"><a class="btn btn--dark btn--lg" href="/team">Meet the Whole Team <%- icon('arrowRight', 18) %></a></p>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE PRICE / WORK ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How We Work, and Why It Costs What It Costs</h2>
+        <p>
+          Cleaning is a labour business, and labour businesses have two economies: pay people properly and
+          charge enough to cover it, or pay as little as possible and hope nobody notices. Most of the
+          Kansas City market has chosen the second option, which is why the industry has the reputation it
+          has. We chose the first, and we are upfront that it makes us more expensive than a solo operator
+          with no insurance.
+        </p>
+        <p>
+          What that difference actually buys you is not a prettier clean. It is that the crew who arrives
+          is on our payroll, background-checked, insured, trained on our checklist, and paid enough that
+          they are still with us next year. It is that we carry workers&rsquo; compensation, so if someone
+          is injured in your home it is our problem rather than yours. It is that we quote flat before we
+          start, so the invoice you receive is the number you agreed to, whatever the job turns out to
+          take.
+        </p>
+
+        <h2 class="section__title section__title--spaced">The Trade-Offs We Accept</h2>
+        <p>
+          Every operating decision costs something. Being honest about those costs is more useful than a
+          page of adjectives, so here is what our approach gives up in exchange for what it protects.
+        </p>
+        <ul class="tick-list">
+          <li><strong>We are not the cheapest quote you will receive.</strong> If price is the only criterion, a solo cleaner with no insurance will beat us. We will tell you that rather than pretend otherwise.</li>
+          <li><strong>We turn work down.</strong> If a property is beyond what we can do well in the time available, we decline rather than overpromise and rush the finish.</li>
+          <li><strong>We do not take on everything.</strong> We cover the Kansas City metro within about thirty-five miles. Beyond that we would be sending a crew too far to be reliable, so we refer the work out instead.</li>
+          <li><strong>We cap how many jobs a crew does in a day.</strong> Squeezing in an extra clean makes the schedule look efficient and the last property of the day suffer. We would rather leave the slot empty.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">What Twelve Years in Kansas City Has Taught Us</h2>
+        <p>
+          The problems that bring people to a cleaning company have barely changed since we started. Almost
+          every enquiry is really one of four things: a house that has got away from someone, a move with a
+          deposit riding on it, a workspace where staff have started complaining, or a new build that needs
+          to be handed over clean. The specific circumstances differ; the shape of the problem does not.
+        </p>
+        <p>
+          What has changed is how much people already know. A decade ago most clients accepted an hourly
+          rate and a verbal scope. Now most arrive having read the pricing guides, compared two or three
+          quotes and knowing the difference between a deep clean and a maintenance clean. That is a
+          healthier market, and it suits us — a client who understands the scope is far easier to do good
+          work for than one who was sold a headline price that never covered the job.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHERE WE WORK ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Where We Work and Who We Work For</h2>
+        <p>
+          We serve the Kansas City metro within roughly thirty-five miles of downtown, on both sides of the
+          state line, and we have deliberately stayed local. A company that covers a single metro can hold a
+          tighter service standard than one stretched across a region — arrival windows are sharper,
+          re-cleans are possible the same day, and crews work routes near where they live, which keeps them
+          with us longer.
+        </p>
+        <p>
+          Our client mix is roughly two thirds residential and one third commercial. The residential side is
+          a spread of recurring plans, deep cleans, and move-out work across neighbourhoods from Brookside
+          and Waldo through the Plaza and Downtown to the Northland. The commercial side is offices, clinics,
+          studios and showrooms — facilities where attendance has to be documented and the cleaning window is
+          narrow. The two halves of the business keep each other honest: commercial clients demand
+          verifiable standards, and that discipline feeds straight back into residential work.
+        </p>
+
+        <h2 class="section__title section__title--spaced">What We Are Not</h2>
+        <p>
+          It is as useful to know what a company does not do as what it does, so we will be direct. We are
+          not a franchise, which means every crew is trained and paid by us rather than by a licence holder
+          we cannot supervise. We are not a marketplace connecting you to independent cleaners, so the person
+          in your home is someone we hired and can hold to a standard. And we are not a one-person operation
+          with a van, so we carry the insurance, workers&rsquo; compensation and product range that a real
+          cleaning business requires.
+        </p>
+        <p>
+          We also do not chase volume at the expense of the schedule. We cap how many properties a crew
+          covers in a day, decline work that is beyond what we can do well, and refer jobs outside our
+          radius to companies we trust. Turning work away costs us revenue; taking it and doing it badly
+          costs us the reputation that generated it, and that trade is not close.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUARANTEE ============ -->
+  <section class="section guarantee-band">
+    <div class="container guarantee-band__inner reveal">
+      <span class="guarantee-band__icon"><%- icon('shield', 44) %></span>
+      <h2 class="guarantee-band__title"><%= site.guarantee.title %></h2>
+      <p class="guarantee-band__text"><%= site.guarantee.text %></p>
+      <p class="guarantee-band__text">We have honoured this on 100% of claims for twelve years. It is the single commitment we consider non-negotiable.</p>
+      <div class="guarantee-band__actions">
+        <a class="btn btn--primary btn--lg" href="/contact">Work With Us <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline btn--lg" href="/careers">Join Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaTitle: 'Let’s Make Your Property the Easy Part of Your Week',
+    ctaText: 'Free walkthrough, a written flat-rate quote the same day, and a crew that turns up when we said it would. That is the entire offer.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

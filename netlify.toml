@@ -1,0 +1,74 @@
+# ==========================================================================
+# Zenvorali Cleaning — Netlify configuration
+# ==========================================================================
+
+[build]
+  command = "npm run prepare:netlify"
+  publish = "public"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund --ignore-scripts"
+  APP_ROOT = "/var/task"
+  # Only the four runtime deps are needed to build and serve this site.
+  # Skipping devDependencies keeps installs fast (devDeps include sharp,
+  # esbuild and netlify-cli, which are local-only tooling).
+  NODE_ENV = "production"
+
+# --------------------------------------------------------------------------
+# Redirect all traffic to the serverless Express handler.
+# `force = false` so existing static files under /public win first.
+# --------------------------------------------------------------------------
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
+  force = false
+
+# --------------------------------------------------------------------------
+# Long-lived caching for fingerprinted static assets.
+# --------------------------------------------------------------------------
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    X-DNS-Prefetch-Control = "on"
+
+# --------------------------------------------------------------------------
+# The function bundle needs the views/data/lib/img trees at runtime — EJS
+# reads templates from disk, which esbuild cannot see. `included_files`
+# copies them into the function's working directory.
+# --------------------------------------------------------------------------
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = [
+    "views/**",
+    "data/**",
+    "lib/**",
+    "img/**"
+  ]

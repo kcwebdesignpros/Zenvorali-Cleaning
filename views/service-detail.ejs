@@ -1,0 +1,271 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: service.image,
+    eyebrow: service.badge ? service.badge + ' service' : 'Our services',
+    eyebrowIcon: service.icon,
+    heroTitle: service.heroHeadline,
+    heroIntro: service.heroIntro,
+    heroPoints: service.highlights.slice(0, 4),
+    breadcrumbs: [
+      { name: 'Services', href: '/services' },
+      { name: service.name, href: '/services/' + service.slug }
+    ]
+  }) %>
+
+  <!-- ============ QUICK FACTS ============ -->
+  <section class="quickfacts">
+    <div class="container">
+      <ul class="quickfacts__grid stagger">
+        <li class="quickfact reveal">
+          <span class="quickfact__icon"><%- icon('tag', 24) %></span>
+          <span class="quickfact__copy">
+            <span class="quickfact__label">Starting price</span>
+            <strong class="quickfact__value"><%= money(service.price.from) %></strong>
+            <span class="quickfact__sub"><%= service.price.unit %></span>
+          </span>
+        </li>
+        <li class="quickfact reveal">
+          <span class="quickfact__icon"><%- icon('clock', 24) %></span>
+          <span class="quickfact__copy">
+            <span class="quickfact__label">Typical duration</span>
+            <strong class="quickfact__value"><%= service.duration %></strong>
+            <span class="quickfact__sub">Depending on size &amp; condition</span>
+          </span>
+        </li>
+        <li class="quickfact reveal">
+          <span class="quickfact__icon"><%- icon('shield', 24) %></span>
+          <span class="quickfact__copy">
+            <span class="quickfact__label">Coverage</span>
+            <strong class="quickfact__value">Insured &amp; bonded</strong>
+            <span class="quickfact__sub"><%= site.insurance.liability %></span>
+          </span>
+        </li>
+        <li class="quickfact reveal">
+          <span class="quickfact__icon"><%- icon('medal', 24) %></span>
+          <span class="quickfact__copy">
+            <span class="quickfact__label">Guarantee</span>
+            <strong class="quickfact__value">100% re-clean</strong>
+            <span class="quickfact__sub">Free return within 24 hours</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <section class="section">
+    <div class="container content-layout">
+      <article class="content-main">
+
+        <div class="prose reveal">
+          <% service.intro.forEach(function (p) { %><p class="prose__lead"><%= p %></p><% }); %>
+        </div>
+
+        <% service.sections.forEach(function (sec, si) { %>
+          <div class="content-block reveal" id="section-<%= si + 1 %>">
+            <h2 class="content-block__title"><%= sec.h2 %></h2>
+
+            <% (sec.paras || []).forEach(function (p) { %><p><%= p %></p><% }); %>
+
+            <% if (sec.list && sec.list.length) { %>
+              <ul class="tick-list">
+                <% sec.list.forEach(function (li) { %>
+                  <li><%- icon('checkCircle', 18) %> <span><%= li %></span></li>
+                <% }); %>
+              </ul>
+            <% } %>
+
+            <% if (sec.table) { %>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><% sec.table.head.forEach(function (h) { %><th scope="col"><%= h %></th><% }); %></tr>
+                  </thead>
+                  <tbody>
+                    <% sec.table.rows.forEach(function (row) { %>
+                      <tr><% row.forEach(function (cell) { %><td><%= cell %></td><% }); %></tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+            <% } %>
+          </div>
+        <% }); %>
+
+        <!-- Mid-page CTA -->
+        <div class="inline-cta reveal">
+          <div class="inline-cta__copy">
+            <h3>Want this quoted for your property?</h3>
+            <p>Free walkthrough, written flat-rate quote the same day, no obligation and no sales pressure.</p>
+          </div>
+          <div class="inline-cta__actions">
+            <a class="btn btn--primary" href="/contact">Get My Free Quote <%- icon('arrowRight', 17) %></a>
+            <a class="btn btn--ghost-light" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+          </div>
+        </div>
+
+        <!-- Service FAQ -->
+        <% if (serviceFaqs.length) { %>
+          <div class="content-block reveal">
+            <h2 class="content-block__title"><%= service.name %> — Frequently Asked Questions</h2>
+            <div class="faq-list">
+              <% serviceFaqs.forEach(function (f, i) { %>
+                <details class="faq"<%= i === 0 ? ' open' : '' %>>
+                  <summary class="faq__q">
+                    <span><%= f.q %></span>
+                    <span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span>
+                  </summary>
+                  <div class="faq__a"><p><%= f.a %></p></div>
+                </details>
+              <% }); %>
+            </div>
+          </div>
+        <% } %>
+
+      </article>
+
+      <!-- ============ SIDEBAR ============ -->
+      <aside class="content-side">
+        <div class="side-card side-card--cta reveal">
+          <h3 class="side-card__title">Get a Free Quote</h3>
+          <p class="side-card__text">Flat-rate pricing, written before we start. No obligation.</p>
+          <a class="btn btn--primary btn--block" href="/contact">Request a Quote</a>
+          <a class="btn btn--outline btn--block" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+          <p class="side-card__note"><%- icon('clock', 14) %> Replies within 1 business hour</p>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title">All Services</h3>
+          <ul class="side-nav">
+            <% services.forEach(function (s) { %>
+              <li<%= s.slug === service.slug ? ' class="is-current"' : '' %>>
+                <a href="/services/<%= s.slug %>">
+                  <span class="side-nav__icon"><%- icon(s.icon, 19) %></span>
+                  <span class="side-nav__copy">
+                    <strong><%= s.name %></strong>
+                    <span>From <%= money(s.price.from) %></span>
+                  </span>
+                  <%- icon('chevronRight', 16) %>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <div class="side-card side-card--trust reveal">
+          <h3 class="side-card__title">Why Clients Stay</h3>
+          <ul class="side-trust">
+            <% site.trustBadges.forEach(function (b) { %>
+              <li>
+                <span class="side-trust__icon"><%- icon(b.icon, 19) %></span>
+                <span><strong><%= b.label %></strong><span><%= b.sub %></span></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <div class="side-card side-card--quote reveal">
+          <span class="side-card__quoteicon" aria-hidden="true"><%- icon('quote', 28) %></span>
+          <p class="side-card__quotetext">“<%= reviews[0].text %>”</p>
+          <p class="side-card__quoteauthor"><strong><%= reviews[0].name %></strong><span><%= reviews[0].location %></span></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ CHOOSING & TRADE-OFFS ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Is <%= service.shortName || service.name %> the Right Choice for You?</h2>
+        <p>
+          We would rather help you book the right service than the most expensive one. This section exists
+          because <%= service.name.toLowerCase() %> is genuinely not the right fit for every enquiry we
+          receive, and telling you when it is not saves us both a wasted appointment.
+        </p>
+        <p>
+          The service is usually the correct choice when the things below apply to your property. If two or
+          more of them sound like your situation, book it. If none do, a standard recurring clean will cost
+          you less for the same result.
+        </p>
+        <ul class="tick-list">
+          <% (service.highlights || []).forEach(function (h) { %>
+            <li><strong><%= h %></strong></li>
+          <% }); %>
+          <li><strong>The property has not had a professional clean recently,</strong> and the accumulated condition makes a routine visit too slow to be good value.</li>
+          <li><strong>There is a hard deadline attached,</strong> such as a move-out inspection, a handover date or an event, where a miss has a real cost.</li>
+          <li><strong>The scope is unusual,</strong> involving access constraints, multiple floors, specialist surfaces or a mix of residential and light commercial areas.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">When a Different Service Costs Less</h2>
+        <p>
+          Being straight with you about the alternatives is the fastest way to earn a second booking, so
+          here is when we would point you elsewhere. If your home is already maintained and the issue is
+          simply frequency, a recurring plan at a lower per-visit rate will serve you better than repeating
+          this service. If you are only concerned with one room or a single problem area, tell us — a scoped
+          partial clean is cheaper than booking the whole property at full scope.
+        </p>
+        <p>
+          If you have been quoted this service by another company at a price well below ours, send us the
+          written scope. Sometimes they are simply more efficient than us and we will say so. More often the
+          scope is narrower — no oven interior, no interior windows, single cleaner instead of two — and
+          showing you the gap is more useful than matching a number that does not cover the work.
+        </p>
+
+        <h2 class="section__title section__title--spaced">How the Price Is Built</h2>
+        <p>
+          Every <%= service.name.toLowerCase() %> quote we issue is flat-rate and built from three inputs:
+          the size and layout of the property, its starting condition, and the specific scope you have
+          asked for. We do not bill hourly, because an hourly account gives the crew no reason to work
+          efficiently and gives you no certainty about the final invoice.
+        </p>
+        <p>
+          Starting prices on this page are the honest floor for properties in reasonable, maintained
+          condition, and the great majority of clients fall somewhere between that figure and roughly
+          double it depending on condition. You will always receive the number in writing before we start,
+          and it will not change unless you change the scope.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED SERVICES ============ -->
+  <% if (related.length) { %>
+    <section class="section section--alt">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> You might also need</p>
+          <h2 class="section__title reveal">Related Cleaning Services</h2>
+        </header>
+
+        <div class="related-grid stagger">
+          <% related.forEach(function (s) { %>
+            <article class="related-card reveal">
+              <a class="related-card__link" href="/services/<%= s.slug %>">
+                <span class="related-card__icon"><%- icon(s.icon, 26) %></span>
+                <h3 class="related-card__title"><%= s.name %></h3>
+                <p class="related-card__text"><%= s.tagline %></p>
+                <span class="related-card__price">From <strong><%= money(s.price.from) %></strong> <%= s.price.unit %></span>
+                <span class="related-card__more">View service <%- icon('arrowRight', 16) %></span>
+              </a>
+            </article>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+  <% } %>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Free walkthrough · Same-day quote',
+    ctaTitle: 'Let’s Get Your ' + service.name + ' Booked',
+    ctaText: 'Tell us about your property and we will quote it flat, in writing, with no hidden fees. Serving the entire Kansas City metro within ' + site.serviceArea.radiusMiles + ' miles of downtown.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

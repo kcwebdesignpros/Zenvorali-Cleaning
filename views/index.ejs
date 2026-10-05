@@ -1,0 +1,551 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="/img/hero-home.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"
+           srcset="<%= srcset('/img/hero-home.webp') %>" sizes="100vw">
+      <span class="hero__scrim"></span>
+    </div>
+    <span class="hero__hex hero__hex--1" aria-hidden="true"></span>
+    <span class="hero__hex hero__hex--2" aria-hidden="true"></span>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--light hero__eyebrow">
+          <span class="eyebrow__icon"><%- icon('medal', 15) %></span>
+          Rated <%= site.rating.value %>/5 across <%= site.rating.count %>+ Kansas City cleans
+        </p>
+
+        <h1 class="hero__title">
+          Kansas City’s
+          <span class="hero__title-accent">Cleanest Standard</span>
+          For Homes &amp; Workspaces
+        </h1>
+
+        <p class="hero__intro">
+          Premium residential and commercial cleaning across the <%= site.region %>. Flat-rate quotes,
+          the same vetted crew every visit, commercial-grade equipment and a 100% re-clean guarantee —
+          because a cleaning service should be something you stop thinking about.
+        </p>
+
+        <ul class="hero__badges">
+          <li><%- icon('shield', 17) %> Insured &amp; bonded</li>
+          <li><%- icon('badge', 17) %> Background-checked staff</li>
+          <li><%- icon('leaf', 17) %> EPA Safer Choice products</li>
+        </ul>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="/contact">Get My Free Quote <%- icon('arrowRight', 18) %></a>
+          <a class="btn btn--glass btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+        </div>
+
+        <p class="hero__micro">
+          <%- icon('checkCircle', 15) %> No contracts
+          <%- icon('checkCircle', 15) %> No travel fees
+          <%- icon('checkCircle', 15) %> Reply within 1 business hour
+        </p>
+      </div>
+
+      <!-- Instant quote card -->
+      <aside class="hero__card" aria-label="Request a quick quote">
+        <div class="quote-card">
+          <div class="quote-card__head">
+            <h2 class="quote-card__title">Get a Flat-Rate Quote</h2>
+            <p class="quote-card__sub">Takes about 40 seconds. No obligation, no sales calls.</p>
+          </div>
+
+          <form class="quote-card__form" action="/contact" method="post" novalidate>
+            <div class="field">
+              <label class="field__label" for="q-name">Your name</label>
+              <input class="field__input" id="q-name" name="name" type="text" autocomplete="name" placeholder="Jane Whitfield" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="q-phone">Phone</label>
+                <input class="field__input" id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="(816) 555-0100" required>
+              </div>
+              <div class="field">
+                <label class="field__label" for="q-email">Email</label>
+                <input class="field__input" id="q-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="q-service">What do you need?</label>
+              <div class="field__select">
+                <select class="field__input" id="q-service" name="service" required>
+                  <option value="">Choose a service…</option>
+                  <% site.formServices.forEach(function (s) { %><option value="<%= s %>"><%= s %></option><% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="q-city">Your neighbourhood or suburb</label>
+              <input class="field__input" id="q-city" name="city" type="text" placeholder="Brookside, Overland Park…">
+            </div>
+            <button class="btn btn--primary btn--block btn--lg" type="submit">Send My Free Quote Request</button>
+            <p class="quote-card__foot"><%- icon('lock', 14) %> We never share your details. Ever.</p>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= TRUST BADGES ================= -->
+  <section class="trustbar" aria-label="Our credentials">
+    <div class="container">
+      <ul class="trustbar__grid stagger">
+        <% site.trustBadges.forEach(function (b) { %>
+          <li class="trustbar__item reveal">
+            <span class="trustbar__icon"><%- icon(b.icon, 26) %></span>
+            <span class="trustbar__copy">
+              <strong><%= b.label %></strong>
+              <span><%= b.sub %></span>
+            </span>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT / INTRO SPLIT ================= -->
+  <section class="section section--about">
+    <div class="container about-split">
+      <div class="about-split__media reveal">
+        <div class="media-stack">
+          <img class="media-stack__main" src="/img/about-team.webp" alt="Zenvorali Cleaning team preparing equipment for a Kansas City cleaning job"
+               width="800" height="640" loading="lazy" decoding="async"
+               srcset="<%= srcset('/img/about-team.webp') %>" sizes="(min-width: 960px) 46vw, 92vw">
+          <img class="media-stack__inset" src="/img/about-detail.webp" alt="Close-up of professional cleaning equipment and microfiber cloths"
+               width="420" height="420" loading="lazy" decoding="async">
+          <div class="media-stack__badge">
+            <strong>12<span>+</span></strong>
+            <span>Years serving<br>Kansas City</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-split__content">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('sparkle', 15) %></span> Who we are</p>
+        <h2 class="section__title reveal">A Kansas City Cleaning Company Built on One Unfashionable Idea</h2>
+
+        <p class="reveal">
+          Zenvorali Cleaning started in 2013 with one van, two cleaners and a simple conviction: the
+          only thing that actually matters in a cleaning service is whether the crew shows up on time
+          and does the job properly. Not the marketing, not the app, not the franchise branding.
+          Just consistent, thorough work by people who are paid and treated properly.
+        </p>
+        <p class="reveal">
+          Twelve years and more than 12,400 cleans later, that is still the entire business model.
+          We employ our cleaners directly rather than subcontracting them, which costs us more per
+          hour and is the reason our crews stay, our quality holds and our attendance record is
+          something we can actually defend.
+        </p>
+
+        <ul class="about-split__list stagger">
+          <% site.advantages.slice(0, 4).forEach(function (a) { %>
+            <li class="about-split__item reveal">
+              <span class="about-split__icon"><%- icon(a.icon, 22) %></span>
+              <span>
+                <strong><%= a.title %></strong>
+                <span><%= a.text %></span>
+              </span>
+            </li>
+          <% }); %>
+        </ul>
+
+        <div class="about-split__actions reveal">
+          <a class="btn btn--dark" href="/about">More About Zenvorali <%- icon('arrowRight', 17) %></a>
+          <a class="btn btn--text" href="/team">Meet the team <%- icon('arrowRight', 16) %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats">
+    <div class="container">
+      <ul class="stats__grid stagger">
+        <% site.stats.forEach(function (s) { %>
+          <li class="stats__item reveal">
+            <strong class="stats__value" data-count="<%= s.value %>" data-suffix="<%= s.suffix %>"<%= s.decimals ? ' data-decimals="' + s.decimals + '"' : '' %>><%= s.count %></strong>
+            <span class="stats__label"><%= s.label %></span>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section section--alt" id="services">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> What we do</p>
+        <h2 class="section__title reveal">Six Specialist Cleaning Services, One Standard</h2>
+        <p class="section__lede reveal">
+          Every service below is delivered by our own vetted crews, priced flat before we start and
+          backed by the same re-clean guarantee. Pick the one that fits — or call us and we will tell
+          you honestly which you actually need.
+        </p>
+      </header>
+
+      <div class="services-grid stagger">
+        <% services.forEach(function (s, i) { %>
+          <article class="service-card reveal">
+            <a class="service-card__link" href="/services/<%= s.slug %>" aria-label="<%= s.name %> in Kansas City">
+              <div class="service-card__media">
+                <img src="<%= s.image %>" alt="<%= s.imageAlt %>" width="720" height="480" loading="lazy" decoding="async"
+                     srcset="<%= srcset(s.image) %>" sizes="(min-width: 1040px) 33vw, (min-width: 640px) 48vw, 92vw">
+                <span class="service-card__num"><%= String(i + 1).padStart(2, '0') %></span>
+                <% if (s.badge) { %><span class="service-card__badge"><%= s.badge %></span><% } %>
+              </div>
+              <div class="service-card__body">
+                <span class="service-card__icon"><%- icon(s.icon, 24) %></span>
+                <h3 class="service-card__title"><%= s.name %></h3>
+                <p class="service-card__text"><%= s.tagline %></p>
+
+                <ul class="service-card__points">
+                  <% s.highlights.slice(0, 3).forEach(function (h) { %>
+                    <li><%- icon('check', 15) %> <%= h %></li>
+                  <% }); %>
+                </ul>
+
+                <div class="service-card__foot">
+                  <span class="service-card__price">
+                    <span class="service-card__price-label">From</span>
+                    <strong><%= money(s.price.from) %></strong>
+                    <span class="service-card__price-unit"><%= s.price.unit %></span>
+                  </span>
+                  <span class="service-card__more">Learn more <%- icon('arrowRight', 16) %></span>
+                </div>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal">
+        <a class="btn btn--dark btn--lg" href="/services">View All Services &amp; Pricing <%- icon('arrowRight', 18) %></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section section--process">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow eyebrow--light reveal"><span class="eyebrow__icon"><%- icon('refresh', 15) %></span> How it works</p>
+        <h2 class="section__title section__title--light reveal">Four Steps From a Messy Week to a Spotless Home</h2>
+        <p class="section__lede section__lede--light reveal">
+          No drawn-out sales process, no mystery pricing, no waiting around. Here is exactly what
+          happens between your first call and a home you are happy to have people over to.
+        </p>
+      </header>
+
+      <ol class="steps stagger">
+        <% site.steps.forEach(function (s) { %>
+          <li class="step reveal">
+            <span class="step__num"><%= s.n %></span>
+            <span class="step__icon"><%- icon(s.icon, 28) %></span>
+            <h3 class="step__title"><%= s.title %></h3>
+            <p class="step__text"><%= s.text %></p>
+          </li>
+        <% }); %>
+      </ol>
+
+      <div class="process__cta reveal">
+        <a class="btn btn--primary btn--lg" href="/contact">Start With a Free Quote <%- icon('arrowRight', 18) %></a>
+        <span class="process__cta-note"><%- icon('clock', 16) %> Average response time: under 1 business hour</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY US / DIFFERENT ================= -->
+  <section class="section section--why">
+    <div class="container why">
+      <div class="why__media reveal">
+        <img src="/img/why-us.webp" alt="Professional cleaner restoring a sparkling Kansas City kitchen"
+             width="820" height="700" loading="lazy" decoding="async"
+             srcset="<%= srcset('/img/why-us.webp') %>" sizes="(min-width: 960px) 45vw, 92vw">
+        <span class="why__hex" aria-hidden="true"></span>
+      </div>
+
+      <div class="why__content">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('award', 15) %></span> Why Zenvorali</p>
+        <h2 class="section__title reveal">What Makes Us Different From Every Other Cleaning Company in KC</h2>
+        <p class="reveal">
+          Most cleaning companies compete on price and lose on reliability. We compete on the thing
+          clients actually say they want: turning up when promised and doing the job properly. Here
+          is what that looks like in practice.
+        </p>
+
+        <ul class="why__list stagger">
+          <% site.advantages.slice(2).forEach(function (a) { %>
+            <li class="why__item reveal">
+              <span class="why__icon"><%- icon(a.icon, 22) %></span>
+              <span>
+                <strong><%= a.title %></strong>
+                <span><%= a.text %></span>
+              </span>
+            </li>
+          <% }); %>
+        </ul>
+
+        <div class="why__guarantee reveal">
+          <span class="why__guarantee-icon"><%- icon('shield', 26) %></span>
+          <div>
+            <strong><%= site.guarantee.title %></strong>
+            <p><%= site.guarantee.text %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS / BEFORE-AFTER ================= -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('brush', 15) %></span> Real results</p>
+        <h2 class="section__title reveal">Before &amp; After Across the Kansas City Metro</h2>
+        <p class="section__lede reveal">
+          Real jobs, real addresses, real timelines. Every project we publish is documented with the
+          scope, the crew size and what we found when we arrived.
+        </p>
+      </header>
+
+      <div class="projects-grid stagger">
+        <% projects.slice(0, 3).forEach(function (p) { %>
+          <article class="project-card reveal">
+            <a class="project-card__link" href="/projects/<%= p.slug %>">
+              <div class="project-card__media">
+                <img class="project-card__after" src="<%= p.after %>" alt="<%= p.title %> after cleaning by Zenvorali" width="720" height="500" loading="lazy" decoding="async">
+                <img class="project-card__before" src="<%= p.before %>" alt="<%= p.title %> before cleaning" width="720" height="500" loading="lazy" decoding="async">
+                <span class="project-card__tag">Before &amp; After</span>
+                <span class="project-card__cat"><%= p.category %></span>
+              </div>
+              <div class="project-card__body">
+                <p class="project-card__loc"><%- icon('map', 14) %> <%= p.location %></p>
+                <h3 class="project-card__title"><%= p.title %></h3>
+                <p class="project-card__text"><%= p.summary %></p>
+                <ul class="project-card__stats">
+                  <% p.stats.forEach(function (st) { %>
+                    <li><strong><%= st.value %></strong><span><%= st.label %></span></li>
+                  <% }); %>
+                </ul>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal">
+        <a class="btn btn--dark btn--lg" href="/projects">See All Projects <%- icon('arrowRight', 18) %></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= PRICING SNAPSHOT ================= -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('tag', 15) %></span> Transparent pricing</p>
+        <h2 class="section__title reveal">What Cleaning Costs in Kansas City</h2>
+        <p class="section__lede reveal">
+          Flat rates, quoted before we start, with no hidden fees anywhere in the metro. These are
+          real starting prices from real Kansas City jobs — not promotional teasers.
+        </p>
+      </header>
+
+      <div class="price-snapshot stagger">
+        <% services.slice(0, 4).forEach(function (s) { %>
+          <article class="price-card reveal">
+            <span class="price-card__icon"><%- icon(s.icon, 24) %></span>
+            <h3 class="price-card__title"><%= s.name %></h3>
+            <p class="price-card__price"><span>From</span> <strong><%= money(s.price.from) %></strong></p>
+            <p class="price-card__unit"><%= s.price.note %></p>
+            <ul class="price-card__list">
+              <% s.highlights.slice(0, 4).forEach(function (h) { %>
+                <li><%- icon('check', 15) %> <%= h %></li>
+              <% }); %>
+            </ul>
+            <a class="btn btn--outline btn--block" href="/services/<%= s.slug %>">See full details</a>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal">
+        <a class="btn btn--text" href="/pricing">See our complete price guide <%- icon('arrowRight', 16) %></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="section section--reviews">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('star', 15) %></span> Client reviews</p>
+        <h2 class="section__title reveal">Rated <%= site.rating.value %>/5 by Kansas City Homeowners &amp; Businesses</h2>
+        <div class="rating-summary reveal">
+          <span class="stars stars--lg" aria-label="<%= site.rating.value %> out of 5 stars">
+            <% for (var i = 0; i < 5; i++) { %><span class="stars__star"><%- icon('star', 20) %></span><% } %>
+          </span>
+          <span class="rating-summary__text"><strong><%= site.rating.value %></strong> average from <strong><%= site.rating.count %>+</strong> verified reviews</span>
+        </div>
+      </header>
+
+      <div class="reviews-grid stagger">
+        <% reviews.slice(0, 6).forEach(function (r) { %>
+          <article class="review-card reveal">
+            <span class="review-card__quote" aria-hidden="true"><%- icon('quote', 30) %></span>
+            <div class="review-card__stars" aria-label="<%= r.rating %> out of 5">
+              <% for (var i = 0; i < r.rating; i++) { %><span class="stars__star"><%- icon('star', 15) %></span><% } %>
+            </div>
+            <h3 class="review-card__title"><%= r.title %></h3>
+            <p class="review-card__text">“<%= r.text %>”</p>
+            <footer class="review-card__foot">
+              <span class="review-card__avatar"><%= r.name.split(' ').map(function (n) { return n[0]; }).join('') %></span>
+              <span class="review-card__meta">
+                <strong><%= r.name %></strong>
+                <span><%= r.location %></span>
+              </span>
+              <span class="review-card__service"><%= r.serviceName %></span>
+            </footer>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal">
+        <a class="btn btn--dark btn--lg" href="/reviews">Read All <%= reviews.length %>+ Reviews <%- icon('arrowRight', 18) %></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SERVICE AREA ================= -->
+  <section class="section section--area">
+    <div class="container area">
+      <div class="area__content">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('map', 15) %></span> Where we work</p>
+        <h2 class="section__title reveal">Cleaning Every Corner of the Kansas City Metro</h2>
+        <p class="reveal">
+          From downtown high-rises to Johnson County family homes, we cover everything within
+          <%= site.serviceArea.radiusMiles %> miles of downtown Kansas City — and we never charge a
+          travel fee inside that radius. Our crews are assigned by geography, which keeps drive
+          times short and means a team working in Leawood is usually already in Leawood on your day.
+        </p>
+
+        <div class="area__groups">
+          <div class="area__group reveal">
+            <h3 class="area__group-title"><%- icon('building2', 16) %> Core Kansas City</h3>
+            <ul class="chips">
+              <% site.serviceArea.primary.forEach(function (a) { %><li><%= a %></li><% }); %>
+            </ul>
+          </div>
+          <div class="area__group reveal">
+            <h3 class="area__group-title"><%- icon('map', 16) %> Metro &amp; Suburbs</h3>
+            <ul class="chips">
+              <% site.serviceArea.secondary.forEach(function (a) { %><li><%= a %></li><% }); %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="area__actions reveal">
+          <a class="btn btn--dark" href="/service-area">Check Your Area <%- icon('arrowRight', 17) %></a>
+          <a class="btn btn--text" href="<%= site.phoneHref %>"><%- icon('phone', 16) %> <%= site.phone %></a>
+        </div>
+      </div>
+
+      <div class="area__media reveal">
+        <img src="/img/service-area-map.webp" alt="Zenvorali Cleaning service area map covering the Kansas City metro"
+             width="760" height="760" loading="lazy" decoding="async"
+             srcset="<%= srcset('/img/service-area-map.webp') %>" sizes="(min-width: 960px) 42vw, 92vw">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GUARANTEE ================= -->
+  <section class="section guarantee-band">
+    <div class="container guarantee-band__inner reveal">
+      <span class="guarantee-band__icon"><%- icon('shield', 44) %></span>
+      <h2 class="guarantee-band__title"><%= site.guarantee.title %></h2>
+      <p class="guarantee-band__text"><%= site.guarantee.text %></p>
+      <div class="guarantee-band__actions">
+        <a class="btn btn--primary btn--lg" href="/contact">Book With Confidence <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline btn--lg" href="/faq">Read Our Full FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('info', 15) %></span> Common questions</p>
+        <h2 class="section__title reveal">Questions We Get Asked Every Week</h2>
+      </header>
+
+      <div class="faq-grid stagger">
+        <% faqGroups[0].items.concat(faqGroups[1].items).slice(0, 6).forEach(function (f, i) { %>
+          <details class="faq reveal"<%= i === 0 ? ' open' : '' %>>
+            <summary class="faq__q">
+              <span><%= f.q %></span>
+              <span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span>
+            </summary>
+            <div class="faq__a"><p><%= f.a %></p></div>
+          </details>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal">
+        <a class="btn btn--text" href="/faq">See all <%= faqGroups.flatMap(function (g) { return g.items; }).length %> answered questions <%- icon('arrowRight', 16) %></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= BLOG PREVIEW ================= -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> From the blog</p>
+        <h2 class="section__title reveal">Cleaning Guides From Our Kansas City Team</h2>
+        <p class="section__lede reveal">
+          Practical, honest advice written by the people who actually do the work — including when a
+          cheaper option is genuinely the right call.
+        </p>
+      </header>
+
+      <div class="blog-grid stagger">
+        <% posts.slice(0, 3).forEach(function (p) { %>
+          <article class="post-card reveal">
+            <a class="post-card__link" href="/blog/<%= p.slug %>">
+              <div class="post-card__media">
+                <img src="<%= p.image %>" alt="<%= p.imageAlt %>" width="720" height="440" loading="lazy" decoding="async"
+                     srcset="<%= srcset(p.image) %>" sizes="(min-width: 1040px) 33vw, (min-width: 640px) 48vw, 92vw">
+                <span class="post-card__cat"><%= p.category %></span>
+              </div>
+              <div class="post-card__body">
+                <p class="post-card__meta"><%= fmtDate(p.date) %> · <%= p.readTime %> min read</p>
+                <h3 class="post-card__title"><%= p.title %></h3>
+                <p class="post-card__text"><%= p.excerpt %></p>
+                <span class="post-card__more">Read the guide <%- icon('arrowRight', 16) %></span>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal">
+        <a class="btn btn--dark btn--lg" href="/blog">Visit the Blog <%- icon('arrowRight', 18) %></a>
+      </p>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {}) %>
+</main>
+
+<%- include('partials/footer') %>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Zenvorali Cleaning mark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102a47"/>
+      <stop offset="1" stop-color="#050f1d"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#2cbd96"/>
+      <stop offset="0.55" stop-color="#14a37f"/>
+      <stop offset="1" stop-color="#0b7a5e"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ebcb77"/>
+      <stop offset="1" stop-color="#e0b64a"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+  
+
+  <!-- Ambient glow -->
+  <circle cx="256" cy="248" r="150" fill="#14a37f" opacity="0.08"/>
+
+  <!-- Leaf body: two mirrored arcs -->
+  <g filter="url(#soft)">
+    <path d="M256 92
+             C 352 118, 402 196, 398 268
+             C 394 340, 330 404, 256 424
+             C 182 404, 118 340, 114 268
+             C 110 196, 160 118, 256 92 Z"
+          fill="url(#leaf)"/>
+    <!-- Inner vein -->
+    <path d="M256 108 C 256 220, 256 320, 256 418"
+          stroke="#050f1d" stroke-opacity="0.28" stroke-width="9"
+          stroke-linecap="round" fill="none"/>
+    <path d="M256 188 C 300 200, 330 226, 348 258"
+          stroke="#050f1d" stroke-opacity="0.2" stroke-width="7"
+          stroke-linecap="round" fill="none"/>
+    <path d="M256 188 C 212 200, 182 226, 164 258"
+          stroke="#050f1d" stroke-opacity="0.2" stroke-width="7"
+          stroke-linecap="round" fill="none"/>
+    <path d="M256 278 C 292 288, 316 308, 330 332"
+          stroke="#050f1d" stroke-opacity="0.18" stroke-width="6"
+          stroke-linecap="round" fill="none"/>
+    <path d="M256 278 C 220 288, 196 308, 182 332"
+          stroke="#050f1d" stroke-opacity="0.18" stroke-width="6"
+          stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Sparkle accent -->
+  <g fill="url(#gold)">
+    <path d="M356 132 l10 26 26 10 -26 10 -10 26 -10 -26 -26 -10 26 -10 z"/>
+    <path d="M150 344 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7 z" opacity="0.85"/>
+  </g>
+
+  <!-- Water droplet highlight -->
+  <path d="M188 206 c 22 -34 46 -52 62 -56 c -8 30 -22 56 -40 76 c -14 4 -22 -6 -22 -20 z"
+        fill="#ffffff" opacity="0.22"/>
+</svg>

@@ -1,0 +1,59 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <section class="error-page">
+    <span class="error-page__hex error-page__hex--1" aria-hidden="true"></span>
+    <span class="error-page__hex error-page__hex--2" aria-hidden="true"></span>
+
+    <div class="container error-page__inner">
+      <p class="error-page__code">404</p>
+      <h1 class="error-page__title">This Page Has Been Cleaned Away</h1>
+      <p class="error-page__text">
+        The page you were looking for has moved, been renamed or never existed. Nothing is broken —
+        you are just standing in the wrong room. Here is where most people actually wanted to go.
+      </p>
+
+      <div class="error-page__actions">
+        <a class="btn btn--primary btn--lg" href="/">Back to Homepage <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline-light btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+      </div>
+
+      <div class="error-page__grid">
+        <% [
+          { icon: 'home', t: 'House Cleaning', d: 'Recurring home cleaning from $129', href: '/services/house-cleaning' },
+          { icon: 'sparkle', t: 'Deep Cleaning', d: 'Top-to-bottom reset from $249', href: '/services/deep-cleaning' },
+          { icon: 'truck', t: 'Move-Out Cleaning', d: 'Deposit-back cleans from $279', href: '/services/move-out-cleaning' },
+          { icon: 'building', t: 'Commercial Cleaning', d: 'Office & janitorial contracts', href: '/services/office-commercial-cleaning' },
+          { icon: 'tag', t: 'Pricing', d: 'Full transparent price guide', href: '/pricing' },
+          { icon: 'phone', t: 'Contact Us', d: 'Free quote, no obligation', href: '/contact' }
+        ].forEach(function (l) { %>
+          <a class="error-card" href="<%= l.href %>">
+            <span class="error-card__icon"><%- icon(l.icon, 24) %></span>
+            <span class="error-card__copy">
+              <strong><%= l.t %></strong>
+              <span><%= l.d %></span>
+            </span>
+            <%- icon('arrowRight', 16) %>
+          </a>
+        <% }); %>
+      </div>
+
+      <form class="error-page__search" action="/search" method="get" role="search">
+        <label class="visually-hidden" for="e-q">Search the site</label>
+        <input class="field__input" id="e-q" type="search" name="q" placeholder="Or search for what you need…" autocomplete="off">
+        <button class="btn btn--dark" type="submit"><%- icon('search', 17) %> Search</button>
+      </form>
+
+      <p class="error-page__note">
+        Still stuck? Call <a href="<%= site.phoneHref %>"><%= site.phone %></a> and describe what you were looking for.
+        We will point you in the right direction even if it is not us you need.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,291 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-pricing.webp',
+    eyebrow: 'Flat-rate pricing',
+    eyebrowIcon: 'tag',
+    heroTitle: 'Cleaning Prices in Kansas City — Written Before We Start',
+    heroIntro: 'No hourly billing, no fuel surcharges, no supplies fees and no mystery line items. These are real starting prices from real Kansas City jobs. We walk your property, quote it flat, and that number does not move.',
+    heroPoints: ['Flat-rate quotes, never hourly', 'No travel fees in the metro', 'Written quote before any work begins', 'No contracts or minimum terms'],
+    breadcrumbs: [{ name: 'Pricing', href: '/pricing' }]
+  }) %>
+
+  <!-- ============ PRICE TABLES ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> Price guide</p>
+        <h2 class="section__title reveal">What Cleaning Actually Costs in Kansas City</h2>
+        <p class="section__lede reveal">Prices below are starting points for homes and units in reasonable, maintained condition. Condition is the factor most people under-estimate — a home cleaned fortnightly takes roughly half the time of the same home left for two years.</p>
+      </header>
+
+      <div class="price-tables">
+        <div class="price-table-block reveal">
+          <h3 class="price-table-block__title"><%- icon('home', 20) %> House &amp; Apartment Cleaning</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th scope="col">Property type</th><th scope="col">Recurring from</th><th scope="col">One-time from</th><th scope="col">Deep clean from</th></tr></thead>
+              <tbody>
+                <tr><td>Studio, 1 bath</td><td>$89</td><td>$139</td><td>$229</td></tr>
+                <tr><td>1 bed, 1 bath</td><td>$109</td><td>$159</td><td>$249</td></tr>
+                <tr><td>2 bed, 2 bath</td><td>$129</td><td>$219</td><td>$249</td></tr>
+                <tr><td>3 bed, 2 bath</td><td>$159</td><td>$249</td><td>$320</td></tr>
+                <tr><td>4 bed, 3 bath</td><td>$199</td><td>$320</td><td>$420</td></tr>
+                <tr><td>5 bed, 4 bath</td><td>$259</td><td>$420</td><td>$560</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="price-table-block__note"><%- icon('info', 14) %> Recurring rates assume a weekly, biweekly or monthly plan. Biweekly is our most popular — it balances price against upkeep better than anything else.</p>
+        </div>
+
+        <div class="price-table-block reveal">
+          <h3 class="price-table-block__title"><%- icon('truck', 20) %> Move-In / Move-Out Cleaning</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th scope="col">Property</th><th scope="col">Empty unit from</th><th scope="col">Occupied from</th></tr></thead>
+              <tbody>
+                <tr><td>Studio apartment</td><td>$199</td><td>$259</td></tr>
+                <tr><td>1 bed, 1 bath</td><td>$239</td><td>$299</td></tr>
+                <tr><td>2 bed, 1 bath</td><td>$279</td><td>$349</td></tr>
+                <tr><td>2 bed, 2 bath</td><td>$299</td><td>$379</td></tr>
+                <tr><td>3 bed house + garage</td><td>$420</td><td>$520</td></tr>
+                <tr><td>4 bed house + garage</td><td>$520</td><td>$640</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="price-table-block__note"><%- icon('info', 14) %> Empty properties cost less because we can reach every edge. Carpet extraction is quoted separately by area and comes with a receipt for your landlord.</p>
+        </div>
+
+        <div class="price-table-block reveal">
+          <h3 class="price-table-block__title"><%- icon('building', 20) %> Commercial &amp; Post-Construction</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th scope="col">Service</th><th scope="col">Rate from</th><th scope="col">Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Office &amp; janitorial</td><td>$0.11 / sq ft / visit</td><td>Minimum visit charge applies</td></tr>
+                <tr><td>Retail &amp; showroom</td><td>$0.13 / sq ft / visit</td><td>Glass storefront included</td></tr>
+                <tr><td>Medical &amp; dental clinics</td><td>$0.19 / sq ft / visit</td><td>Infection-control protocols</td></tr>
+                <tr><td>Gyms &amp; studios</td><td>$0.15 / sq ft / visit</td><td>Equipment sanitation with dwell time</td></tr>
+                <tr><td>Post-construction rough</td><td>$0.28 / sq ft</td><td>Bulk debris and dust removal</td></tr>
+                <tr><td>Post-construction final</td><td>$0.45–$0.75 / sq ft</td><td>Full surface scope</td></tr>
+                <tr><td>White-glove handover</td><td>$0.75–$1.10 / sq ft</td><td>Showroom-grade detail</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="price-table-block__note"><%- icon('info', 14) %> Commercial contracts include a written zone-by-zone scope, a named account manager, visit reporting and a quarterly review at no extra cost.</p>
+        </div>
+
+        <div class="price-table-block reveal">
+          <h3 class="price-table-block__title"><%- icon('plus', 20) %> Add-Ons &amp; Extras</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th scope="col">Add-on</th><th scope="col">From</th><th scope="col">Unit</th></tr></thead>
+              <tbody>
+                <tr><td>Inside oven</td><td>$35</td><td>per oven</td></tr>
+                <tr><td>Inside refrigerator</td><td>$30</td><td>per fridge</td></tr>
+                <tr><td>Interior windows, tracks &amp; sills</td><td>$6</td><td>per pane</td></tr>
+                <tr><td>Carpet shampoo or extraction</td><td>$0.35</td><td>per sq ft</td></tr>
+                <tr><td>Garage, basement or finished attic sweep</td><td>$65</td><td>per space</td></tr>
+                <tr><td>Laundry washed, dried &amp; folded</td><td>$25</td><td>per load</td></tr>
+                <tr><td>Balcony or patio deep clean</td><td>$45</td><td>per balcony</td></tr>
+                <tr><td>Storage unit or locker sweep</td><td>$35</td><td>per unit</td></tr>
+                <tr><td>Inside cabinets (kitchen or bathroom)</td><td>$40</td><td>per room</td></tr>
+                <tr><td>Closet or wardrobe organising</td><td>$50</td><td>per hour</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="price-table-block__note"><%- icon('info', 14) %> Nothing is added to your invoice without being quoted and approved first. If we find something unexpected on site, we stop and ask.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT DRIVES PRICE ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('info', 15) %></span> How quotes work</p>
+        <h2 class="section__title reveal">Four Things That Determine Your Price</h2>
+      </header>
+
+      <ul class="factor-grid stagger">
+        <% [
+          { icon: 'home', t: 'Size, counted properly', d: 'Square footage matters, but so does what is inside it. Cleaners think in rooms and wet areas rather than square feet, because a bathroom is 30 to 45 minutes of work whatever the floor plan says.' },
+          { icon: 'droplet', t: 'Condition — the big one', d: 'A 1,800 sq ft home cleaned fortnightly takes roughly half the time of an identical home left for two years. Both are "three bed, two bath". One is maintenance, the other is restoration.' },
+          { icon: 'calendar', t: 'Frequency', d: 'Recurring visits cost less per visit than one-time work because a maintained home is genuinely faster to clean. Weekly is cheapest per visit; monthly costs more because build-up is heavier.' },
+          { icon: 'plus', t: 'Add-ons & specialties', d: 'The base price covers the standard scope. Ovens, fridges, windows, carpets, laundries and garages are priced separately — and we will always tell you what is and is not included.' }
+        ].forEach(function (f) { %>
+          <li class="factor-card reveal">
+            <span class="factor-card__icon"><%- icon(f.icon, 26) %></span>
+            <h3 class="factor-card__title"><%= f.t %></h3>
+            <p class="factor-card__text"><%= f.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ HOURLY VS FLAT ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Why We Quote Flat and Never Hourly</h2>
+        <p>
+          When a cleaning company bills hourly, the incentive structure quietly inverts. The slower the
+          work, the larger the invoice — and you have no independent way to know whether four hours was
+          reasonable or whether two and a half would have done. Even with entirely well-intentioned
+          cleaners, hourly billing transfers the risk of an under-estimated job from the company to you.
+        </p>
+        <p>
+          Flat-rate quoting reverses that. We walk the property, count bedrooms and bathrooms, note the
+          condition of the things that take time — grout, grease, pet hair, hard-water scale — and then
+          commit to a number. If the job takes longer than we anticipated, that is our problem to absorb,
+          not an extra line on your invoice. It is a better deal for the client, and it forces us to
+          actually understand the work rather than guessing and billing for the error.
+        </p>
+        <p>
+          The practical consequence is that our quotes are sometimes higher than a competitor's hourly
+          estimate up front, and almost always lower than the final invoice that estimate turns into.
+          When you compare quotes, ask specifically whether the number is flat or hourly, and what is
+          excluded. That single question explains most of the difference between two proposals.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Discounts and Credits</h2>
+        <ul class="tick-list">
+          <li><%- icon('checkCircle', 18) %> <span><strong>Referral credit:</strong> $40 for you and $40 for the neighbour you send us, unlimited.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Seniors &amp; veterans:</strong> 10% off every visit, automatically applied.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Recurring plans:</strong> all recurring rates are already discounted against one-time pricing.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Portfolio pricing:</strong> landlords and property managers with three or more units get volume rates.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Multi-site commercial:</strong> consolidated invoicing and rates that improve with volume.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Deep-clean-first bundle:</strong> book a deep clean then a recurring plan and we discount the first recurring visit.</span></li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Payment &amp; Invoicing</h2>
+        <p>
+          We accept all major credit and debit cards, ACH bank transfer and Apple Pay. Residential clients
+          are charged on the day of service. Commercial clients receive consolidated monthly invoicing with
+          a per-location breakdown, and construction projects can be invoiced per draw so cleaning costs map
+          onto your project accounting. No deposit is required for standard residential work; contracts over
+          $2,000 carry a 25% mobilisation deposit credited against the first invoice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING IN DETAIL ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How to Compare Cleaning Quotes Properly</h2>
+        <p>
+          The hardest part of hiring a cleaner is not finding a price, it is finding out what the price
+          covers. Two quotes for a three-bedroom house can differ by two hundred dollars and both look
+          reasonable in isolation, because one of them silently excludes the oven, the interior windows,
+          the baseboards and the grout. Comparing headline numbers without comparing scope is the most
+          expensive mistake clients make, and it is entirely avoidable.
+        </p>
+        <p>
+          Ask every company you are considering for the same five things in writing. If they cannot supply
+          them, that is your answer.
+        </p>
+        <ul class="tick-list">
+          <li><strong>The scope, room by room.</strong> Not "full house clean" but which surfaces, which appliances, whether inside the oven and refrigerator are included, whether baseboards and door frames are wiped, and whether interior windows are in or out.</li>
+          <li><strong>The crew size and estimated duration.</strong> This tells you what the job genuinely takes. A low price against a two-person, five-hour scope is not a bargain, it is a shortcut you will find later.</li>
+          <li><strong>What is excluded and why.</strong> Legitimate exclusions exist — mould remediation, biohazard, exterior windows above ground level, anything requiring a ladder over two steps — and a good company names them up front.</li>
+          <li><strong>Whether supplies and equipment are included.</strong> Some operators quote labour only and expect you to provide products, a vacuum and cloths. Ours are always included.</li>
+          <li><strong>Insurance and vetting.</strong> Ask for the certificate of insurance and whether cleaners are employees or subcontractors. A cheaper quote from an uninsured subcontractor puts the risk on you.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Why Condition Matters More Than Square Footage</h2>
+        <p>
+          Square footage gives us a starting range, but condition decides the final number, and clients
+          consistently underestimate how much. A 1,800 square foot home cleaned fortnightly takes roughly
+          half the time of the same home left untouched for two years. The difference is not dust volume —
+          it is that accumulated soil bonds to surfaces and needs dwell time, agitation and sometimes a
+          second pass, none of which can be rushed.
+        </p>
+        <p>
+          Four conditions change the estimate most in practice. Heavy kitchen grease on cabinet uppers and
+          range hoods, which needs a dedicated degreaser and often a hand-polish afterwards. Discoloured
+          grout in bathrooms and kitchens, which needs steam treatment rather than a mop. Pet hair woven
+          into upholstery and carpet, which needs repeated vacuum passes with the right attachment. And
+          hard water or soap scum on glass and fixtures, which needs a descaling acid that many surfaces
+          cannot tolerate. Tell us about any of these when you request a quote and the number you receive
+          will be accurate rather than optimistic.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Recurring Plans, Honestly Assessed</h2>
+        <p>
+          A recurring plan is the best value we offer, and it is also not right for everyone. It works
+          because a maintained home never reaches the condition that makes a clean expensive — so we can
+          charge less per visit and still do the job properly. Weekly, fortnightly and monthly plans all
+          carry a per-visit discount against one-time pricing, and the discount deepens as frequency
+          increases.
+        </p>
+        <p>
+          Where a plan does not make sense is a property that is empty most of the year, a short-term
+          rental between tenancies, or a home where the occupants are away for long stretches. In those
+          cases an occasional deep clean every few months costs less over a year than a plan you are not
+          present to benefit from. We will tell you that rather than sell you the subscription.
+        </p>
+        <p>
+          There is no contract on residential plans. You can pause or cancel at any time, and if you skip a
+          month the price simply returns to the one-time rate for the next visit rather than resetting to a
+          penalty. Commercial accounts run on a thirty-day notice period with pricing fixed for twelve
+          months.
+        </p>
+        <h2 class="section__title section__title--spaced">What Is Never an Extra Charge</h2>
+        <p>
+          A low headline price is often funded by charging separately for the things you assumed were
+          included. These are the items other companies in this market bill as add-ons and that we treat as
+          standard, so you can compare our number against theirs on equal terms.
+        </p>
+        <ul class="tick-list">
+          <li><strong>All cleaning products and equipment.</strong> Commercial-grade vacuums, steamers, colour-coded microfiber and plant-derived solutions come with the crew at no additional cost.</li>
+          <li><strong>Inside the oven and refrigerator.</strong> Included on every deep clean and on recurring plans by arrangement. Some operators charge these as two separate extras.</li>
+          <li><strong>Interior windows, sills and tracks.</strong> Part of a standard clean, not an upsell.</li>
+          <li><strong>Baseboards, door frames, switch plates and vents.</strong> Detailed on every visit rather than only on a quarterly upgrade.</li>
+          <li><strong>Travel anywhere inside the service radius.</strong> No distance surcharge in Kansas or Missouri.</li>
+          <li><strong>The re-clean if we miss something in the agreed scope.</strong> No charge, no argument, no third visit billed.</li>
+          <li><strong>The written quote itself.</strong> Some companies charge a call-out fee for an estimate. Our walkthrough and quote are free and carry no obligation.</li>
+        </ul>
+        <p>
+          The genuine exclusions are equally straightforward: mould remediation and biohazard clean-up,
+          exterior windows above ground level, heavy hoarding situations, and any task that needs
+          scaffolding or specialist access equipment. Where something falls outside the scope we will say so
+          during the quote rather than leaving it to be discovered on the day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('info', 15) %></span> Pricing questions</p>
+        <h2 class="section__title reveal">Common Questions About Cost</h2>
+      </header>
+      <div class="faq-grid stagger">
+        <% faqGroups[1].items.forEach(function (f, i) { %>
+          <details class="faq reveal"<%= i === 0 ? ' open' : '' %>>
+            <summary class="faq__q"><span><%= f.q %></span><span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span></summary>
+            <div class="faq__a"><p><%= f.a %></p></div>
+          </details>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Free walkthrough · Written quote',
+    ctaTitle: 'Get Your Exact Price in Writing',
+    ctaText: 'Send a few details or book a free walkthrough and we will quote your property flat, the same day. No obligation and no sales pressure — ever.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

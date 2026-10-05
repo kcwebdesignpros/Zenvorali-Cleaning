@@ -1,0 +1,270 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    eyebrow: 'Legal',
+    eyebrowIcon: 'clipboard',
+    heroTitle: 'Terms of Service',
+    heroIntro: 'The terms that govern cleaning services provided by Zenvorali Cleaning across the Kansas City metropolitan area — covering booking, access, cancellation, pricing, liability, our re-clean guarantee and payment conditions.',
+    heroPoints: null,
+    breadcrumbs: [{ name: 'Terms of Service', href: '/terms-of-service' }]
+  }) %>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose prose--legal reveal">
+        <p class="legal-meta"><strong>Last updated:</strong> 4 October 2026 &nbsp;·&nbsp; <strong>Effective:</strong> 4 October 2026</p>
+
+        <p>
+          These Terms of Service ("Terms") form a binding agreement between you ("client", "you") and
+          <strong><%= site.legalName %></strong> ("Zenvorali Cleaning", "we", "us"), located at
+          <%= site.address.full %>. By booking a service, requesting a quote that you accept, or
+          permitting our crew to begin work, you agree to these Terms.
+        </p>
+        <p>
+          We have kept these terms as readable as we can. Where a clause limits liability or imposes an
+          obligation on you, we have said so plainly rather than burying it.
+        </p>
+
+        <h2>1. Services Provided</h2>
+        <p>
+          We provide residential and commercial cleaning services in the Kansas City metropolitan area
+          within approximately <%= site.serviceArea.radiusMiles %> miles of downtown Kansas City. Our
+          current service lines are house cleaning, deep cleaning, move-in and move-out cleaning, apartment
+          and condo cleaning, office and commercial cleaning, and post-construction cleaning.
+        </p>
+        <p>
+          The specific scope of work for any booking is set out in the written quote we provide before
+          work begins. <strong>The written quote forms part of these Terms.</strong> Where the quote and
+          these Terms conflict regarding the scope of work, the quote prevails. Where they conflict on any
+          other matter, these Terms prevail.
+        </p>
+
+        <h2>2. Quotations and Pricing</h2>
+        <h3>2.1 Flat-rate quotes</h3>
+        <p>
+          All residential services are quoted at a flat rate, not an hourly rate. The quoted price is based
+          on the property size, the number of bedrooms and bathrooms, the condition of the property, the
+          frequency of service and any add-ons you select. Once you accept a quote, that price will not
+          change unless you request additional work or the actual condition of the property differs
+          materially from what we were shown or told.
+        </p>
+        <h3>2.2 Condition discrepancies</h3>
+        <p>
+          If we arrive and find the property in substantially worse condition than represented — for
+          example, heavy build-up described as standard, undisclosed pet damage, or a hoarding situation —
+          we will stop before starting and contact you. We will then either re-quote for the additional
+          work or cancel the visit at no charge. We will never silently add charges to your invoice.
+        </p>
+        <h3>2.3 Add-ons</h3>
+        <p>
+          Add-on services such as inside-oven cleaning, inside-refrigerator cleaning, interior windows,
+          carpet extraction, laundry and garage sweeping are priced separately. Nothing is added to your
+          invoice without your prior approval.
+        </p>
+        <h3>2.4 No hidden fees</h3>
+        <p>
+          We do not charge fuel surcharges, travel fees or supplies charges anywhere within our service
+          radius. The quoted figure is the invoiced figure.
+        </p>
+
+        <h2>3. Booking, Access and Scheduling</h2>
+        <h3>3.1 Access</h3>
+        <p>
+          You agree to provide access to the property at the agreed time, whether by being present,
+          providing a key, arranging a lockbox, providing a door code or notifying a concierge. If our crew
+          cannot gain access within 30 minutes of the scheduled arrival time, the visit will be treated as
+          a late cancellation under section 4.
+        </p>
+        <h3>3.2 Utilities</h3>
+        <p>
+          Running water and electricity must be available at the property. We cannot clean without them, and
+          a visit where utilities are disconnected will be treated as a late cancellation.
+        </p>
+        <h3>3.3 Arrival windows</h3>
+        <p>
+          We schedule a two-hour arrival window and send a text notification when the crew is approximately
+          20 minutes away. Traffic and weather in the Kansas City metro occasionally cause delay. We do not
+          offer compensation for late arrival, but we will always contact you if a delay is expected.
+        </p>
+        <h3>3.4 Safety and conditions on site</h3>
+        <p>
+          You agree to inform us in advance of any hazards: aggressive pets, pest infestation, mould, bodily
+          fluids, sharps, exposed wiring, unsafe flooring or any other condition that may endanger our crew.
+          We reserve the right to decline or stop work where a genuine safety risk exists. Biohazard,
+          hoarding, mould remediation and pest-infested properties are outside our scope and we will refer
+          you to a specialist.
+        </p>
+        <h3>3.5 Pets</h3>
+        <p>
+          Please secure or inform us about pets. We are comfortable working around friendly animals, but we
+          cannot clean safely around an anxious or aggressive pet. If a pet is not secured and our crew
+          cannot work safely, the visit will be treated as a late cancellation.
+        </p>
+
+        <h2>4. Cancellations and Rescheduling</h2>
+        <ul>
+          <li><strong>More than 48 hours' notice:</strong> no charge. Reschedule freely.</li>
+          <li><strong>24 to 48 hours' notice:</strong> no charge, though repeated rescheduling may affect your standing slot.</li>
+          <li><strong>Less than 24 hours' notice, or no access:</strong> a fee of 50% of the quoted price applies, because the slot cannot be refilled at that notice.</li>
+          <li><strong>Recurring plans:</strong> you may pause or cancel a recurring plan at any time with 48 hours' notice. There is no cancellation fee and no minimum term.</li>
+        </ul>
+        <p>
+          If we cancel or fail to attend a scheduled visit for any reason within our control, no charge
+          applies and we will offer the earliest available replacement slot.
+        </p>
+
+        <h2>5. Payment Terms</h2>
+        <ul>
+          <li>Residential clients are charged on the day of service, unless otherwise agreed in writing.</li>
+          <li>We accept major credit and debit cards, ACH bank transfer and Apple Pay.</li>
+          <li>Commercial clients receive consolidated monthly invoicing with payment due within 30 days of invoice date.</li>
+          <li>Post-construction contracts over $2,000 carry a 25% mobilisation deposit, credited against the first invoice.</li>
+          <li>Invoices unpaid after 30 days may incur interest at 1.5% per month or the maximum permitted by law, whichever is lower.</li>
+          <li>Bank charges incurred through failed or reversed payments may be passed on to you.</li>
+        </ul>
+
+        <h2>6. The Zenvorali Re-Clean Guarantee</h2>
+        <p>
+          If any item on the agreed written scope has not been completed to a reasonable professional
+          standard, notify us <strong>within 24 hours of the visit</strong> and we will return and correct
+          that item at no additional charge, including travel. This is your primary remedy for
+          unsatisfactory work.
+        </p>
+        <p>The guarantee does not apply where:</p>
+        <ul>
+          <li>Notification is received more than 24 hours after the visit.</li>
+          <li>The property has been used or altered since our visit, or other trades have worked in the area.</li>
+          <li>The item was outside the agreed scope of work.</li>
+          <li>The condition results from pre-existing damage, wear, staining or a defect in materials — for example permanent grout discolouration or etched stone from an earlier cleaning product.</li>
+          <li>The request concerns an outcome that professional cleaning cannot reasonably achieve, such as removing paint from a porous surface applied years ago.</li>
+        </ul>
+
+        <h2>7. Damage, Liability and Insurance</h2>
+        <h3>7.1 Our insurance</h3>
+        <p>
+          We carry $2,000,000 in general liability insurance, workers' compensation for all employees, and
+          bonding cover. Certificates of insurance are available on request.
+        </p>
+        <h3>7.2 Reporting damage</h3>
+        <p>
+          Any damage must be reported to us <strong>within 24 hours of the visit</strong>. We photograph
+          the condition of unusual items on arrival where practical, which helps resolve claims quickly and
+          fairly. Claims reported later are difficult to attribute and may be declined.
+        </p>
+        <h3>7.3 Limitation of liability</h3>
+        <p>
+          Our total liability arising out of any single visit is limited to the amount charged for that
+          visit, except in cases of our negligence causing personal injury or property damage, where our
+          liability is limited to the extent of our insurance cover, or where limitation is prohibited by
+          law. We are not liable for:
+        </p>
+        <ul>
+          <li>Pre-existing damage, wear or deterioration.</li>
+          <li>Damage to items that were already broken, loose, unstable or improperly installed — including unsecured shelving, loose taps, damaged grout and failing seals.</li>
+          <li>Damage caused by a defect in the surface or material itself, such as a finish that lifts when cleaned by normal methods.</li>
+          <li>Indirect or consequential losses, including loss of profit, loss of use or loss of opportunity.</li>
+        </ul>
+        <h3>7.4 Items of special value</h3>
+        <p>
+          Please inform us in advance about fragile items, antiques, artwork, irreplaceable objects or
+          items of significant value so we can handle them appropriately or exclude them from the scope. We
+          do not accept liability for items which were not disclosed and which could not reasonably have
+          been identified as fragile.
+        </p>
+
+        <h2>8. Your Responsibilities</h2>
+        <ul>
+          <li>Provide accurate information about the property's size, condition and layout when requesting a quote.</li>
+          <li>Disclose hazards, fragile items and items of special value before the visit.</li>
+          <li>Secure pets and provide safe access.</li>
+          <li>Ensure utilities are connected.</li>
+          <li>Secure cash, jewellery, firearms and confidential documents. We ask our crew not to handle these; please place them out of scope.</li>
+        </ul>
+
+        <h2>9. Keys, Alarm Codes and Confidentiality</h2>
+        <p>
+          Where you provide a key or alarm code, it is stored in a locked cabinet with logged sign-out
+          procedures and is deleted within 30 days of your final service or on request. Our employees sign
+          confidentiality agreements and receive training on client privacy. We do not disclose your
+          address, identity or personal details to third parties except as described in our
+          <a href="/privacy-policy">Privacy Policy</a>.
+        </p>
+
+        <h2>10. Photographs</h2>
+        <p>
+          Our crew may photograph completed work for quality assurance and, in the case of move-out and
+          commercial work, to provide documentation to you or your property manager. We will not publish
+          identifiable photographs of your property, address or belongings for marketing purposes without
+          your prior written consent.
+        </p>
+
+        <h2>11. Non-Solicitation of Staff</h2>
+        <p>
+          You agree not to directly employ or engage any Zenvorali Cleaning employee to perform cleaning
+          services for you privately, during their employment with us or for 12 months afterwards. Our
+          staff are employed, trained and insured at significant cost, and direct engagement circumvents
+          the insurance and vetting protections that exist for your benefit as much as ours.
+        </p>
+
+        <h2>12. Force Majeure</h2>
+        <p>
+          We are not liable for failure to perform where the failure results from events outside our
+          reasonable control, including severe weather, flooding, ice storms, utility failure, road
+          closures, illness affecting a crew, or governmental restrictions. In such circumstances we will
+          contact you promptly and reschedule at no charge.
+        </p>
+
+        <h2>13. Complaints and Dispute Resolution</h2>
+        <p>
+          If you are unhappy with any aspect of our service, please contact us first at
+          <a href="mailto:<%= site.email %>"><%= site.email %></a> or
+          <a href="<%= site.phoneHref %>"><%= site.phone %></a>. We will acknowledge your complaint within
+          two business days and aim to resolve it within ten. Most issues are resolved through the re-clean
+          guarantee. If we cannot resolve a dispute directly, both parties agree to attempt mediation in
+          Jackson County, Missouri before commencing legal proceedings.
+        </p>
+
+        <h2>14. Governing Law</h2>
+        <p>
+          These Terms are governed by the laws of the State of Missouri. Any legal proceedings must be
+          brought in the state or federal courts located in Jackson County, Missouri, and both parties
+          consent to the jurisdiction of those courts.
+        </p>
+
+        <h2>15. Severability and Entire Agreement</h2>
+        <p>
+          If any provision of these Terms is found to be unenforceable, the remaining provisions continue
+          in full force. These Terms, together with your written quote and our
+          <a href="/privacy-policy">Privacy Policy</a>, constitute the entire agreement between us and
+          supersede any prior discussions.
+        </p>
+
+        <h2>16. Changes to These Terms</h2>
+        <p>
+          We may update these Terms from time to time. The version in force at the time of your booking
+          governs that booking. Material changes will be reflected in the "Last updated" date above and,
+          where significant, notified to active clients by email.
+        </p>
+
+        <h2>17. Contact</h2>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:<%= site.email %>"><%= site.email %></a></li>
+          <li><strong>Phone:</strong> <a href="<%= site.phoneHref %>"><%= site.phone %></a></li>
+          <li><strong>Post:</strong> <%= site.legalName %>, <%= site.address.line1 %>, <%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Plain-English answers',
+    ctaTitle: 'Prefer to Talk Through the Details?',
+    ctaText: 'If any clause here affects your booking and you would like it explained, call us. A real person will go through it with you.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

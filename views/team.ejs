@@ -1,0 +1,294 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-team.webp',
+    eyebrow: 'Our people',
+    eyebrowIcon: 'team',
+    heroTitle: 'The Cleaning Team Behind Every Zenvorali Job',
+    heroIntro: 'Every person who cleans a Kansas City home or office under our name is a directly employed, background-checked, insured professional. No subcontractors, no gig platforms, no rotating strangers with your key. Here is who you are actually hiring.',
+    heroPoints: ['Criminal background checks on every hire', 'Drug screening & identity verification', 'Paid training and a supervised probation period', '$2M liability and full workers’ compensation'],
+    breadcrumbs: [{ name: 'About Us', href: '/about' }, { name: 'Our Team', href: '/team' }]
+  }) %>
+
+  <!-- ============ INTRO ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose prose--lead reveal">
+        <p>
+          The cleaning industry has a staffing problem that most companies hide: a large share of the
+          work is done by people who are not employees at all. They are gig workers or informal
+          subcontractors, paid per job, with no training, no background check and no insurance. That
+          model is cheap for the company and risky for the client, and it is why so many people have had
+          the experience of a cleaning service that was excellent once and unreliable thereafter.
+        </p>
+        <p>
+          We do it the expensive way because it is the only way that works. Every Zenvorali cleaner is on
+          our payroll. They pass a criminal background check, a drug screen and identity verification
+          before their first day. They go through paid training on surface safety, chemical dilution,
+          dwell times and material-specific technique, then a supervised probation period before they
+          are trusted with a client's key. We carry workers' compensation for all of them, because if
+          an uninsured cleaner is injured in your home the exposure can reach your household policy.
+        </p>
+        <p>
+          That costs considerably more per hour than the alternative, and it is why our crews stay for
+          years instead of weeks, why quality holds as we grow, and why we can offer a re-clean guarantee
+          that we have never had to argue about.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM GRID ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('users', 15) %></span> Leadership &amp; crew leads</p>
+        <h2 class="section__title reveal">Meet the Zenvorali Team</h2>
+        <p class="section__lede reveal">The people accountable for the standard — reachable by name, not a generic inbox.</p>
+      </header>
+
+      <div class="team-grid stagger">
+        <% team.forEach(function (m) { %>
+          <article class="team-card reveal team-card--<%= m.accent %>">
+            <div class="team-card__media">
+              <img src="<%= m.image %>" alt="<%= m.imageAlt %>" width="440" height="520" loading="lazy" decoding="async"
+                   srcset="<%= srcset(m.image) %>" sizes="(min-width: 1040px) 31vw, (min-width: 640px) 47vw, 92vw">
+              <span class="team-card__initials" aria-hidden="true"><%= m.initials %></span>
+            </div>
+            <div class="team-card__body">
+              <h3 class="team-card__name"><%= m.name %></h3>
+              <p class="team-card__role"><%= m.role %></p>
+              <p class="team-card__bio"><%= m.bio %></p>
+              <ul class="team-card__facts">
+                <% m.facts.forEach(function (f) { %><li><%- icon('check', 13) %> <%= f %></li><% }); %>
+              </ul>
+            </div>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VETTING PROCESS ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('shield', 15) %></span> How we hire</p>
+        <h2 class="section__title reveal">What Every Cleaner Goes Through Before Your Home</h2>
+        <p class="section__lede reveal">Trust in a cleaning service should rest on documented process, not on a reassuring paragraph on a website. Here is exactly what we check.</p>
+      </header>
+
+      <ol class="hire-steps stagger">
+        <% [
+          { n: '01', t: 'Application & screening call', d: 'References verified, work history checked and a structured phone interview covering experience, reliability and comfort with pets and children.' },
+          { n: '02', t: 'Criminal background check', d: 'A full background check run through a third-party provider, plus identity verification and a pre-employment drug screen. We do not make exceptions.' },
+          { n: '03', t: 'Paid training programme', d: 'Surface safety, chemical dilution and dwell times, material-specific technique, our 48-point checklist and client confidentiality. Unpaid training produces untrained cleaners.' },
+          { n: '04', t: 'Supervised probation period', d: 'New cleaners work alongside an experienced lead for a minimum number of jobs before working independently, with the lead accountable for quality throughout.' },
+          { n: '05', t: 'Ongoing inspection & review', d: 'Quarterly reviews, rotating quality inspections by our QA lead and refresher training whenever a new product, finish or process is introduced.' }
+        ].forEach(function (s) { %>
+          <li class="hire-step reveal">
+            <span class="hire-step__num"><%= s.n %></span>
+            <div class="hire-step__body">
+              <h3 class="hire-step__title"><%= s.t %></h3>
+              <p class="hire-step__text"><%= s.d %></p>
+            </div>
+          </li>
+        <% }); %>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CREW MODEL ============ -->
+  <section class="section section--why">
+    <div class="container why">
+      <div class="why__media reveal">
+        <img src="/img/team-crew.webp" alt="Zenvorali Cleaning crew of two arriving at a Kansas City home in uniform"
+             width="820" height="700" loading="lazy" decoding="async"
+             srcset="<%= srcset('/img/team-crew.webp') %>" sizes="(min-width: 960px) 45vw, 92vw">
+        <span class="why__hex" aria-hidden="true"></span>
+      </div>
+
+      <div class="why__content">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('team', 15) %></span> How our crews work</p>
+        <h2 class="section__title reveal">Two People, One Named Lead, Every Visit</h2>
+        <p class="reveal">
+          Most of our jobs are worked by a two-person crew, because a pair can split wet and dry work
+          efficiently — one taking the kitchen and bathrooms while the other works the living areas and
+          bedrooms. That division is deliberate. It roughly halves the time on site compared to a single
+          cleaner, and it keeps wet work from interfering with dry surfaces.
+        </p>
+        <p class="reveal">
+          Every crew has a named lead who is accountable for the visit and the checklist. When you book a
+          recurring plan, your home is assigned to a specific crew that stays with it. Over a few visits
+          that team learns everything without being told — where the products live, which surfaces are
+          delicate, that the dog is friendly but the cat is not, and that the fourth stair tread needs
+          the crevice tool.
+        </p>
+
+        <ul class="why__list stagger">
+          <% [
+            { icon: 'clock', t: 'Two-hour arrival windows', d: 'With a text when your crew is 20 minutes out — no all-day waiting.' },
+            { icon: 'users', t: 'Consistent team assignment', d: 'Your home keeps the same crew on recurring plans, every time.' },
+            { icon: 'key', t: 'Secure key handling', d: 'Keys logged in and out, coded storage, and alarm procedures signed for.' },
+            { icon: 'clipboard', t: 'Uniformed and identifiable', d: 'Branded uniforms and ID on arrival, so you always know who is at the door.' }
+          ].forEach(function (a) { %>
+            <li class="why__item reveal">
+              <span class="why__icon"><%- icon(a.icon, 22) %></span>
+              <span><strong><%= a.t %></strong><span><%= a.d %></span></span>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW THE CREW WORKS ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How a Zenvorali Crew Is Put Together</h2>
+        <p>
+          A cleaning company&rsquo;s quality is decided long before anyone picks up a cloth — it is decided
+          by how crews are staffed, briefed and paid. Getting those three things wrong is why so many
+          clients describe their previous cleaner as &ldquo;good at first, then it slipped&rdquo;. Here is the
+          structure behind every visit we make.
+        </p>
+        <ul class="tick-list">
+          <li><strong>Two cleaners, one named lead.</strong> Residential jobs run as a two-person crew with a designated lead who is accountable for the checklist and the final walkthrough. You get to know both names, not just a company.</li>
+          <li><strong>Fixed routes, not random assignment.</strong> The same crew returns to the same homes wherever the schedule allows. Familiarity with a property is a genuine quality advantage — nobody has to rediscover where things are or how the client likes them done.</li>
+          <li><strong>A briefing before, a walkthrough after.</strong> The lead reviews the scope notes before starting and walks the property at the end against the same checklist. Nothing is closed out until the lead has checked it.</li>
+          <li><strong>Paid time, not rushed time.</strong> We build an honest duration estimate into the price and give the crew that time. A job squeezed into half the hours it needs is how corners get cut quietly.</li>
+          <li><strong>Direct employment throughout.</strong> Every cleaner is on our payroll with workers&rsquo; compensation. We do not subcontract residential work, which means the person in your home is someone we hired, trained and can hold to a standard.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Training, in Detail</h2>
+        <p>
+          Every cleaner completes a structured paid induction before working unsupervised. It covers
+          surface identification and what each material will and will not tolerate; chemical dilution and
+          the dwell time each product needs to actually work; colour-coded microfiber discipline to prevent
+          cross-contamination between restrooms and kitchens; the forty-eight point room checklist; safe
+          ladder and extension-pole use; and client confidentiality, including what may and may not be
+          discussed about a property.
+        </p>
+        <p>
+          Training does not stop at induction. Crew leads run refreshers, new products are introduced with
+          a demonstration rather than a memo, and every complaint or re-clean is reviewed with the crew
+          involved so the same miss does not repeat. Several of our current leads started with us as
+          cleaners, which is the clearest evidence we can offer that the training and progression paths are
+          real rather than a recruiting line.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Who Is Not on This Page</h2>
+        <p>
+          You will notice the team page shows a small number of people rather than a wall of stock
+          photographs. That is deliberate. We only list people you might realistically speak to or meet —
+          the leads and the office contacts who answer the phone. Cleaners who prefer not to be photographed
+          and named are not listed, which is their choice and one we respect.
+        </p>
+        <p>
+          If you want to know who is coming to your property before the first visit, ask. We will tell you
+          the names of the crew assigned to you and, for recurring clients, we keep it consistent wherever
+          scheduling allows.
+        </p>
+      </div>
+    </div>
+  </section>
+
+        <h2 class="section__title section__title--spaced">What We Look For When Hiring</h2>
+        <p>
+          Hiring well is the whole business, so it is worth being specific about what we screen for and what
+          we screen out. Plenty of applicants can clean a room; far fewer can do it consistently, in someone
+          else&rsquo;s home, to a documented standard, without being supervised every visit.
+        </p>
+        <ul class="tick-list">
+          <li><strong>Reliability above raw speed.</strong> A fast cleaner who arrives late twice a month costs us more than a steady one. We check references specifically on attendance and punctuality.</li>
+          <li><strong>Comfort in occupied homes.</strong> Most of our residential work happens with clients present or a key held in trust. Discretion, courtesy and working around a household are non-negotiable.</li>
+          <li><strong>Willingness to follow the checklist.</strong> Our method is documented for a reason — the forty-eight point list exists because it catches the things people skip when they improvise.</li>
+          <li><strong>Physical stamina for a full shift.</strong> Cleaning is genuinely physical work. We would rather be honest about that at interview than have someone discover it in week two.</li>
+          <li><strong>A driving record and reliable transport.</strong> Our crews travel between properties across the metro, so a valid licence and dependable vehicle are requirements rather than preferences.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Accountability Between Visits</h2>
+        <p>
+          A named crew lead is accountable for each job, but accountability does not stop when the van
+          leaves. Every visit is logged against the scope, complaints are reviewed with the crew involved
+          rather than filed, and recurring quality issues surface in the quarterly review we run with
+          commercial accounts. For residential clients, the same information reaches you simply — if a room
+          was missed, the re-clean happens and the crew is retrained on that step.
+        </p>
+        <p>
+          We also rotate supervision deliberately. A supervisor visits each crew unannounced at least
+          monthly and works alongside them rather than observing from the doorway. It is the only way to see
+          what a routine visit actually looks like when nobody is expecting an inspection, and it is how we
+          catch drift before a client does.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKING WITH US ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Working With Us as a Client</h2>
+        <p>
+          What a client actually experiences rarely matches what a company describes about itself, so here
+          is what the first months of working with us look like in practice — including the parts that
+          require something from you.
+        </p>
+        <p>
+          On your first booking we send a short confirmation listing the agreed scope, arrival window and
+          any access instructions. The crew lead reads those notes before starting. You will get a
+          completion note after the visit, and on recurring plans you will get the same lead wherever
+          scheduling allows. If you work from home or are present during the clean, the crew will work
+          around you rather than asking you to rearrange your day.
+        </p>
+        <p>
+          Two things genuinely help us do better work. First, tell us about anything delicate, antique,
+          sentimental or easily damaged — a family piece, an unusual stone, a finish you are unsure about.
+          We will test on an inconspicuous area rather than assume. Second, tell us your priorities. If the
+          kitchen matters more than the spare room, say so and we will weight the time accordingly rather
+          than dividing it evenly and leaving both half-done.
+        </p>
+
+        <h2 class="section__title section__title--spaced">If Something Goes Wrong</h2>
+        <p>
+          Eventually something will. A crew member will miss a surface, a booking will be moved, or a
+          product will not suit a particular finish. What matters is what happens next, and our process is
+          deliberately simple: tell your account lead or the office directly, and we return and put it right
+          at no charge under the guarantee.
+        </p>
+        <p>
+          We do not contest re-cleans or ask you to demonstrate the fault. If you say a room was missed, it
+          was missed. The only thing we ask is that you tell us within forty-eight hours, because a surface
+          we cleaned a fortnight ago is difficult to assess fairly and we would rather fix a genuine miss
+          than argue about an unclear one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAREERS TEASER ============ -->
+  <section class="section section--alt">
+    <div class="container guarantee-band__inner reveal" style="background:var(--surface)">
+      <span class="guarantee-band__icon" style="color:var(--accent)"><%- icon('team', 44) %></span>
+      <h2 class="guarantee-band__title" style="color:var(--ink)">We Are Usually Hiring in Kansas City</h2>
+      <p class="guarantee-band__text" style="color:var(--muted)">Direct employment, paid training, steady schedules, above-market pay and genuine progression. If you take pride in doing a job properly, we would like to hear from you.</p>
+      <div class="guarantee-band__actions">
+        <a class="btn btn--primary btn--lg" href="/careers">See Open Roles <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline btn--lg" href="mailto:<%= site.email %>">Send Your CV</a>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaTitle: 'Ready to Have a Team You Can Rely On?',
+    ctaText: 'Book a free walkthrough and meet the crew that would be assigned to your home or facility. No obligation, no pressure.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

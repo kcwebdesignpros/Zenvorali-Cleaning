@@ -1,0 +1,211 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-services.webp',
+    eyebrow: 'Our services',
+    eyebrowIcon: 'list',
+    heroTitle: 'Professional Cleaning Services Across Kansas City',
+    heroIntro: 'Six specialist services, one consistent standard. Every job is quoted flat before we start, delivered by our own vetted crews and backed by a 100% re-clean guarantee — whether it is a two-bedroom apartment in Midtown or a 4,200 square foot new build in Lee’s Summit.',
+    heroPoints: ['Flat-rate quotes, never hourly', 'Same vetted crew every visit', 'Insured, bonded & background-checked', 'Free return if anything is missed'],
+    breadcrumbs: [{ name: 'Services', href: '/services' }]
+  }) %>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="trustbar">
+    <div class="container">
+      <ul class="trustbar__grid stagger">
+        <% site.trustBadges.forEach(function (b) { %>
+          <li class="trustbar__item reveal">
+            <span class="trustbar__icon"><%- icon(b.icon, 26) %></span>
+            <span class="trustbar__copy"><strong><%= b.label %></strong><span><%= b.sub %></span></span>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-block">
+        <div class="intro-block__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('sparkle', 15) %></span> Where to start</p>
+          <h2 class="section__title reveal">Choosing the Right Service for Your Property</h2>
+          <p class="reveal">
+            Most people arrive here knowing something needs cleaning but not which service name covers it.
+            That is a reasonable place to start, because the labels overlap and different companies use
+            them differently. Here is the short version, based on how we actually scope work in Kansas City.
+          </p>
+          <p class="reveal">
+            If your home is generally tidy and you want to keep it that way, you want <strong>house cleaning</strong>
+            on a recurring schedule. If it has been months or years since a professional clean, you want a
+            <strong>deep cleaning</strong> first — a substantially different scope, not simply a longer visit. If you are
+            moving, <strong>move-in / move-out cleaning</strong> is written to landlord inspection standards. If you are
+            vacating a compact modern unit, <strong>apartment and condo cleaning</strong> is priced for your actual footprint.
+            If you run a business, <strong>commercial cleaning</strong> is a written contract with documented reporting. And if
+            trades have just finished, <strong>post-construction cleaning</strong> uses entirely different equipment for
+            drywall dust.
+          </p>
+          <p class="reveal">
+            Still unsure? Call us on <a href="<%= site.phoneHref %>"><%= site.phone %></a> and describe the property.
+            We will tell you which service fits — including telling you when a cheaper option will do the job just as well.
+          </p>
+        </div>
+
+        <aside class="intro-block__aside reveal">
+          <h3 class="intro-block__aside-title"><%- icon('info', 18) %> Quick chooser</h3>
+          <ul class="chooser">
+            <li><strong>Home is tidy, needs upkeep</strong><span>→ House Cleaning</span></li>
+            <li><strong>Months since a deep clean</strong><span>→ Deep Cleaning</span></li>
+            <li><strong>Moving in or out</strong><span>→ Move-Out Cleaning</span></li>
+            <li><strong>Apartment, condo or loft</strong><span>→ Apartment Cleaning</span></li>
+            <li><strong>Office, clinic, retail, gym</strong><span>→ Commercial Cleaning</span></li>
+            <li><strong>Trades have just finished</strong><span>→ Post-Construction</span></li>
+          </ul>
+          <a class="btn btn--primary btn--block" href="/contact">Not sure? Ask us <%- icon('arrowRight', 17) %></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FULL SERVICE LIST ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> Full service list</p>
+        <h2 class="section__title reveal">Every Cleaning Service We Offer in Kansas City</h2>
+        <p class="section__lede reveal">Each service has its own page with the complete scope, real pricing, timing and answers to the questions clients ask most.</p>
+      </header>
+
+      <div class="service-list">
+        <% services.forEach(function (s, i) { %>
+          <article class="service-row reveal<%= i % 2 === 1 ? ' service-row--flip' : '' %>">
+            <div class="service-row__media">
+              <img src="<%= s.image %>" alt="<%= s.imageAlt %>" width="760" height="560" loading="lazy" decoding="async"
+                   srcset="<%= srcset(s.image) %>" sizes="(min-width: 960px) 45vw, 92vw">
+              <span class="service-row__num"><%= String(i + 1).padStart(2, '0') %></span>
+            </div>
+
+            <div class="service-row__body">
+              <span class="service-row__icon"><%- icon(s.icon, 26) %></span>
+              <h3 class="service-row__title"><%= s.name %></h3>
+              <p class="service-row__tagline"><%= s.tagline %></p>
+              <p class="service-row__text"><%= s.intro[0] %></p>
+
+              <ul class="service-row__points">
+                <% s.highlights.slice(0, 4).forEach(function (h) { %>
+                  <li><%- icon('check', 15) %> <%= h %></li>
+                <% }); %>
+              </ul>
+
+              <div class="service-row__foot">
+                <span class="service-row__price">
+                  <span>From</span>
+                  <strong><%= money(s.price.from) %></strong>
+                  <span class="service-row__unit"><%= s.price.unit %></span>
+                </span>
+                <a class="btn btn--dark" href="/services/<%= s.slug %>">View <%= s.shortName %> <%- icon('arrowRight', 17) %></a>
+              </div>
+            </div>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT'S INCLUDED ============ -->
+  <section class="section section--process">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow eyebrow--light reveal"><span class="eyebrow__icon"><%- icon('checkCircle', 15) %></span> In every visit</p>
+        <h2 class="section__title section__title--light reveal">What Every Zenvorali Service Includes</h2>
+        <p class="section__lede section__lede--light reveal">Regardless of which service you book, these things are never an upgrade and never an extra charge.</p>
+      </header>
+
+      <ul class="includes-grid stagger">
+        <% [
+          { icon: 'users', t: 'The same named crew', d: 'Your team learns your home and stays with it, so nothing needs re-explaining each visit.' },
+          { icon: 'spray', t: 'All supplies & equipment', d: 'HEPA vacuums, colour-coded microfiber, steamers, descalers and EPA Safer Choice solutions.' },
+          { icon: 'clipboard', t: 'A written checklist', d: 'You approve the scope before we start and receive a completed checklist afterwards.' },
+          { icon: 'leaf', t: 'Safe, vetted products', d: 'Kid and pet safe formulas with a fragrance-free kit available at no extra cost.' },
+          { icon: 'shield', t: 'Insurance & vetting', d: 'Background checks, drug screening and $2M liability cover on every single job.' },
+          { icon: 'refresh', t: 'The re-clean guarantee', d: 'Not satisfied within 24 hours? We come back and fix it free. No arguments.' }
+        ].forEach(function (x) { %>
+          <li class="include-card reveal">
+            <span class="include-card__icon"><%- icon(x.icon, 26) %></span>
+            <h3 class="include-card__title"><%= x.t %></h3>
+            <p class="include-card__text"><%= x.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ RECURRING PLANS ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('calendar', 15) %></span> Maintenance plans</p>
+        <h2 class="section__title reveal">Choose How Often We Come</h2>
+        <p class="section__lede reveal">No contracts, no minimum terms, no cancellation fees. Pause or stop with 48 hours notice — that is the whole arrangement.</p>
+      </header>
+
+      <div class="plan-grid stagger">
+        <% [
+          { name: 'Weekly', price: '$99', unit: 'per visit', icon: 'calendar', best: false,
+            desc: 'Lightest touch each visit, deepest consistency.', points: ['Busy households & shedding pets', 'Frequent entertainers', 'Lowest price per visit', 'Ideal for allergies & asthma'] },
+          { name: 'Biweekly', price: '$129', unit: 'per visit', icon: 'star', best: true,
+            desc: 'Balanced price and upkeep — our most popular plan.', points: ['Most Kansas City households', 'Never really gets dirty', 'Best value overall', 'Fixed slot, same crew'] },
+          { name: 'Monthly', price: '$169', unit: 'per visit', icon: 'clock', best: false,
+            desc: 'Adds the detail edges that build up slowly.', points: ['Tidy homes & condos', 'Second properties', 'Baseboards & vent covers included', 'Deeper detail each visit'] },
+          { name: 'One-time', price: '$219', unit: 'per visit', icon: 'sparkle', best: false,
+            desc: 'Full deep-clean scope in a single visit.', points: ['Guests or an event', 'Spring reset', 'Before switching to recurring', 'No ongoing commitment'] }
+        ].forEach(function (p) { %>
+          <article class="plan-card reveal<%= p.best ? ' plan-card--best' : '' %>">
+            <% if (p.best) { %><span class="plan-card__ribbon">Most popular</span><% } %>
+            <span class="plan-card__icon"><%- icon(p.icon, 26) %></span>
+            <h3 class="plan-card__name"><%= p.name %></h3>
+            <p class="plan-card__price"><strong><%= p.price %></strong> <span><%= p.unit %></span></p>
+            <p class="plan-card__desc"><%= p.desc %></p>
+            <ul class="plan-card__list">
+              <% p.points.forEach(function (pt) { %><li><%- icon('check', 15) %> <%= pt %></li><% }); %>
+            </ul>
+            <a class="btn <%= p.best ? 'btn--primary' : 'btn--outline' %> btn--block" href="/contact">Get This Quote</a>
+          </article>
+        <% }); %>
+      </div>
+
+      <p class="section__foot reveal"><a class="btn btn--text" href="/pricing">See the full price guide <%- icon('arrowRight', 16) %></a></p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('info', 15) %></span> Service questions</p>
+        <h2 class="section__title reveal">Common Questions About Our Services</h2>
+      </header>
+
+      <div class="faq-grid stagger">
+        <% faqGroups[3].items.concat(faqGroups[0].items.slice(0, 2)).forEach(function (f, i) { %>
+          <details class="faq reveal"<%= i === 0 ? ' open' : '' %>>
+            <summary class="faq__q"><span><%= f.q %></span><span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span></summary>
+            <div class="faq__a"><p><%= f.a %></p></div>
+          </details>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaTitle: 'Tell Us What Needs Cleaning',
+    ctaText: 'Describe your property and we will tell you which service fits, quote it flat and get you on the schedule — often within a few days.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

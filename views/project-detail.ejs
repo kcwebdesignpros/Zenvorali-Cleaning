@@ -1,0 +1,304 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: project.after,
+    eyebrow: project.category,
+    eyebrowIcon: 'brush',
+    heroTitle: project.title,
+    heroIntro: project.summary,
+    heroPoints: null,
+    breadcrumbs: [{ name: 'Projects', href: '/projects' }, { name: project.title, href: '/projects/' + project.slug }]
+  }) %>
+
+  <!-- ============ META ============ -->
+  <section class="project-meta">
+    <div class="container">
+      <ul class="project-meta__grid stagger">
+        <li class="project-meta__item reveal">
+          <span class="project-meta__label"><%- icon('map', 15) %> Location</span>
+          <strong><%= project.location %></strong>
+        </li>
+        <li class="project-meta__item reveal">
+          <span class="project-meta__label"><%- icon('sparkle', 15) %> Service</span>
+          <strong><a href="/services/<%= project.service %>"><%= project.serviceName %></a></strong>
+        </li>
+        <li class="project-meta__item reveal">
+          <span class="project-meta__label"><%- icon('clock', 15) %> Duration</span>
+          <strong><%= project.duration %></strong>
+        </li>
+        <li class="project-meta__item reveal">
+          <span class="project-meta__label"><%- icon('calendar', 15) %> Completed</span>
+          <strong><%= fmtDate(project.date) %></strong>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ BEFORE / AFTER ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('brush', 15) %></span> The result</p>
+        <h2 class="section__title reveal">Before &amp; After</h2>
+        <p class="section__lede reveal">Drag or hover the divider to compare. Both photographs were taken on site by our crew lead.</p>
+      </header>
+
+      <div class="ba-slider reveal" data-ba>
+        <img class="ba-slider__after" src="<%= project.after %>" alt="<%= project.title %> after professional cleaning" width="1200" height="760" fetchpriority="high" decoding="async">
+        <div class="ba-slider__before-wrap">
+          <img class="ba-slider__before" src="<%= project.before %>" alt="<%= project.title %> before professional cleaning" width="1200" height="760" loading="lazy" decoding="async">
+        </div>
+        <span class="ba-slider__label ba-slider__label--before">Before</span>
+        <span class="ba-slider__label ba-slider__label--after">After</span>
+        <button class="ba-slider__handle" type="button" aria-label="Drag to compare before and after">
+          <span><%- icon('arrowLeft', 16) %><%- icon('arrowRight', 16) %></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASE STUDY ============ -->
+  <section class="section section--alt">
+    <div class="container content-layout">
+      <article class="content-main">
+        <div class="case-block reveal">
+          <h2 class="content-block__title"><%- icon('alert', 20) %> The Challenge</h2>
+          <p><%= project.challenge %></p>
+        </div>
+
+        <div class="case-block reveal">
+          <h2 class="content-block__title"><%- icon('sparkle', 20) %> What We Did</h2>
+          <p><%= project.solution %></p>
+        </div>
+
+        <div class="case-block reveal">
+          <h2 class="content-block__title"><%- icon('medal', 20) %> The Outcome</h2>
+          <p><%= project.result %></p>
+        </div>
+
+        <% if (project.scope && project.scope.length) { %>
+          <div class="case-block reveal">
+            <h2 class="content-block__title"><%- icon('clipboard', 20) %> Scope of Work</h2>
+            <p>Everything below was carried out on this job and is listed on the invoice we issued. It is the level of detail we put in writing before we start, not a marketing summary written afterwards.</p>
+            <ul class="tick-list tick-list--two">
+              <% project.scope.forEach(function (s) { %>
+                <li><%- icon('checkCircle', 17) %> <%= s %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <% if (project.lessons && project.lessons.length) { %>
+          <div class="case-block reveal">
+            <h2 class="content-block__title"><%- icon('bulb', 20) %> What This Means For Your Property</h2>
+            <p>The useful part of a job like this is what it teaches about the property type. If you own something similar in Kansas City, these are the things worth knowing before you book anyone:</p>
+            <ul class="insight-list">
+              <% project.lessons.forEach(function (l) { %>
+                <li><%- icon('arrowRight', 17) %> <span><%= l %></span></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <div class="case-block reveal">
+          <h2 class="content-block__title"><%- icon('list', 20) %> Project At a Glance</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <tbody>
+                <tr><th scope="row">Location</th><td><%= project.location %></td></tr>
+                <tr><th scope="row">Service delivered</th><td><%= project.serviceName %></td></tr>
+                <tr><th scope="row">Category</th><td><%= project.category %></td></tr>
+                <tr><th scope="row">Duration</th><td><%= project.duration %></td></tr>
+                <tr><th scope="row">Completed</th><td><%= fmtDate(project.date) %></td></tr>
+                <% project.stats.forEach(function (st) { %>
+                  <tr><th scope="row"><%= st.label %></th><td><%= st.value %></td></tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <% if (project.faqs && project.faqs.length) { %>
+          <div class="case-block reveal">
+            <h2 class="content-block__title"><%- icon('helpCircle', 20) %> Questions This Job Usually Raises</h2>
+            <div class="faq-list faq--inline">
+              <% project.faqs.forEach(function (f, i) { %>
+                <details class="faq"<%= i === 0 ? ' open' : '' %>>
+                  <summary class="faq__q">
+                    <span><%= f.q %></span>
+                    <span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span>
+                  </summary>
+                  <div class="faq__a">
+                    <div class="faq__a-inner"><p><%= f.a %></p></div>
+                  </div>
+                </details>
+              <% }); %>
+            </div>
+          </div>
+        <% } %>
+
+        <div class="case-quote reveal">
+          <span class="case-quote__icon" aria-hidden="true"><%- icon('quote', 30) %></span>
+          <p class="case-quote__text">“<%= project.quote.text %>”</p>
+          <p class="case-quote__author"><strong><%= project.quote.author %></strong><span><%= project.quote.role %> · <%= project.location %></span></p>
+        </div>
+
+        <div class="inline-cta reveal">
+          <div class="inline-cta__copy">
+            <h3>Have a property like this?</h3>
+            <p>Send photographs and we will quote it flat, in writing, with realistic timing — within one business day.</p>
+          </div>
+          <div class="inline-cta__actions">
+            <a class="btn btn--primary" href="/contact">Get My Free Quote <%- icon('arrowRight', 17) %></a>
+            <a class="btn btn--ghost-light" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="content-side">
+        <div class="side-card side-card--cta reveal">
+          <h3 class="side-card__title">Get This Service</h3>
+          <p class="side-card__text"><%= project.serviceName %> across the Kansas City metro, quoted flat before we start.</p>
+          <a class="btn btn--primary btn--block" href="/services/<%= project.service %>">View Service Details</a>
+          <a class="btn btn--outline btn--block" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title">More Projects</h3>
+          <ul class="side-nav">
+            <% projects.filter(function (x) { return x.slug !== project.slug; }).slice(0, 4).forEach(function (x) { %>
+              <li>
+                <a href="/projects/<%= x.slug %>">
+                  <span class="side-nav__icon"><%- icon('brush', 19) %></span>
+                  <span class="side-nav__copy">
+                    <strong><%= x.title %></strong>
+                    <span><%= x.location %></span>
+                  </span>
+                  <%- icon('chevronRight', 16) %>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+          <a class="btn btn--text btn--block" href="/projects">All projects <%- icon('arrowRight', 16) %></a>
+        </div>
+
+        <div class="side-card side-card--trust reveal">
+          <h3 class="side-card__title">Every Job Includes</h3>
+          <ul class="side-trust">
+            <% site.trustBadges.forEach(function (b) { %>
+              <li>
+                <span class="side-trust__icon"><%- icon(b.icon, 19) %></span>
+                <span><strong><%= b.label %></strong><span><%= b.sub %></span></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE APPROACH THIS WORK ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How We Approach <%= project.category %> Work</h2>
+        <p>
+          Every project we take on follows the same structure, whatever the property type. The scope is
+          agreed in writing before anyone arrives, the crew is briefed on that scope the morning of the job,
+          and the lead walks the property against the same checklist at the end. Nothing about this project
+          was improvised, and nothing about yours would be either.
+        </p>
+        <p>
+          The part clients rarely see is the preparation. Before a job like this we confirm access and
+          parking, check whether a lift or key collection is needed, verify which surfaces in the property
+          need gentler chemistry, and test any unfamiliar product on an inconspicuous area rather than
+          applying it to the whole room. Those checks take twenty minutes and prevent the kind of damage
+          that takes a fortnight to resolve.
+        </p>
+
+        <h3>What We Bring</h3>
+        <p>
+          Crews arrive with commercial-grade equipment rather than a domestic kit scaled up: HEPA
+          triple-filtration vacuums that capture fine dust instead of redepositing it, steamers for grout and
+          hard surfaces, extension poles for height without a ladder, colour-coded microfiber separated by
+          zone so a restroom cloth never reaches a kitchen, and plant-derived chemistry as the default with
+          fragrance-free options available at no extra cost.
+        </p>
+
+        <h3>What We Ask of You</h3>
+        <p>
+          Very little, and we would rather tell you upfront than surprise you. Confirm access arrangements
+          and any alarm or lockbox instructions. Tell us about anything delicate, valuable or sentimental
+          before the crew arrives rather than during. Let us know if pets will be present and whether they
+          should be kept to one area. And if you have a deadline — an inspection, a handover, guests — tell
+          us at booking, because that shapes how we staff the job.
+        </p>
+
+        <h3>Comparable Work Across the Metro</h3>
+        <p>
+          This project sits among a wider body of <%= project.category.toLowerCase() %> work across Kansas
+          City, Johnson County and the Northland. If your property resembles this one — similar size,
+          condition or constraints — the case studies in the sidebar are the closest points of comparison,
+          and each one lists the same level of detail on scope, duration and outcome. Reading two or three
+          will give you a realistic sense of what your own job involves and roughly what it should cost.
+        </p>
+        <p>
+          If you would rather skip the reading, send us photographs of the space with a short description
+          and we will tell you which service fits, what it costs and how long it takes — in writing, the
+          same day, with no obligation to book.
+        </p>
+
+        <h3>Common Mistakes on Jobs Like This</h3>
+        <p>
+          Across hundreds of similar properties we see the same four mistakes repeatedly, and each one is
+          avoidable if you know about it in advance. The first is choosing a provider on price alone without
+          comparing scope. A quote that excludes the oven interior, the inside of the windows and the trim
+          detail is not cheaper — it is a smaller job wearing a lower number.
+        </p>
+        <p>
+          The second is leaving a booking too late against a fixed date. Move-out inspections, handover
+          deadlines and guest arrivals are immovable, and a clean that has to be compressed into half the
+          time it needs always shows in the finish. Book with a margin.
+        </p>
+        <p>
+          The third is not declaring the difficult parts upfront — heavy grease, pet odour, hard water
+          staining, hoarded rooms. None of these are problems, but they change the products, the dwell time
+          and the crew size, and discovering them on the day inevitably means either a rushed job or a
+          revised price, neither of which is pleasant for anyone.
+        </p>
+        <p>
+          The fourth is skipping the walkthrough on a large or unusual property. A twenty-minute visit
+          prevents almost every miscommunication that follows, and on jobs above a certain size it is the
+          single best use of your time before booking.
+        </p>
+
+        <h3>After the Clean</h3>
+        <p>
+          How you maintain a property after a professional reset determines how long the result lasts. On
+          hard flooring, dry vacuuming before any damp mopping is what stops grit from scratching the
+          finish. On stone and quartz, pH-neutral products only — abrasive creams dull the surface
+          permanently. On grout, letting a cleaner dwell rather than scrubbing harder achieves more with
+          less damage.
+        </p>
+        <p>
+          If you would like a plan that keeps the property at this standard rather than returning to it in
+          a year, a recurring visit at a lower per-clean rate is the more economical route. Many of the
+          clients in these case studies started with exactly this kind of one-off reset and moved onto a
+          maintenance schedule straight afterwards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: project.category,
+    ctaTitle: 'Let’s Add Your Property to This List',
+    ctaText: 'Free walkthrough, a written flat-rate quote the same day, and a crew that turns up when we said it would.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

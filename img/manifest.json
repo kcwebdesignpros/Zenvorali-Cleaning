@@ -1,0 +1,1204 @@
+{
+  "generatedAt": "2026-10-04T11:30:43.950Z",
+  "count": 55,
+  "images": {
+    "logo": {
+      "src": "/img/logo.webp",
+      "width": 960,
+      "height": 240,
+      "aspect": 4,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/logo.webp"
+        },
+        {
+          "width": 720,
+          "src": "/img/logo@2x.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "logoMark": {
+      "src": "/img/logo-mark.webp",
+      "width": 184,
+      "height": 184,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 92,
+          "src": "/img/logo-mark.webp"
+        },
+        {
+          "width": 184,
+          "src": "/img/logo-mark@2x.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "ogImage": {
+      "src": "/img/og-image.jpg",
+      "width": 1200,
+      "height": 630,
+      "aspect": 1.9048,
+      "sources": [],
+      "alt": ""
+    },
+    "heroHome": {
+      "src": "/img/hero-home.webp",
+      "width": 1600,
+      "height": 1000,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-home-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-home-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-home-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-home-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroAbout": {
+      "src": "/img/hero-about.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-about-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-about-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-about-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-about-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroTeam": {
+      "src": "/img/hero-team.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-team-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-team-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-team-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-team-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroServices": {
+      "src": "/img/hero-services.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-services-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-services-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-services-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-services-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroServiceArea": {
+      "src": "/img/hero-service-area.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-service-area-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-service-area-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-service-area-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-service-area-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroPricing": {
+      "src": "/img/hero-pricing.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-pricing-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-pricing-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-pricing-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-pricing-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroProjects": {
+      "src": "/img/hero-projects.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-projects-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-projects-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-projects-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-projects-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroReviews": {
+      "src": "/img/hero-reviews.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-reviews-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-reviews-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-reviews-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-reviews-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroBlog": {
+      "src": "/img/hero-blog.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-blog-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-blog-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-blog-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-blog-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroFaq": {
+      "src": "/img/hero-faq.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-faq-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-faq-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-faq-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-faq-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroContact": {
+      "src": "/img/hero-contact.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-contact-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-contact-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-contact-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-contact-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroCommercial": {
+      "src": "/img/hero-commercial.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-commercial-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-commercial-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-commercial-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-commercial-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroOffers": {
+      "src": "/img/hero-offers.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-offers-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-offers-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-offers-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-offers-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroGreen": {
+      "src": "/img/hero-green.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-green-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-green-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-green-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-green-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroReferral": {
+      "src": "/img/hero-referral.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-referral-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-referral-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-referral-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-referral-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "heroCareers": {
+      "src": "/img/hero-careers.webp",
+      "width": 1600,
+      "height": 900,
+      "aspect": 1.7778,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/hero-careers-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/hero-careers-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/hero-careers-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/img/hero-careers-1440.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "serviceHouseCleaning": {
+      "src": "/img/service-house-cleaning.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-house-cleaning-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-house-cleaning-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-house-cleaning-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "serviceDeepCleaning": {
+      "src": "/img/service-deep-cleaning.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-deep-cleaning-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-deep-cleaning-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-deep-cleaning-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "serviceMoveOutCleaning": {
+      "src": "/img/service-move-out-cleaning.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-move-out-cleaning-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-move-out-cleaning-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-move-out-cleaning-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "serviceCommercialCleaning": {
+      "src": "/img/service-commercial-cleaning.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-commercial-cleaning-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-commercial-cleaning-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-commercial-cleaning-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "serviceApartmentCleaning": {
+      "src": "/img/service-apartment-cleaning.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-apartment-cleaning-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-apartment-cleaning-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-apartment-cleaning-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "servicePostConstruction": {
+      "src": "/img/service-post-construction.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-post-construction-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-post-construction-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-post-construction-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "aboutTeam": {
+      "src": "/img/about-team.webp",
+      "width": 1200,
+      "height": 960,
+      "aspect": 1.25,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/about-team-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/about-team-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/about-team-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "aboutDetail": {
+      "src": "/img/about-detail.webp",
+      "width": 900,
+      "height": 675,
+      "aspect": 1.3333,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/about-detail-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/about-detail-768.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "aboutStandards": {
+      "src": "/img/about-standards.webp",
+      "width": 1200,
+      "height": 900,
+      "aspect": 1.3333,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/about-standards-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/about-standards-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/about-standards-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "whyUs": {
+      "src": "/img/why-us.webp",
+      "width": 1100,
+      "height": 1180,
+      "aspect": 0.9322,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/why-us-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/why-us-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/why-us-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamCrew": {
+      "src": "/img/team-crew.webp",
+      "width": 1200,
+      "height": 900,
+      "aspect": 1.3333,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-crew-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/team-crew-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/team-crew-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "blogCostGuide": {
+      "src": "/img/blog-cost-guide.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/blog-cost-guide-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/blog-cost-guide-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/blog-cost-guide-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "blogDeepVsStandard": {
+      "src": "/img/blog-deep-vs-standard.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/blog-deep-vs-standard-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/blog-deep-vs-standard-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/blog-deep-vs-standard-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "blogMoveOutChecklist": {
+      "src": "/img/blog-move-out-checklist.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/blog-move-out-checklist-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/blog-move-out-checklist-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/blog-move-out-checklist-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "blogOfficeCleanliness": {
+      "src": "/img/blog-office-cleanliness.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/blog-office-cleanliness-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/blog-office-cleanliness-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/blog-office-cleanliness-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "blogPetSafe": {
+      "src": "/img/blog-pet-safe.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/blog-pet-safe-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/blog-pet-safe-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/blog-pet-safe-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "blogSpringCleaning": {
+      "src": "/img/blog-spring-cleaning.webp",
+      "width": 1200,
+      "height": 750,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/blog-spring-cleaning-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/blog-spring-cleaning-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/blog-spring-cleaning-1024.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamRomen": {
+      "src": "/img/team-romen.webp",
+      "width": 700,
+      "height": 700,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-romen-480.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamMarisol": {
+      "src": "/img/team-marisol.webp",
+      "width": 700,
+      "height": 700,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-marisol-480.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamDeshawm": {
+      "src": "/img/team-deshawm.webp",
+      "width": 700,
+      "height": 700,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-deshawm-480.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamAnh": {
+      "src": "/img/team-anh.webp",
+      "width": 700,
+      "height": 700,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-anh-480.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamBobby": {
+      "src": "/img/team-bobby.webp",
+      "width": 700,
+      "height": 700,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-bobby-480.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "teamYolanda": {
+      "src": "/img/team-yolanda.webp",
+      "width": 700,
+      "height": 700,
+      "aspect": 1,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/team-yolanda-480.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectBungalowBefore": {
+      "src": "/img/project-bungalow-before.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-bungalow-before-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-bungalow-before-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-bungalow-before-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-bungalow-before-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectBungalowAfter": {
+      "src": "/img/project-bungalow-after.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-bungalow-after-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-bungalow-after-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-bungalow-after-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-bungalow-after-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectLoftBefore": {
+      "src": "/img/project-loft-before.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-loft-before-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-loft-before-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-loft-before-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-loft-before-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectLoftAfter": {
+      "src": "/img/project-loft-after.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-loft-after-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-loft-after-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-loft-after-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-loft-after-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectOfficeBefore": {
+      "src": "/img/project-office-before.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-office-before-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-office-before-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-office-before-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-office-before-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectOfficeAfter": {
+      "src": "/img/project-office-after.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-office-after-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-office-after-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-office-after-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-office-after-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectNewbuildBefore": {
+      "src": "/img/project-newbuild-before.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-newbuild-before-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-newbuild-before-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-newbuild-before-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-newbuild-before-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectNewbuildAfter": {
+      "src": "/img/project-newbuild-after.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-newbuild-after-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-newbuild-after-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-newbuild-after-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-newbuild-after-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectCondoBefore": {
+      "src": "/img/project-condo-before.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-condo-before-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-condo-before-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-condo-before-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-condo-before-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectCondoAfter": {
+      "src": "/img/project-condo-after.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-condo-after-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-condo-after-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-condo-after-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-condo-after-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectGymBefore": {
+      "src": "/img/project-gym-before.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-gym-before-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-gym-before-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-gym-before-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-gym-before-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "projectGymAfter": {
+      "src": "/img/project-gym-after.webp",
+      "width": 1400,
+      "height": 875,
+      "aspect": 1.6,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/project-gym-after-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/project-gym-after-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/project-gym-after-1024.webp"
+        },
+        {
+          "width": 1400,
+          "src": "/img/project-gym-after-1400.webp"
+        }
+      ],
+      "alt": ""
+    },
+    "serviceAreaMap": {
+      "src": "/img/service-area-map.webp",
+      "width": 1200,
+      "height": 900,
+      "aspect": 1.3333,
+      "sources": [
+        {
+          "width": 480,
+          "src": "/img/service-area-map-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/img/service-area-map-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/img/service-area-map-1024.webp"
+        },
+        {
+          "width": 1200,
+          "src": "/img/service-area-map-1200.webp"
+        }
+      ],
+      "alt": ""
+    }
+  }
+}

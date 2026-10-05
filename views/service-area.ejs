@@ -1,0 +1,289 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-service-area.webp',
+    eyebrow: 'Kansas City metro',
+    eyebrowIcon: 'map',
+    heroTitle: 'Our Cleaning Service Area Across Kansas City',
+    heroIntro: 'We clean homes, apartments, offices and construction sites within 35 miles of downtown Kansas City, on both the Missouri and Kansas sides of the metro. No travel fees, no distance surcharges — if you are inside the radius, the quoted price is the price.',
+    heroPoints: ['35-mile radius from downtown KC', 'Missouri and Kansas sides covered', 'No travel or fuel fees', 'Crews assigned by neighbourhood'],
+    breadcrumbs: [{ name: 'Service Area', href: '/service-area' }]
+  }) %>
+
+  <!-- ============ AREA OVERVIEW ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="area-overview">
+        <div class="area-overview__content">
+          <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('map', 15) %></span> Where we work</p>
+          <h2 class="section__title reveal">Covering the Whole Kansas City Metro</h2>
+          <p class="reveal">
+            Kansas City is a city of neighbourhoods that do not feel like one city. A Brookside bungalow,
+            a Crossroads loft, a Leawood family home and a North Kansas City gym have almost nothing in
+            common except that they all need cleaning properly — and that they are all within a 35-minute
+            drive of each other. We have built our routing around that reality.
+          </p>
+          <p class="reveal">
+            Crews are assigned by geography rather than availability. That means a team working in Leawood
+            is usually already in Leawood on your service day, which keeps drive times short, arrival
+            windows tight and prices lower than a company sending vans across the metro from a single depot.
+            It also means we can hold a two-hour arrival window instead of a vague half-day.
+          </p>
+          <p class="reveal">
+            We do not charge travel fees anywhere inside the radius. If a property sits outside it, we will
+            quote a small travel allowance upfront rather than adding it later — and we will tell you
+            honestly if the distance means we are not the right fit.
+          </p>
+        </div>
+
+        <aside class="area-overview__aside reveal">
+          <h3 class="area-overview__aside-title"><%- icon('building2', 20) %> Coverage at a glance</h3>
+          <ul class="area-facts">
+            <li><strong>Radius</strong><span><%= site.serviceArea.radiusMiles %> miles from downtown</span></li>
+            <li><strong>Cities &amp; suburbs</strong><span>30+</span></li>
+            <li><strong>Counties</strong><span><%= site.serviceArea.counties.length %> across MO &amp; KS</span></li>
+            <li><strong>Travel fees</strong><span>None inside the radius</span></li>
+            <li><strong>Arrival window</strong><span>Two hours, with a text 20 min out</span></li>
+            <li><strong>Reschedule notice</strong><span>48 hours, free of charge</span></li>
+          </ul>
+          <a class="btn btn--primary btn--block" href="/contact">Check My Address <%- icon('arrowRight', 17) %></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIMARY AREAS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('home', 15) %></span> Core neighbourhoods</p>
+        <h2 class="section__title reveal">Kansas City Neighbourhoods We Serve Daily</h2>
+        <p class="section__lede reveal">These are our highest-density areas — we almost always have a crew nearby, which means the shortest arrival windows and the fastest availability.</p>
+      </header>
+
+      <ul class="area-grid stagger">
+        <% site.serviceArea.primary.forEach(function (a) { %>
+          <li class="area-chip reveal">
+            <span class="area-chip__icon"><%- icon('map', 17) %></span>
+            <span class="area-chip__name"><%= a %></span>
+            <span class="area-chip__tag">Same-week</span>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SECONDARY AREAS ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('map', 15) %></span> Metro &amp; suburbs</p>
+        <h2 class="section__title reveal">Suburbs and Metro Cities Across Both States</h2>
+        <p class="section__lede reveal">Johnson County, Clay County, Platte County and the eastern suburbs — all covered on the same flat pricing with no distance surcharge.</p>
+      </header>
+
+      <ul class="area-grid area-grid--secondary stagger">
+        <% site.serviceArea.secondary.forEach(function (a) { %>
+          <li class="area-chip reveal">
+            <span class="area-chip__icon"><%- icon('checkCircle', 17) %></span>
+            <span class="area-chip__name"><%= a %></span>
+          </li>
+        <% }); %>
+      </ul>
+
+      <div class="counties reveal">
+        <h3 class="counties__title"><%- icon('shield', 18) %> Counties we cover</h3>
+        <ul class="chips chips--lg">
+          <% site.serviceArea.counties.forEach(function (c) { %><li><%= c %></li><% }); %>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MAP VISUAL ============ -->
+  <section class="section section--area">
+    <div class="container area">
+      <div class="area__content">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('map', 15) %></span> The radius</p>
+        <h2 class="section__title reveal">35 Miles From Downtown, On Both Sides of the Line</h2>
+        <p class="reveal">
+          Kansas City sits on a state line, and plenty of cleaning companies quietly prefer one side of it.
+          We work both. Roughly half of our clients are on the Kansas side — Overland Park, Leawood, Prairie
+          Village, Mission Hills, Fairway, Shawnee, Lenexa, Olathe — and half in Missouri, including
+          Independence, Blue Springs, Lee's Summit, Raytown, Grandview, Belton, Parkville, Gladstone and Liberty.
+        </p>
+        <p class="reveal">
+          For buildings specifically, we already work in a significant number of high-rise and mid-rise
+          buildings across downtown, the Crossroads, River Market and the Plaza, and we maintain standing
+          registrations with many building management offices. If you are in a managed building, tell us
+          which one when you book — there is a good chance we are already registered with the concierge
+          and can book the service lift without you having to arrange anything.
+        </p>
+
+        <div class="area__actions reveal">
+          <a class="btn btn--dark" href="/contact">Confirm Your Address <%- icon('arrowRight', 17) %></a>
+          <a class="btn btn--text" href="<%= site.phoneHref %>"><%- icon('phone', 16) %> <%= site.phone %></a>
+        </div>
+      </div>
+
+      <div class="area__media reveal">
+        <img src="/img/service-area-map.webp" alt="Map of the Zenvorali Cleaning service radius covering the Kansas City metro"
+             width="760" height="760" loading="lazy" decoding="async"
+             srcset="<%= srcset('/img/service-area-map.webp') %>" sizes="(min-width: 960px) 42vw, 92vw">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRAVEL & LOGISTICS ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How We Handle Travel and Arrival Windows</h2>
+        <p>
+          Coverage is not just a list of place names. What matters to a client is whether a crew can
+          realistically reach them on time, whether there is a surcharge for distance, and how precise the
+          arrival window is. These are the honest answers for our service area.
+        </p>
+        <ul class="tick-list">
+          <li><strong>No travel surcharge inside the radius.</strong> Anywhere within roughly thirty-five miles of downtown Kansas City, on either side of the state line, you pay the same flat rate as a client in Brookside. Distance is our problem, not a line item on your invoice.</li>
+          <li><strong>Density drives arrival precision.</strong> In our highest-density neighbourhoods — Brookside, Waldo, the Plaza, Downtown, the Crossroads, Prairie Village and Overland Park — we usually have a crew working nearby, so arrival windows are narrow and availability is faster.</li>
+          <li><strong>Outer suburbs get wider windows, not worse service.</strong> In areas such as Kearney, Smithville, Gardner or Spring Hill, we may pair your visit with other work in the same direction. That means a wider arrival window, but the same crew, the same checklist and the same price.</li>
+          <li><strong>Beyond thirty-five miles we refer rather than stretch.</strong> Sending a crew from Kansas City to a job two hours away means an unreliable arrival and a rushed finish. When we cannot serve a property properly we say so and pass it to someone who can.</li>
+          <li><strong>Crossing the state line costs you nothing.</strong> Kansas and Missouri are one market for us. A Johnson County address and a Jackson County address are quoted identically.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Why Local Coverage Actually Matters</h2>
+        <p>
+          A cleaning company covering half a state will always be slower to respond to you than one covering
+          a single metro. If a crew is twenty minutes away, a re-clean the same afternoon is possible. If
+          they are ninety minutes away, the same re-clean has to be scheduled for another day, and the
+          problem sits in your property in the meantime. Local density is not a marketing line; it is what
+          makes a guarantee enforceable rather than aspirational.
+        </p>
+        <p>
+          It also makes staffing more stable. Crews working routes near where they live stay longer, arrive
+          fresher and know the area. The practical result for you is the same two or three people on a
+          recurring plan instead of a rotating cast, which is how a cleaning relationship should work.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Neighbourhood Conditions We Work Around</h2>
+        <p>
+          Kansas City properties vary a great deal by area, and the cleaning implications vary with them.
+          Older homes in Brookside, Waldo and the Northeast frequently have original hardwood, leaded glass
+          and cast-iron fixtures that need gentler products and a dry-first method. Newer builds in Lee&rsquo;s
+          Summit, Overland Park and the Northland tend to have engineered flooring, quartz and large
+          glazed areas that need pH-neutral chemistry and a separate glass routine. Downtown and Crossroads
+          buildings bring service-lift booking, restricted hours and polished concrete.
+        </p>
+        <p>
+          We plan for those differences before quoting, which is why we ask for your address and, where you
+          have them, photographs of the space. They tell us more about what a job involves than the square
+          footage alone ever will.
+        </p>
+      </div>
+    </div>
+  </section>
+
+        <h2 class="section__title section__title--spaced">Booking in Your Area</h2>
+        <p>
+          Availability differs across the metro, and it is worth knowing roughly what to expect before you
+          request a quote. In our highest-density neighbourhoods we can often schedule within two or three
+          days, and same-week is normal. Outer suburbs may take a little longer if we are pairing your visit
+          with other work in the same direction, because we would rather give you an honest date than an
+          optimistic one.
+        </p>
+        <p>
+          Deep cleans and post-construction work need longer lead times than routine cleaning, simply
+          because they take a full day and often two. Move-out cleans are the exception — those are driven
+          by a date you do not control, so we hold capacity specifically for them and can usually
+          accommodate a short notice handover if you tell us the deadline when you book.
+        </p>
+        <p>
+          To get an accurate answer, send us three things: your address or neighbourhood, the type of clean
+          you need, and any deadline you are working to. With those we can confirm coverage, availability
+          and a flat price, usually the same day. If we cannot reach you inside a reasonable time, we will
+          say so immediately rather than book a job we cannot service well.
+        </p>
+      </div>
+    </div>
+  </section>
+
+        <h2 class="section__title section__title--spaced">Choosing a Cleaning Company by Area</h2>
+        <p>
+          When you search for a cleaner, the temptation is to pick the highest-ranked company that appears,
+          regardless of where it is based. For a large city like Kansas City, that is usually a mistake. A
+          company headquartered an hour away can offer an attractive price precisely because it is not
+          maintaining local crews — and the cost of that shows up the first time you need something
+          rescheduled.
+        </p>
+        <p>
+          Three questions will tell you whether a company genuinely covers your area or is stretching to
+          reach it. How many crews do you have working in my part of the metro on a typical day? How quickly
+          could you get back to me if I needed a re-clean this week? And can you name the people who would
+          be assigned to my property? A local operator answers all three without hesitation. A company
+          covering half a state cannot.
+        </p>
+        <p>
+          We answer all three the same way. Our crews are based in and around Kansas City, we hold capacity
+          specifically for same-week returns in our dense neighbourhoods, and on recurring plans we name the
+          lead who will attend. If your property sits at the outer edge of our radius, we will tell you that
+          too, along with the wider arrival window it implies, rather than pretending the distance makes no
+          difference.
+        </p>
+      </div>
+    </div>
+  </section>
+
+        <h2 class="section__title section__title--spaced">Seasonal Patterns Across the Metro</h2>
+        <p>
+          Demand in Kansas City follows a predictable rhythm, and knowing it helps you book at the right
+          time rather than the busiest one. Spring — late March through May — is our heaviest season, driven
+          by pollen, post-winter deep cleans and the start of the moving calendar. If you want a specific
+          date in April or May, book two to three weeks ahead.
+        </p>
+        <p>
+          Summer is steady rather than frantic, with move-out work concentrated at the end of the month and
+          commercial accounts running normally. Autumn brings a second smaller spike as households prepare
+          for winter and rentals turn over. Winter is our quietest period, which makes it the easiest time
+          to get a preferred slot — and for properties with unused basements, garages or guest rooms, it is
+          the natural window to reset areas that are ignored the rest of the year.
+        </p>
+        <p>
+          Whatever the season, we hold capacity for move-out cleans because those dates are set by someone
+          else. If you are working to a lease deadline, tell us the date when you enquire rather than after,
+          and we can usually accommodate it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('info', 15) %></span> Area questions</p>
+        <h2 class="section__title reveal">Questions About Our Coverage</h2>
+      </header>
+      <div class="faq-grid stagger">
+        <% faqGroups[4].items.concat(faqGroups[0].items.filter(function (f, i) { return i < 1; })).forEach(function (f, i) { %>
+          <details class="faq reveal"<%= i === 0 ? ' open' : '' %>>
+            <summary class="faq__q"><span><%= f.q %></span><span class="faq__icon" aria-hidden="true"><%- icon('plus', 18) %></span></summary>
+            <div class="faq__a"><p><%= f.a %></p></div>
+          </details>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Serving 30+ metro cities',
+    ctaTitle: 'Are We in Your Neighbourhood?',
+    ctaText: 'Tell us your address and we will confirm coverage, availability and a flat price the same day. No travel fees anywhere inside the 35-mile radius.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

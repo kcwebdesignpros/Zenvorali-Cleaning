@@ -1,0 +1,177 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-reviews.webp',
+    eyebrow: 'Verified reviews',
+    eyebrowIcon: 'star',
+    heroTitle: 'What Kansas City Clients Say About Zenvorali Cleaning',
+    heroIntro: 'Rated 4.9 out of 5 across 600+ cleans in the metro. Every review below comes from a real client — homeowners, renters, landlords, office managers and general contractors — and we publish the critical ones alongside the glowing ones.',
+    heroPoints: ['4.9/5 average rating', '600+ verified reviews', 'Residential & commercial', '100% re-clean guarantee honoured'],
+    breadcrumbs: [{ name: 'Reviews', href: '/reviews' }]
+  }) %>
+
+  <!-- ============ RATING SUMMARY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="rating-panel reveal">
+        <div class="rating-panel__score">
+          <strong class="rating-panel__value"><%= site.rating.value %></strong>
+          <span class="stars stars--xl" aria-label="<%= site.rating.value %> out of 5 stars">
+            <% for (var i = 0; i < 5; i++) { %><span class="stars__star"><%- icon('star', 24) %></span><% } %>
+          </span>
+          <span class="rating-panel__count">from <%= site.rating.count %>+ verified reviews</span>
+        </div>
+
+        <div class="rating-panel__bars">
+          <% [
+            { stars: 5, pct: 94, n: 576 },
+            { stars: 4, pct: 5, n: 31 },
+            { stars: 3, pct: 1, n: 5 },
+            { stars: 2, pct: 0, n: 0 },
+            { stars: 1, pct: 0, n: 0 }
+          ].forEach(function (r) { %>
+            <div class="rating-bar">
+              <span class="rating-bar__label"><%= r.stars %> star</span>
+              <span class="rating-bar__track"><span class="rating-bar__fill" style="width:<%= r.pct %>%"></span></span>
+              <span class="rating-bar__pct"><%= r.pct %>%</span>
+            </div>
+          <% }); %>
+        </div>
+
+        <div class="rating-panel__cta">
+          <p class="rating-panel__cta-text">Had a clean with us? We would genuinely like to hear how it went — good or bad.</p>
+          <a class="btn btn--dark" href="mailto:<%= site.email %>">Leave a Review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS GRID ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('quote', 15) %></span> In their words</p>
+        <h2 class="section__title reveal">Reviews From Across the Metro</h2>
+        <p class="section__lede reveal"><%= reviews.length %> reviews shown from Brookside to Overland Park, downtown lofts to Lee’s Summit new builds.</p>
+      </header>
+
+      <div class="reviews-grid all-reviews stagger">
+        <% reviews.forEach(function (r) { %>
+          <article class="review-card reveal">
+            <span class="review-card__quote" aria-hidden="true"><%- icon('quote', 30) %></span>
+            <div class="review-card__stars" aria-label="<%= r.rating %> out of 5">
+              <% for (var i = 0; i < r.rating; i++) { %><span class="stars__star"><%- icon('star', 15) %></span><% } %>
+              <% for (var j = r.rating; j < 5; j++) { %><span class="stars__star stars__star--empty"><%- icon('star', 15) %></span><% } %>
+            </div>
+            <h3 class="review-card__title"><%= r.title %></h3>
+            <p class="review-card__text">“<%= r.text %>”</p>
+            <footer class="review-card__foot">
+              <span class="review-card__avatar"><%= r.name.split(' ').map(function (n) { return n[0]; }).join('') %></span>
+              <span class="review-card__meta">
+                <strong><%= r.name %></strong>
+                <span><%= r.location %></span>
+              </span>
+              <span class="review-card__service"><%= r.serviceName %></span>
+            </footer>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('shield', 15) %></span> Why reviews hold up</p>
+        <h2 class="section__title reveal">What Sits Behind a 4.9 Rating</h2>
+        <p class="section__lede reveal">A rating is only meaningful if the things behind it are real. These are the operational facts that make ours hold.</p>
+      </header>
+
+      <ul class="trust-cards stagger">
+        <% [
+          { icon: 'users', t: 'Directly employed crews', d: 'No subcontractors, no gig platforms. Our cleaners are on payroll, background checked and insured — so the person who earned the review is the person who turns up next time.' },
+          { icon: 'refresh', t: 'Re-clean guarantee, honoured 100%', d: 'If anything on the agreed checklist is wrong, we return free within 24 hours. We have never argued about it in twelve years, which is why our few critical reviews are all resolved.' },
+          { icon: 'clipboard', t: 'Documented every visit', d: 'Time, crew, completed checklist. Residential clients can request the log; commercial clients receive it automatically after every single visit.' },
+          { icon: 'phone', t: 'A named person answers', d: 'You get a coordinator, not a ticket queue. Most reviews mention the same thing — that somebody actually picked up the phone and sorted the problem.' }
+        ].forEach(function (c) { %>
+          <li class="trust-card reveal">
+            <span class="trust-card__icon"><%- icon(c.icon, 28) %></span>
+            <h3 class="trust-card__title"><%= c.t %></h3>
+            <p class="trust-card__text"><%= c.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ READING REVIEWS ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How to Read Cleaning Reviews Critically</h2>
+        <p>
+          Every cleaning company in Kansas City shows a five-star rating. Very few of them show you how
+          many reviews that rating rests on, how recent the reviews are, or what the occasional poor one
+          said. A rating without those three pieces of context is decoration rather than evidence, so here
+          is how we would suggest you assess ours and anyone else&rsquo;s.
+        </p>
+        <ul class="tick-list">
+          <li><strong>Volume, not just the score.</strong> A 5.0 average across nine reviews tells you almost nothing. Look for hundreds of reviews — enough that a single unhappy client cannot move the number, which is what makes an average meaningful.</li>
+          <li><strong>Recency.</strong> A company was good three years ago may have changed ownership, crews or standards. Sort reviews by newest first. On this page we publish full reviews without filtering them by date, and the most recent appear throughout rather than only at the top.</li>
+          <li><strong>Specificity.</strong> &ldquo;Great service, highly recommend&rdquo; is unverifiable. A review that names the service, the neighbourhood and what actually went well or wrong tells you far more — and it is much harder to fabricate.</li>
+          <li><strong>What the critical reviews said.</strong> We would rather you read the handful of three-star reviews than only the five-star ones. Complaints about scheduling, price or a missed detail show you how a company behaves when something goes wrong, which is the only test that matters.</li>
+          <li><strong>Whether the company replies.</strong> A business that responds to criticism with an explanation or a fix is behaving normally. One that responds defensively, or not at all, tells you what will happen if you have a problem.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">What Our Rating Actually Represents</h2>
+        <p>
+          Our 4.9 average is drawn from 612 reviews accumulated over twelve years across residential,
+          commercial and post-construction work. It is not a perfect score, and we would be suspicious of
+          any cleaning company in this market that claimed one — a business working in hundreds of homes
+          will occasionally get something wrong.
+        </p>
+        <p>
+          What we do control is the response. Any review reporting a missed item triggers a re-clean at no
+          charge under our guarantee, and the crew involved is reviewed against the checklist so the same
+          miss does not repeat. Of the small number of complaints we have received, the overwhelming
+          majority concern scheduling rather than cleaning quality — which is a fair criticism of a service
+          business and the reason we now cap jobs per crew per day rather than trying to fit in one more.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Leaving a Review</h2>
+        <p>
+          We ask every client for feedback after their first visit and again after their third. We do not
+          offer discounts or credits in exchange for a positive review, because a review bought with an
+          incentive is worth nothing to the next person reading it. If we did a good job, we would be glad
+          to be reviewed well. If we did not, we would rather hear it directly than discover it publicly
+          and be unable to fix it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUARANTEE ============ -->
+  <section class="section guarantee-band">
+    <div class="container guarantee-band__inner reveal">
+      <span class="guarantee-band__icon"><%- icon('shield', 44) %></span>
+      <h2 class="guarantee-band__title"><%= site.guarantee.title %></h2>
+      <p class="guarantee-band__text"><%= site.guarantee.text %></p>
+      <div class="guarantee-band__actions">
+        <a class="btn btn--primary btn--lg" href="/contact">Book Your First Clean <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline btn--lg" href="/projects">See Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaTitle: 'Join 600+ Kansas City Clients',
+    ctaText: 'Free walkthrough, flat-rate quote in writing, and the same vetted crew every visit. The reviews explain the rest.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,115 @@
+<header class="site-header" id="siteHeader">
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <ul class="topbar__list topbar__list--left">
+        <li class="topbar__hide-sm"><%- icon('map', 15) %> Serving the <%= site.city %> metro within <%= site.serviceArea.radiusMiles %> miles</li>
+        <li class="topbar__hide-md"><%- icon('clock', 15) %> <%= site.hoursSummary %></li>
+      </ul>
+      <ul class="topbar__list topbar__list--right">
+        <li class="topbar__hide-lg"><%- icon('mail', 15) %> <a href="mailto:<%= site.email %>"><%= site.email %></a></li>
+        <li class="topbar__socials topbar__hide-xs">
+          <% site.socials.forEach(function (s) { %>
+            <a href="<%= s.url %>" target="_blank" rel="noopener noreferrer" aria-label="<%= site.name %> on <%= s.name %>"><%- icon(s.icon, 16) %></a>
+          <% }); %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main header -->
+  <div class="header">
+    <div class="container header__inner">
+      <a class="brand" href="/" aria-label="<%= site.name %> home">
+        <img class="brand__mark" src="/img/logo-mark.webp" alt="" width="46" height="46" decoding="async">
+        <span class="brand__text">
+          <span class="brand__name">Zenvorali</span>
+          <span class="brand__sub">Cleaning</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="primaryNav" aria-label="Primary navigation">
+        <div class="nav__head">
+          <span class="nav__head-title">Menu</span>
+          <button class="nav__close" type="button" id="navClose" aria-label="Close menu"><%- icon('close', 22) %></button>
+        </div>
+
+        <div class="nav__body">
+          <ul class="nav__list">
+            <% site.nav.forEach(function (item) { %>
+              <% if (item.mega) { %>
+                <li class="nav__item nav__item--has-menu<%= isActive(item.href) ? ' is-current' : '' %>">
+                  <div class="nav__row">
+                    <a class="nav__link" href="<%= item.href %>" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu"><%= item.label %></a>
+                    <button class="nav__sub-toggle" type="button" aria-expanded="false" aria-controls="servicesMenu" aria-label="Toggle services submenu"><%- icon('chevronDown', 16) %></button>
+                  </div>
+                  <div class="dropdown" id="servicesMenu">
+                    <div class="dropdown__inner">
+                      <p class="dropdown__label">Cleaning Services</p>
+                      <ul class="dropdown__list">
+                        <% services.forEach(function (s) { %>
+                          <li>
+                            <a class="dropdown__item" href="/services/<%= s.slug %>">
+                              <span class="dropdown__icon"><%- icon(s.icon, 20) %></span>
+                              <span class="dropdown__copy">
+                                <span class="dropdown__name"><%= s.name %></span>
+                                <span class="dropdown__desc"><%= s.tagline %></span>
+                              </span>
+                            </a>
+                          </li>
+                        <% }); %>
+                      </ul>
+                      <a class="dropdown__all" href="/services">View all services <%- icon('arrowRight', 16) %></a>
+                    </div>
+                  </div>
+                </li>
+              <% } else { %>
+                <li class="nav__item<%= isActive(item.href) ? ' is-current' : '' %>">
+                  <a class="nav__link" href="<%= item.href %>"><%= item.label %></a>
+                </li>
+              <% } %>
+            <% }); %>
+          </ul>
+
+          <!-- Drawer-only contact block -->
+          <div class="nav__info">
+            <p class="nav__label">Get in touch</p>
+            <ul class="nav__info-list">
+              <li><%- icon('phone', 17) %> <a href="<%= site.phoneHref %>"><%= site.phone %></a></li>
+              <li><%- icon('alert', 17) %> <a href="<%= site.emergencyPhoneHref %>">Emergency: <%= site.emergencyPhone %></a></li>
+              <li><%- icon('mail', 17) %> <a href="mailto:<%= site.email %>"><%= site.email %></a></li>
+              <li><%- icon('map', 17) %> <span><%= site.address.full %></span></li>
+              <li><%- icon('clock', 17) %> <span><%= site.hoursSummary %></span></li>
+            </ul>
+            <div class="nav__socials">
+              <% site.socials.forEach(function (s) { %>
+                <a href="<%= s.url %>" target="_blank" rel="noopener noreferrer" aria-label="<%= s.name %>"><%- icon(s.icon, 18) %></a>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drawer-only sticky CTA -->
+        <div class="nav__actions">
+          <a class="btn btn--primary btn--block" href="/contact">Get a Free Quote</a>
+          <a class="btn btn--ghost btn--block" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+        </div>
+      </nav>
+
+      <div class="header__cta">
+        <a class="header__phone" href="<%= site.phoneHref %>">
+          <span class="header__phone-icon"><%- icon('phone', 18) %></span>
+          <span class="header__phone-text">
+            <span class="header__phone-label">Call us today</span>
+            <span class="header__phone-number"><%= site.phone %></span>
+          </span>
+        </a>
+        <a class="btn btn--primary header__quote" href="/contact">Free Quote</a>
+        <button class="nav__toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <%- icon('menu', 24) %>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="navOverlay" hidden></div>

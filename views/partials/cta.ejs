@@ -1,0 +1,31 @@
+<!-- Reusable CTA band -->
+<%
+  /* Self-contained defaults so the partial can be included with {} */
+  var ctaEyebrow = (typeof ctaEyebrow !== 'undefined') ? ctaEyebrow : null;
+  var ctaTitle   = (typeof ctaTitle   !== 'undefined') ? ctaTitle   : null;
+  var ctaText    = (typeof ctaText    !== 'undefined') ? ctaText    : null;
+%>
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-band__inner reveal">
+      <div class="cta-band__glow" aria-hidden="true"></div>
+      <div class="cta-band__copy">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__icon"><%- icon('sparkle', 15) %></span> <%= ctaEyebrow || 'Free walkthrough · No obligation' %></p>
+        <h2 class="cta-band__title"><%= ctaTitle || 'Ready for a Cleaner Home or Workspace?' %></h2>
+        <p class="cta-band__text"><%= ctaText || 'Get a flat-rate quote in writing and a crew that arrives when we said it would. That is the whole promise, and we have kept it for 12,400+ cleans across Kansas City.' %></p>
+
+        <ul class="cta-band__points">
+          <li><%- icon('checkCircle', 18) %> Flat-rate pricing, never hourly</li>
+          <li><%- icon('checkCircle', 18) %> Insured &amp; background-checked crews</li>
+          <li><%- icon('checkCircle', 18) %> 100% re-clean guarantee</li>
+        </ul>
+      </div>
+
+      <div class="cta-band__actions">
+        <a class="btn btn--primary btn--lg" href="/contact">Get My Free Quote <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline-light btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+        <p class="cta-band__note">Or email <a href="mailto:<%= site.quotesEmail %>"><%= site.quotesEmail %></a> — we reply within one business hour.</p>
+      </div>
+    </div>
+  </div>
+</section>

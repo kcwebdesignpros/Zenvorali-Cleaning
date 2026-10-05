@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240" role="img" aria-label="Zenvorali Cleaning">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2cbd96"/>
+      <stop offset="1" stop-color="#0f8f6e"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(24,28) scale(0.36)">
+    <rect x="16" y="16" width="480" height="480" rx="112" fill="#0a1a2f"/>
+    <circle cx="256" cy="248" r="150" fill="#14a37f" opacity="0.14"/>
+    <path d="M256 92 C 352 118, 402 196, 398 268 C 394 340, 330 404, 256 424 C 182 404, 118 340, 114 268 C 110 196, 160 118, 256 92 Z" fill="url(#lg)"/>
+    <path d="M256 108 C 256 220, 256 320, 256 418" stroke="#050f1d" stroke-opacity="0.28" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M256 188 C 300 200, 330 226, 348 258" stroke="#050f1d" stroke-opacity="0.2" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M256 188 C 212 200, 182 226, 164 258" stroke="#050f1d" stroke-opacity="0.2" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M356 132 l10 26 26 10 -26 10 -10 26 -10 -26 -26 -10 26 -10 z" fill="#e0b64a"/>
+  </g>
+  <text x="228" y="118" font-family="'Barlow Condensed','Arial Narrow','Segoe UI',Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="1.5" fill="#0a1a2f">ZENVORALI</text>
+  <text x="230" y="164" font-family="'Plus Jakarta Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="8.5" fill="#0f8f6e">CLEANING</text>
+  <rect x="230" y="182" width="150" height="4" rx="2" fill="#e0b64a"/>
+  <text x="392" y="186" font-family="'Plus Jakarta Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="600" letter-spacing="2.4" fill="#5d6e80">KANSAS CITY, MO</text>
+</svg>

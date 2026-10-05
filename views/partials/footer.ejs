@@ -1,0 +1,145 @@
+<footer class="footer" id="footer">
+  <!-- CTA band -->
+  <div class="footer__cta">
+    <div class="container footer__cta-inner">
+      <div class="footer__cta-copy">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__icon"><%- icon('sparkle', 15) %></span> Ready when you are</p>
+        <h2 class="footer__cta-title">Get a Free, Flat-Rate Cleaning Quote Today</h2>
+        <p class="footer__cta-text">Tell us about your home or facility and we will walk it, quote it in writing and never charge you a surprise. Serving every corner of the <%= site.region %>.</p>
+      </div>
+      <div class="footer__cta-actions">
+        <a class="btn btn--primary btn--lg" href="/contact">Request My Free Quote <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline-light btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main footer -->
+  <div class="footer__main">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand column -->
+        <div class="footer__col footer__col--brand">
+          <a class="brand brand--footer" href="/" aria-label="<%= site.name %> home">
+            <span class="brand__badge">
+              <img class="brand__mark" src="/img/logo-mark.webp" alt="<%= site.name %> logo" width="46" height="46" loading="lazy" decoding="async">
+            </span>
+            <span class="brand__text">
+              <span class="brand__name"><%= site.name %></span>
+            </span>
+          </a>
+          <p class="footer__about"><%= site.shortDesc %></p>
+
+          <ul class="footer__trust">
+            <li><%- icon('shield', 16) %> <span><%= site.insurance.liability %></span></li>
+            <li><%- icon('badge', 16) %> <span>Bonded &amp; background-checked staff</span></li>
+            <li><%- icon('medal', 16) %> <span>100% re-clean guarantee</span></li>
+          </ul>
+
+          <div class="footer__rating">
+            <div class="stars" aria-label="Rated <%= site.rating.value %> out of 5 from <%= site.rating.count %> reviews">
+              <% for (var i = 0; i < 5; i++) { %><span class="stars__star"><%- icon('star', 16) %></span><% } %>
+            </div>
+            <p class="footer__rating-text"><strong><%= site.rating.value %>/5</strong> from <%= site.rating.count %>+ verified reviews</p>
+          </div>
+        </div>
+
+        <!-- Services column -->
+        <div class="footer__col">
+          <h3 class="footer__title">Our Services</h3>
+          <ul class="footer__links">
+            <% services.forEach(function (s) { %>
+              <li><a href="/services/<%= s.slug %>"><%- icon('chevronRight', 14) %><span><%= s.name %></span></a></li>
+            <% }); %>
+            <li><a href="/commercial-quote"><%- icon('chevronRight', 14) %><span>Request a Commercial Bid</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Company column -->
+        <div class="footer__col">
+          <h3 class="footer__title"><%= site.footerNav[0].title %></h3>
+          <ul class="footer__links">
+            <% site.footerNav[0].links.forEach(function (l) { %>
+              <li><a href="<%= l.href %>"><%- icon('chevronRight', 14) %><span><%= l.label %></span></a></li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <!-- Resources column -->
+        <div class="footer__col">
+          <h3 class="footer__title"><%= site.footerNav[1].title %></h3>
+          <ul class="footer__links">
+            <% site.footerNav[1].links.forEach(function (l) { %>
+              <li><a href="<%= l.href %>"><%- icon('chevronRight', 14) %><span><%= l.label %></span></a></li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <!-- Contact column -->
+        <div class="footer__col footer__col--contact">
+          <h3 class="footer__title">Contact Us</h3>
+          <ul class="footer__contact">
+            <li>
+              <%- icon('map', 18) %>
+              <span>
+                <strong>Visit or post to</strong><br>
+                <%= site.address.street %><br><%= site.address.suite %><br>
+                <%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %>
+              </span>
+            </li>
+            <li>
+              <%- icon('phone', 18) %>
+              <span>
+                <strong>Call us</strong><br>
+                <a href="<%= site.phoneHref %>"><%= site.phone %></a><br>
+                <a href="<%= site.emergencyPhoneHref %>">Emergency: <%= site.emergencyPhone %></a>
+              </span>
+            </li>
+            <li>
+              <%- icon('mail', 18) %>
+              <span>
+                <strong>Email us</strong><br>
+                <a href="mailto:<%= site.email %>"><%= site.email %></a><br>
+                <a href="mailto:<%= site.quotesEmail %>"><%= site.quotesEmail %></a>
+              </span>
+            </li>
+            <li>
+              <%- icon('clock', 18) %>
+              <span>
+                <strong>Opening hours</strong><br>
+                <% site.hours.forEach(function (h) { %>
+                  <span class="footer__hours-row"><span><%= h.day.slice(0,3) %></span><span><%= h.open %> – <%= h.close %></span></span>
+                <% }); %>
+              </span>
+            </li>
+          </ul>
+
+          <div class="footer__socials">
+            <% site.socials.forEach(function (s) { %>
+              <a href="<%= s.url %>" target="_blank" rel="noopener noreferrer" aria-label="<%= site.name %> on <%= s.name %>"><%- icon(s.icon, 18) %></a>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service area strip -->
+      <div class="footer__areas">
+        <h3 class="footer__areas-title"><%- icon('map', 16) %> Proudly Serving the <%= site.region %></h3>
+        <p class="footer__areas-list"><%= site.serviceArea.primary.concat(site.serviceArea.secondary).join(' · ') %></p>
+        <p class="footer__areas-note">Not sure if we reach you? Call <%= site.phone %> — we cover everything within <%= site.serviceArea.radiusMiles %> miles of downtown and never charge a travel fee inside that radius.</p>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; <%= year %> <%= site.legalName %>. All rights reserved.</p>
+        <ul class="footer__legal">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+        <p class="footer__credit">Web and Marketing By <a href="https://kansascitywebdesignpros.com/" target="_blank" rel="noopener">KC Web Design Pros</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

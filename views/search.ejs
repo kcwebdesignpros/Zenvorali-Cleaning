@@ -1,0 +1,77 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    eyebrow: 'Search',
+    eyebrowIcon: 'search',
+    heroTitle: q ? 'Search Results for “' + q + '”' : 'Search Zenvorali Cleaning',
+    heroIntro: q
+      ? results.length + ' result' + (results.length === 1 ? '' : 's') + ' found across our services, guides and projects. If you cannot find what you need, call us and we will answer directly.'
+      : 'Search our cleaning services, guides and project case studies. Or simply call us — most questions take less than two minutes on the phone.',
+    heroPoints: null,
+    breadcrumbs: [{ name: 'Search', href: '/search' }]
+  }) %>
+
+  <section class="section">
+    <div class="container narrow">
+      <form class="search-form reveal" action="/search" method="get" role="search">
+        <label class="search-form__label" for="s-q">What are you looking for?</label>
+        <div class="search-form__row">
+          <input class="field__input search-form__input" id="s-q" type="search" name="q" value="<%= q %>" placeholder="deep cleaning, move out, pricing…" autocomplete="off">
+          <button class="btn btn--primary btn--lg" type="submit"><%- icon('search', 18) %> Search</button>
+        </div>
+      </form>
+
+      <% if (q && results.length) { %>
+        <ul class="search-results stagger">
+          <% results.forEach(function (r) { %>
+            <li class="search-result reveal">
+              <a href="<%= r.href %>">
+                <span class="search-result__kind"><%= r.kind %></span>
+                <h3 class="search-result__title"><%= r.title %></h3>
+                <p class="search-result__excerpt"><%= r.excerpt %></p>
+                <span class="search-result__more">View <%- icon('arrowRight', 15) %></span>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else if (q) { %>
+        <div class="empty-state reveal">
+          <span class="empty-state__icon"><%- icon('search', 40) %></span>
+          <h2 class="empty-state__title">No results for “<%= q %>”</h2>
+          <p class="empty-state__text">We could not find a match. Try a broader term, or browse one of these instead:</p>
+          <ul class="chips chips--lg">
+            <% ['house cleaning', 'deep cleaning', 'move out', 'commercial', 'apartment', 'post construction', 'pricing', 'service area'].forEach(function (t) { %>
+              <li><a href="/search?q=<%= encodeURIComponent(t) %>"><%= t %></a></li>
+            <% }); %>
+          </ul>
+          <div class="empty-state__actions">
+            <a class="btn btn--primary" href="/services">Browse all services</a>
+            <a class="btn btn--outline" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+          </div>
+        </div>
+      <% } else { %>
+        <div class="empty-state reveal">
+          <span class="empty-state__icon"><%- icon('sparkle', 40) %></span>
+          <h2 class="empty-state__title">Popular searches</h2>
+          <ul class="chips chips--lg">
+            <% ['house cleaning', 'deep cleaning', 'move out cleaning', 'commercial cleaning', 'apartment cleaning', 'post construction', 'cleaning prices', 'service area'].forEach(function (t) { %>
+              <li><a href="/search?q=<%= encodeURIComponent(t) %>"><%= t %></a></li>
+            <% }); %>
+          </ul>
+        </div>
+      <% } %>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Cannot find it?',
+    ctaTitle: 'Just Ask Us Directly',
+    ctaText: 'A real coordinator picks up the phone during opening hours. Describe what you need and we will tell you straight away whether we can help and what it costs.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,25 @@
+# Normalise line endings so the Linux Netlify builders see the same bytes
+# that were committed on Windows.
+* text=auto eol=lf
+
+# Windows-only helpers keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary assets — never touch
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.ico binary
+*.svg text eol=lf
+*.woff binary
+*.woff2 binary
+
+# Lockfile is generated; keep it out of diffs
+package-lock.json -diff linguist-generated
+
+# Mark generated assets as vendored so they don't skew language stats
+img/** linguist-vendored
+public/img/** linguist-vendored

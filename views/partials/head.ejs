@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title><%= meta.title %></title>
+<meta name="description" content="<%= meta.description %>">
+<% if (meta.keywords) { %><meta name="keywords" content="<%= meta.keywords %>"><% } %>
+<link rel="canonical" href="<%= baseUrl %><%= meta.path %>">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="<%= site.name %>">
+<meta name="theme-color" content="#0A1A2F">
+<meta name="format-detection" content="telephone=yes">
+
+<!-- Geo / local signals -->
+<meta name="geo.region" content="US-MO">
+<meta name="geo.placename" content="<%= site.address.city %>, <%= site.address.stateLong %>">
+<meta name="geo.position" content="<%= site.geo.lat %>;<%= site.geo.lng %>">
+<meta name="ICBM" content="<%= site.geo.lat %>, <%= site.geo.lng %>">
+
+<!-- Open Graph -->
+<meta property="og:type" content="<%= meta.type === 'article' ? 'article' : 'website' %>">
+<meta property="og:site_name" content="<%= site.name %>">
+<meta property="og:title" content="<%= meta.title %>">
+<meta property="og:description" content="<%= meta.description %>">
+<meta property="og:url" content="<%= baseUrl %><%= meta.path %>">
+<meta property="og:image" content="<%= baseUrl %><%= site.ogImage %>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="<%= site.name %> — cleaning services in <%= site.address.city %>, <%= site.address.state %>">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= meta.title %>">
+<meta name="twitter:description" content="<%= meta.description %>">
+<meta name="twitter:image" content="<%= baseUrl %><%= site.ogImage %>">
+
+<!-- Icons -->
+<link rel="icon" href="/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<script>document.documentElement.className += ' js';</script>
+
+<!-- Fonts: non-blocking, display=swap -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
+
+<link rel="stylesheet" href="/css/style.css?v=<%= assetV %>">
+
+<% if (preloadImage) { %>
+<link rel="preload" as="image" href="<%= preloadImage %>" fetchpriority="high">
+<% } %>
+
+<% pageSchema.forEach(function (node) { %>
+<script type="application/ld+json"><%- JSON.stringify(node && node['@context'] ? node : Object.assign({ '@context': 'https://schema.org' }, node)) %></script>
+<% }); %>
+</head>
+<body class="<%= bodyClass %>">
+<a class="skip-link" href="#main">Skip to main content</a>

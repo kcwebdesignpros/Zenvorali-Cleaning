@@ -1,0 +1,251 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: post.image,
+    eyebrow: post.category,
+    eyebrowIcon: 'list',
+    heroTitle: post.title,
+    heroIntro: post.excerpt,
+    heroPoints: null,
+    breadcrumbs: [{ name: 'Blog', href: '/blog' }, { name: post.title, href: '/blog/' + post.slug }]
+  }) %>
+
+  <!-- ============ POST META ============ -->
+  <section class="post-meta-bar">
+    <div class="container">
+      <div class="post-byline">
+        <span class="post-byline__avatar"><%= post.author.split(' ').map(function (n) { return n[0]; }).join('') %></span>
+        <span class="post-byline__copy">
+          <strong><%= post.author %></strong>
+          <span><%= post.authorRole %></span>
+        </span>
+      </div>
+      <ul class="post-facts">
+        <li><%- icon('calendar', 15) %> <%= fmtDate(post.date) %></li>
+        <li><%- icon('clock', 15) %> <%= post.readTime %> min read</li>
+        <li><%- icon('tag', 15) %> <%= post.category %></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONTENT ============ -->
+  <section class="section">
+    <div class="container content-layout">
+      <article class="content-main">
+        <div class="takeaways reveal">
+          <h2 class="takeaways__title"><%- icon('checkCircle', 20) %> Key takeaways</h2>
+          <ul class="takeaways__list">
+            <% post.keyTakeaways.forEach(function (k) { %><li><%- icon('check', 15) %> <%= k %></li><% }); %>
+          </ul>
+        </div>
+
+        <div class="prose prose--article reveal">
+          <%- post.body %>
+        </div>
+
+        <div class="inline-cta reveal">
+          <div class="inline-cta__copy">
+            <h3>Want this handled for you?</h3>
+            <p>Free walkthrough, flat-rate quote in writing, and a crew that turns up when we said it would.</p>
+          </div>
+          <div class="inline-cta__actions">
+            <a class="btn btn--primary" href="/contact">Get My Free Quote <%- icon('arrowRight', 17) %></a>
+            <a class="btn btn--ghost-light" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+          </div>
+        </div>
+
+        <!-- Author box -->
+        <div class="author-box reveal">
+          <span class="author-box__avatar"><%= post.author.split(' ').map(function (n) { return n[0]; }).join('') %></span>
+          <div class="author-box__copy">
+            <h3 class="author-box__name"><%= post.author %></h3>
+            <p class="author-box__role"><%= post.authorRole %>, <%= site.name %> — Kansas City</p>
+            <p class="author-box__bio">
+              <%= post.author === 'Romen Roy'
+                ? 'Founded Zenvorali Cleaning in 2013 and still reviews every guarantee claim personally. Twelve years and 12,400+ cleans across the Kansas City metro.'
+                : 'Runs scheduling, crew allocation and quality control across the metro, and designed the 48-point checklist every Zenvorali clean follows.' %>
+            </p>
+            <a class="btn btn--text" href="/about">About our team <%- icon('arrowRight', 16) %></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="content-side">
+        <div class="side-card side-card--cta reveal">
+          <h3 class="side-card__title">Get a Free Quote</h3>
+          <p class="side-card__text">Flat-rate pricing written before we start. No obligation.</p>
+          <a class="btn btn--primary btn--block" href="/contact">Request a Quote</a>
+          <a class="btn btn--outline btn--block" href="<%= site.phoneHref %>"><%- icon('phone', 17) %> <%= site.phone %></a>
+          <p class="side-card__note"><%- icon('clock', 14) %> Replies within 1 business hour</p>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title">More Guides</h3>
+          <ul class="side-nav side-nav--posts">
+            <% related.forEach(function (p) { %>
+              <li>
+                <a href="/blog/<%= p.slug %>">
+                  <img class="side-nav__thumb" src="<%= p.image %>" alt="" width="64" height="64" loading="lazy" decoding="async">
+                  <span class="side-nav__copy">
+                    <strong><%= p.title.length > 58 ? p.title.slice(0, 58) + '…' : p.title %></strong>
+                    <span><%= p.readTime %> min read</span>
+                  </span>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+          <a class="btn btn--text btn--block" href="/blog">All articles <%- icon('arrowRight', 16) %></a>
+        </div>
+
+        <div class="side-card reveal">
+          <h3 class="side-card__title">Popular Services</h3>
+          <ul class="side-nav">
+            <% services.slice(0, 4).forEach(function (s) { %>
+              <li>
+                <a href="/services/<%= s.slug %>">
+                  <span class="side-nav__icon"><%- icon(s.icon, 19) %></span>
+                  <span class="side-nav__copy">
+                    <strong><%= s.name %></strong>
+                    <span>From <%= money(s.price.from) %></span>
+                  </span>
+                  <%- icon('chevronRight', 16) %>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <div class="side-card side-card--trust reveal">
+          <h3 class="side-card__title">Why Clients Stay</h3>
+          <ul class="side-trust">
+            <% site.trustBadges.forEach(function (b) { %>
+              <li>
+                <span class="side-trust__icon"><%- icon(b.icon, 19) %></span>
+                <span><strong><%= b.label %></strong><span><%= b.sub %></span></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ PUTTING IT INTO PRACTICE ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Putting This Into Practice in Kansas City</h2>
+        <p>
+          Reading a guide and acting on one are different things, so this section is the practical half:
+          what to do with the information above, in the order we would do it, if you were starting today.
+        </p>
+        <p>
+          Start by writing down your actual situation rather than a general intention. Not &ldquo;the house
+          needs a clean&rdquo; but how long since the last professional clean, how many rooms and bathrooms,
+          whether there are pets, and whether there is a deadline attached. Those five facts determine both
+          the service you need and roughly what it should cost. A company that cannot tell you which service
+          fits from that description is guessing.
+        </p>
+        <p>
+          Next, get two written quotes for the same scope rather than two verbal estimates for a vague one.
+          Ask each company what is excluded and why, whether supplies are included, and whether their staff
+          are employees or subcontractors. The answers will separate the quotes far more effectively than
+          the totals will, because a low number that excludes the oven, the interior windows and the
+          baseboards is not actually low.
+        </p>
+        <p>
+          Then decide between a one-off and a plan. If your property is already maintained, a recurring
+          visit costs less per clean and prevents the build-up that makes work expensive. If it has been left
+          for a long stretch, a single deep clean to reset the baseline makes more sense first, followed by a
+          plan if you want to keep it there. Booking a plan onto a neglected house just means paying the
+          recurring rate for a job that takes twice as long.
+        </p>
+        <p>
+          Finally, if you do hire someone, be specific about what matters to you. Point out the surfaces you
+          are worried about, the rooms you care about most, and anything delicate or sentimental. A crew
+          working to a good checklist will do a competent job everywhere; a crew that knows your priorities
+          will do a noticeably better one in the places you actually notice.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Questions We Get Asked Most About This</h2>
+        <p>
+          Whichever part of the metro you are in, a handful of questions come up on almost every enquiry
+          related to this topic. These are the honest answers, including where the answer is &ldquo;it
+          depends&rdquo;.
+        </p>
+        <p>
+          <strong>Can I do this myself and save the money?</strong> Sometimes, yes. Light maintenance
+          cleaning is entirely reasonable to do yourself if you have the time and the right products. What
+          does not work well is attempting a heavy deep clean or a post-construction job with domestic
+          equipment — the vacuum cannot capture fine dust, the products cannot break down bonded grease, and
+          the results look like a lot of effort that did not quite land.
+        </p>
+        <p>
+          <strong>How far ahead should I book?</strong> In spring, two to three weeks for a specific date.
+          The rest of the year, two or three days is usually enough, and same-week is normal in our denser
+          neighbourhoods. Move-out cleans are the exception — tell us the deadline when you enquire and we
+          will work to it.
+        </p>
+        <p>
+          <strong>Is a recurring plan worth it?</strong> If the property is occupied and in use, yes — a
+          maintained home never reaches the condition that makes cleaning expensive, so the per-visit rate is
+          lower and each clean takes less time. If the property is empty most of the year or between
+          tenancies, occasional deep cleans cost less over twelve months. We will tell you which applies.
+        </p>
+        <p>
+          <strong>What if I am not happy with the result?</strong> Tell us within forty-eight hours and we
+          return and re-clean at no charge. We do not ask you to prove anything. The only limit is time —
+          a surface we cleaned two weeks ago is hard to assess fairly, so raising it quickly is in both our
+          interests.
+        </p>
+        <p>
+          <strong>Do you serve my address?</strong> We cover roughly thirty-five miles from downtown Kansas
+          City, across both states, with no distance surcharge inside that radius. If you are outside it we
+          will say so immediately and refer you to someone who covers your area properly, rather than
+          booking a job we cannot service reliably.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('list', 15) %></span> Keep reading</p>
+        <h2 class="section__title reveal">Related Guides</h2>
+      </header>
+      <div class="blog-grid stagger">
+        <% related.forEach(function (p) { %>
+          <article class="post-card reveal">
+            <a class="post-card__link" href="/blog/<%= p.slug %>">
+              <div class="post-card__media">
+                <img src="<%= p.image %>" alt="<%= p.imageAlt %>" width="720" height="440" loading="lazy" decoding="async"
+                     srcset="<%= srcset(p.image) %>" sizes="(min-width: 1040px) 33vw, (min-width: 640px) 48vw, 92vw">
+                <span class="post-card__cat"><%= p.category %></span>
+              </div>
+              <div class="post-card__body">
+                <p class="post-card__meta"><%= fmtDate(p.date) %> · <%= p.readTime %> min read</p>
+                <h3 class="post-card__title"><%= p.title %></h3>
+                <p class="post-card__text"><%= p.excerpt %></p>
+                <span class="post-card__more">Read the guide <%- icon('arrowRight', 16) %></span>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaTitle: 'Ready to Stop Reading and Start Booking?',
+    ctaText: 'Free walkthrough, flat-rate quote in writing, same vetted crew every visit. Serving the whole Kansas City metro.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

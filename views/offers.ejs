@@ -1,0 +1,182 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-offers.webp',
+    eyebrow: 'Current offers',
+    eyebrowIcon: 'tag',
+    heroTitle: 'Cleaning Offers &amp; Discounts in Kansas City',
+    heroIntro: 'We keep our promotions simple and honest — no fake countdown timers, no inflated “was” prices, no conditions buried in fine print. Everything below is genuinely available to Kansas City clients right now.',
+    heroPoints: ['No hidden conditions', 'Stacks with recurring rates', 'Available metro-wide', 'Mention it when you book'],
+    breadcrumbs: [{ name: 'Offers', href: '/offers' }]
+  }) %>
+
+  <!-- ============ OFFERS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="offer-grid stagger">
+        <% [
+          { icon: 'sparkle', tag: 'New clients', title: 'First Clean — 15% Off', value: '15%', desc: 'Applies to your first standard, deep or move-out clean anywhere in the Kansas City metro. No minimum spend and no subscription required.', note: 'Mention NEW15 when you book.' },
+          { icon: 'users', tag: 'Referrals', title: 'Refer a Neighbour — $40 Each', value: '$40', desc: 'Send us a neighbour, friend or colleague. When their first clean completes, you both receive $40 in credit. Unlimited referrals, no expiry.', note: 'See our referral programme for details.' },
+          { icon: 'medal', tag: 'Seniors & veterans', title: '10% Off Every Visit', value: '10%', desc: 'A permanent discount for clients aged 65 and over and for veterans, applied automatically to every recurring visit — not just the first.', note: 'Just tell us when you book.' },
+          { icon: 'calendar', tag: 'Recurring plans', title: 'Deep Clean, Then Save on Biweekly', value: 'Discounted', desc: 'Book a deep clean and start a recurring plan at the same time and we discount your first recurring visit. The best value way to begin.', note: 'Ask about the deep-clean-first bundle.' },
+          { icon: 'building', tag: 'Commercial', title: 'Volume Pricing for Multi-Site', value: 'Custom', desc: 'Landlords, property managers and multi-location businesses get portfolio pricing that improves with volume, plus one consolidated monthly invoice.', note: 'Request a commercial bid.' },
+          { icon: 'hardhat', tag: 'Builders', title: 'Fixed Per-Square-Foot Rates', value: 'Fixed', desc: 'Builders and developers can lock a fixed per-square-foot rate across an entire development, so cleaning costs are predictable from the start of the project.', note: 'Quoted from drawings or a site visit.' }
+        ].forEach(function (o) { %>
+          <article class="offer-card reveal">
+            <span class="offer-card__ribbon"><%= o.tag %></span>
+            <span class="offer-card__icon"><%- icon(o.icon, 28) %></span>
+            <span class="offer-card__value"><%= o.value %></span>
+            <h3 class="offer-card__title"><%= o.title %></h3>
+            <p class="offer-card__desc"><%= o.desc %></p>
+            <p class="offer-card__note"><%- icon('info', 14) %> <%= o.note %></p>
+            <a class="btn btn--primary btn--block" href="/contact">Claim This Offer</a>
+          </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">How Our Offers Work</h2>
+        <p>
+          Most cleaning promotions in this market work the same way: an eye-catching discount on the first
+          visit that quietly disappears from visit two onwards, or a “50% off” headline attached to a
+          price that was never real. We do not do either. Everything on this page is a genuine reduction
+          against our normal published rates, and our normal rates are on the
+          <a href="/pricing">pricing page</a> for anyone to check.
+        </p>
+        <p>
+          Offers cannot normally be combined with each other — you would not apply first-clean discount
+          and senior discount to the same visit — but they do stack with recurring rates, which are
+          already discounted against one-time pricing. The best value path for most new clients is to book
+          a deep clean and a recurring plan together, use the deep-clean-first bundle, and then benefit
+          from recurring rates permanently.
+        </p>
+        <p>
+          There is no expiry date on any of these because there is no reason for one. A discount that
+          vanishes at midnight exists to rush a decision, and we would rather you booked when the timing
+          is right for you.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Price Match</h2>
+        <p>
+          If you have a written flat-rate quote from another licensed, insured Kansas City cleaning
+          company for the same scope, send it to us. We will tell you honestly whether we can meet it,
+          and if the other quote is lower because it covers less, we will show you exactly what is
+          missing rather than quietly matching the number.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Which Offer Should You Actually Take?</h2>
+        <p>
+          The right offer depends entirely on what kind of clean you need and how long you intend to stay
+          on. Rather than making you read all of them and guess, here is the honest guidance we give on
+          the phone:
+        </p>
+        <ul class="tick-list">
+          <li><strong>If your home has not been professionally cleaned in over a year</strong> — take the first-visit discount on a deep clean. A maintenance clean on a neglected house takes longer and costs more than a deep clean does on a reasonable one, so the discount is doing real work here.</li>
+          <li><strong>If you are moving out and want your deposit back</strong> — use the move-out offer and ask for the deposit-back checklist at the same time. The cleaning is only half of it; knowing what the property manager inspects against is the other half.</li>
+          <li><strong>If you are a senior or a veteran</strong> — the standing discount is not a one-time promotion. It applies to every visit, every plan, for as long as you are a client, and it stacks with recurring rates.</li>
+          <li><strong>If you have never used us and just want to try it</strong> — book a standard clean without an offer first, or take the smallest offer available. There is no contract on residential work, so you are free to walk away after one visit. We would rather earn visit two than lock you into a discount you did not need.</li>
+          <li><strong>If you are referring a friend</strong> — the referral credit is the highest-value offer on this page and it does not expire. Both sides get it, and there is no cap on how many people you can refer.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">What Is Never Discounted</h2>
+        <p>
+          A discount that quietly removes something from the job is not a discount, it is a different
+          service. These are the things we will not cut corners on regardless of which offer you use,
+          because each one is either a safety issue or a quality issue that shows up later:
+        </p>
+        <ul class="tick-list">
+          <li>Insurance and workers&rsquo; compensation cover for every crew member who enters your property</li>
+          <li>Background checks on every cleaner we employ, without exception</li>
+          <li>Product quality — Safer Choice certified solutions and colour-coded microfiber on every visit</li>
+          <li>The written scope, agreed before we start, listing exactly what is and is not included</li>
+          <li>The re-clean guarantee if anything in the agreed scope was missed</li>
+        </ul>
+        <p>
+          We also do not discount by sending a single cleaner to do a two-person job. If an offer is
+          funded by working a crew member short, the clean takes longer, the crew rushes at the end, and
+          the last room always suffers for it. Every offer on this page is priced against a properly
+          staffed job.
+        </p>
+
+        <h2 class="section__title section__title--spaced">How to Claim an Offer</h2>
+        <p>
+          There is no code to enter and no form to submit. Tell us which offer you want when you request
+          your quote — by phone, by email or through the contact form — and we apply it to the written
+          quote we send back. You will see the discount broken out as its own line on the invoice rather
+          than baked invisibly into a headline number, so you can check it against our published rates.
+        </p>
+        <p>
+          If two offers could apply to your job, we will tell you which one is worth more rather than
+          letting you pick the one with the bigger-sounding percentage. A 10% discount on a $500 deep
+          clean is worth more than a $40 flat credit, and we would rather point that out than let you
+          choose worse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFFERS FAQ ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Questions About Our Offers</h2>
+        <p>
+          Discounts invite scepticism for good reason, so these are the questions clients ask before booking
+          on an offer, answered without hedging.
+        </p>
+        <p>
+          <strong>Is the discount taken off the real price?</strong> Yes. Every offer reduces our published
+          rate, and our rates are on the pricing page for anyone to check before and after. The discount
+          appears as its own line on your invoice rather than being absorbed into a headline number, so you
+          can verify it yourself.
+        </p>
+        <p>
+          <strong>Can I stack several offers?</strong> Offers do not usually combine with each other — you
+          would not apply a first-visit discount and a senior discount to the same visit. They do combine
+          with recurring rates, which are already lower than one-time pricing, so the best value path for
+          most new clients is a deep clean on offer followed by a recurring plan.
+        </p>
+        <p>
+          <strong>Why is there no expiry date?</strong> Because a discount that vanishes at midnight exists
+          to rush a decision rather than to reward one. We would rather you booked when the timing suits your
+          property than when a countdown forced your hand. Every offer on this page stands until we retire
+          it, and we will tell you if that happens.
+        </p>
+        <p>
+          <strong>What if a better offer exists after I book?</strong> Tell us. If we launch a stronger offer
+          within thirty days of your first clean and you qualify for it, we will apply the difference as a
+          credit on your next visit rather than leaving you on the worse rate.
+        </p>
+        <p>
+          <strong>Do offers apply to commercial accounts?</strong> Not in the same form, because commercial
+          pricing is built around scope and frequency rather than a headline rate. Commercial enquiries get a
+          written proposal instead, and we will always tell you honestly which structure is cheaper for your
+          building.
+        </p>
+        <p>
+          <strong>Is there a catch anywhere?</strong> No hidden one. The only conditions are the ones stated
+          on each offer: first-clean offers apply once, identity-based discounts require you to qualify, and
+          referral credits become payable when the referred client&rsquo;s first clean is completed and paid
+          for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Offers applied at booking',
+    ctaTitle: 'Claim an Offer on Your First Clean',
+    ctaText: 'Mention the offer when you request your quote and we will apply it to your invoice. Free walkthrough, written flat-rate quote, no obligation.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

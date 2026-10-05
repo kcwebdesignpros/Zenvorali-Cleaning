@@ -1,0 +1,179 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-referral.webp',
+    eyebrow: 'Referral programme',
+    eyebrowIcon: 'users',
+    heroTitle: 'Refer a Neighbour, You Both Get $40',
+    heroIntro: 'The best compliment our clients give us is telling someone else. So we pay for it — $40 in cleaning credit for you and $40 off for the neighbour you send us, with no limit on how many times you can do it and no complicated conditions to chase.',
+    heroPoints: ['$40 credit for you, every time', '$40 off for your neighbour', 'Unlimited referrals, no expiry', 'Accepted on any service'],
+    breadcrumbs: [{ name: 'Referral Programme', href: '/referral-program' }]
+  }) %>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('refresh', 15) %></span> Three steps</p>
+        <h2 class="section__title reveal">How the Referral Credit Works</h2>
+        <p class="section__lede reveal">No accounts to create, no codes to generate and no forms to chase. It works the way you would expect it to.</p>
+      </header>
+
+      <ol class="steps steps--light sticky-steps stagger">
+        <% [
+          { n: '01', icon: 'users', t: 'Tell them about us', d: 'Give your neighbour, friend or colleague our name and phone number, or forward them our website. That is the whole first step.' },
+          { n: '02', icon: 'phone', t: 'They mention your name', d: 'When they book, they simply tell us who sent them. That is how we track it — no code required, nothing for them to remember.' },
+          { n: '03', icon: 'heart', t: 'You both get $40', d: 'Once their first clean completes, $40 in credit is applied to your next visit and $40 comes off theirs. Both applied automatically.' }
+        ].forEach(function (s) { %>
+          <li class="step reveal">
+            <span class="step__num"><%= s.n %></span>
+            <span class="step__icon"><%- icon(s.icon, 28) %></span>
+            <h3 class="step__title"><%= s.t %></h3>
+            <p class="step__text"><%= s.d %></p>
+          </li>
+        <% }); %>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TERMS ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">The Straightforward Details</h2>
+        <ul class="tick-list">
+          <li><%- icon('checkCircle', 18) %> <span><strong>Unlimited referrals.</strong> There is no cap. If you send us ten neighbours, you earn $400 in credit.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Credit does not expire.</strong> It sits on your account until you use it, and it applies to any service we offer.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Applies to any service.</strong> House cleaning, deep cleaning, move-out, apartment, commercial — all eligible.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Both sides get the credit.</strong> Your referred neighbour receives $40 off their first clean automatically.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Credit applied after their first clean completes.</strong> This avoids disputes if a booking is cancelled or rescheduled.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>One credit per new household.</strong> Referrals must be genuine new clients, not additional visits for the same address.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Stacks with recurring rates.</strong> It applies on top of your already-discounted recurring price.</span></li>
+          <li><%- icon('checkCircle', 18) %> <span><strong>Applies to commercial referrals too.</strong> Refer a business and we will discuss a credit appropriate to the contract size.</span></li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Why We Do This</h2>
+        <p>
+          Most of our growth comes from referrals already. Roughly two thirds of new Zenvorali clients arrive
+          because someone they trust told them about us, and the clients who come that way stay longer, tip
+          better and are generally easier to work with. That is worth far more to us than a paid ad click, so
+          paying $40 for it is straightforwardly good business rather than generosity.
+        </p>
+        <p>
+          It also keeps us honest in a useful way. A referral programme only works if the service is
+          genuinely good, because you are putting your own name behind us. We take that seriously — if
+          someone we sent turns out to be a difficult client, we would rather tell you than take the credit
+          and damage your relationship with a neighbour.
+        </p>
+
+        <h2 class="section__title section__title--spaced">Who Makes a Good Referral</h2>
+        <p>
+          The referrals that work best are not the ones where you talk someone into it. They are the ones
+          where you already know the person has a genuine need and you are simply saving them the research.
+          In practice, that tends to be:
+        </p>
+        <ul class="tick-list">
+          <li><strong>Someone moving house in the next month.</strong> Move-out and move-in cleans are our most common referral, because the timing is fixed and the stakes — a deposit — are obvious to everyone involved.</li>
+          <li><strong>A neighbour whose home you have been in and know is overdue.</strong> You do not need to say anything about it. Just mention that you use us and what it costs. They will draw their own conclusion.</li>
+          <li><strong>A small business owner with an office, clinic or studio.</strong> Commercial referrals are worth more because they recur, so we discuss a credit that reflects the contract rather than a flat $40.</li>
+          <li><strong>A landlord or property manager with turnovers.</strong> These referrals tend to repeat every month, and they are the single easiest conversation to have because the need is unambiguous.</li>
+          <li><strong>Anyone who has been quoted an hourly rate by another company.</strong> The flat-rate explanation basically sells itself once someone has been burned by an open-ended hourly bill.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Common Questions About the Credit</h2>
+        <ul class="tick-list">
+          <li><strong>Does it expire?</strong> No. The credit sits on your account until you use it, whether that is next week or next year.</li>
+          <li><strong>Can I use it on a recurring plan?</strong> Yes, and it applies to any visit, not just a first clean. It comes off the invoice as its own line.</li>
+          <li><strong>How many people can I refer?</strong> There is no cap. We have clients who have referred eight or nine households over the years, and each one carries its own credit.</li>
+          <li><strong>What if the person I refer never books?</strong> Nothing happens, and nothing is owed. The credit only becomes payable once their first clean is completed and paid for.</li>
+          <li><strong>Can I give the credit to the person I referred instead?</strong> Yes — say so when you refer them and we will apply it to their invoice as a first-visit discount rather than yours.</li>
+          <li><strong>Do I need to tell you in advance?</strong> Not really, but it helps. If you mention their name when they book, we match the referral without any back-and-forth.</li>
+        </ul>
+
+        <h2 class="section__title section__title--spaced">Why a Credit and Not Cash</h2>
+        <p>
+          Cash referral fees sound more generous and are, in practice, worse for everyone. They create
+          paperwork at tax time, they invite people to refer anyone regardless of fit, and they turn a
+          neighbourly recommendation into a transaction. A cleaning credit stays inside the service you
+          already use, needs no reporting, and only has value if we keep doing a good enough job that you
+          want to keep spending it with us. That alignment is the point.
+        </p>
+        <p>
+          For commercial referrals, where the contract value is much higher, we will happily discuss a
+          cash arrangement instead. Talk to us directly and we will be straight with you about what the
+          referral is worth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL SHARE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="share-band reveal">
+        <span class="share-band__icon"><%- icon('users', 40) %></span>
+        <h2 class="share-band__title">Know Someone Who Needs This?</h2>
+        <p class="share-band__text">Send them our way and mention it when you book your next clean. It really is that simple.</p>
+        <div class="share-band__actions">
+          <a class="btn btn--primary btn--lg" href="mailto:?subject=Thought%20you%20might%20need%20this&body=I%20use%20Zenvorali%20Cleaning%20in%20Kansas%20City%20and%20they%20are%20genuinely%20good.%20Flat-rate%20quotes%2C%20insured%20crews%2C%20and%20they%20turn%20up%20when%20they%20say.%20(816)%20555-0142%20%E2%80%94%20https%3A%2F%2Fzenvoralicleaning.com">Share by Email <%- icon('mail', 18) %></a>
+          <a class="btn btn--outline-light btn--lg" href="<%= site.phoneHref %>">Or Just Call Us <%- icon('phone', 18) %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REFERRAL FAQ ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Referral Questions, Answered</h2>
+        <p>
+          A referral programme only works if the terms are simple enough to explain in a sentence and
+          generous enough to be worth doing. Here are the details, including the edge cases.
+        </p>
+        <p>
+          <strong>How do I actually refer someone?</strong> Tell them we exist and mention your name when
+          they book. That is the entire process — no codes to generate, no forms to submit, no account to
+          create. When their first clean is completed we match the name and apply the credit.
+        </p>
+        <p>
+          <strong>When does the credit arrive?</strong> Once the referred client&rsquo;s first clean is
+          completed and paid for. It is not payable on a booking that is later cancelled, which protects
+          both of us from a referral that never becomes a client.
+        </p>
+        <p>
+          <strong>Is there a limit?</strong> No cap on the number of referrals or the total credit
+          accumulated. We have clients who have referred eight or nine households over the years, and each
+          one carries its own separate credit.
+        </p>
+        <p>
+          <strong>Can I give the credit to the person I referred?</strong> Yes, and many clients do. Say so
+          when you refer them and we will apply it to their first invoice as a first-visit discount instead
+          of yours.
+        </p>
+        <p>
+          <strong>What about commercial referrals?</strong> A business referral is worth considerably more
+          than a residential one because it recurs, so the standard credit understates it. Talk to us
+          directly about commercial referrals and we will discuss a figure appropriate to the contract
+          rather than applying the flat residential credit.
+        </p>
+        <p>
+          <strong>Does the credit work on recurring plans?</strong> Yes. It applies to any visit, not only a
+          first clean, and it comes off the invoice as its own line so you can see it applied.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: '$40 for you, $40 for them',
+    ctaTitle: 'Refer Someone and Earn Credit',
+    ctaText: 'Tell us who sent you when you book, or send a neighbour our way. The credit is applied automatically once their first clean is complete.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

@@ -1,0 +1,58 @@
+<!-- Inner page hero with breadcrumbs -->
+<%
+  /* Self-contained defaults so the partial can be included without every key */
+  var heroImage  = (typeof heroImage  !== 'undefined') ? heroImage  : null;
+  var eyebrow    = (typeof eyebrow    !== 'undefined') ? eyebrow    : null;
+  var eyebrowIcon= (typeof eyebrowIcon!== 'undefined') ? eyebrowIcon: null;
+  var heroTitle  = (typeof heroTitle  !== 'undefined') ? heroTitle  : '';
+  var heroIntro  = (typeof heroIntro  !== 'undefined') ? heroIntro  : null;
+  var heroPoints = (typeof heroPoints !== 'undefined') ? heroPoints : null;
+  var breadcrumbs= (typeof breadcrumbs!== 'undefined') ? breadcrumbs: [];
+%>
+<section class="page-hero<%= heroImage ? ' page-hero--image' : '' %>">
+  <% if (heroImage) { %>
+    <div class="page-hero__bg" aria-hidden="true">
+      <img src="<%= heroImage %>" alt="" width="1600" height="900" fetchpriority="high" decoding="async"
+           <% if (srcset(heroImage)) { %>srcset="<%= srcset(heroImage) %>" sizes="100vw"<% } %>>
+    </div>
+  <% } %>
+  <div class="page-hero__glow" aria-hidden="true"></div>
+
+  <div class="container page-hero__inner">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol class="breadcrumbs__list">
+        <li><a href="/">Home</a></li>
+        <% breadcrumbs.forEach(function (b, i) { %>
+          <li>
+            <% if (b.href && i < (breadcrumbs.length - 1)) { %>
+              <a href="<%= b.href %>"><%= b.name %></a>
+            <% } else { %>
+              <span aria-current="page"><%= b.name %></span>
+            <% } %>
+          </li>
+        <% }); %>
+      </ol>
+    </nav>
+
+    <div class="page-hero__content">
+      <% if (eyebrow) { %>
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__icon"><%- icon(eyebrowIcon || 'sparkle', 15) %></span> <%= eyebrow %></p>
+      <% } %>
+      <h1 class="page-hero__title"><%- heroTitle %></h1>
+      <% if (heroIntro) { %><p class="page-hero__intro"><%= heroIntro %></p><% } %>
+
+      <% if (heroPoints && heroPoints.length) { %>
+        <ul class="page-hero__points">
+          <% heroPoints.forEach(function (p) { %>
+            <li><%- icon('checkCircle', 17) %> <%= p %></li>
+          <% }); %>
+        </ul>
+      <% } %>
+
+      <div class="page-hero__actions">
+        <a class="btn btn--primary btn--lg" href="/contact">Get a Free Quote <%- icon('arrowRight', 18) %></a>
+        <a class="btn btn--outline-light btn--lg" href="<%= site.phoneHref %>"><%- icon('phone', 18) %> <%= site.phone %></a>
+      </div>
+    </div>
+  </div>
+</section>

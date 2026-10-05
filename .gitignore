@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build / deploy artifacts
+.bundle-sim/
+.netlify/
+public/img/
+
+# Local tooling
+.workbuddy-ai/
+.screenshots/
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

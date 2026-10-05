@@ -1,0 +1,199 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main">
+
+  <%- include('partials/page-hero', {
+    heroImage: '/img/hero-green.webp',
+    eyebrow: 'Our promise',
+    eyebrowIcon: 'leaf',
+    heroTitle: 'Green Cleaning That Is Actually Green',
+    heroIntro: '“Eco-friendly” is on every cleaning van in Kansas City, and it means almost nothing. Here is exactly what our green cleaning promise involves, which certifications we hold, which products we use and — just as importantly — where we still use a hospital-grade disinfectant and why.',
+    heroPoints: ['EPA Safer Choice certified by default', 'Green Seal certified products', 'Fragrance-free kits at no extra cost', 'Full ingredient transparency'],
+    breadcrumbs: [{ name: 'Green Cleaning', href: '/green-cleaning' }]
+  }) %>
+
+  <!-- ============ THE PROBLEM ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose prose--lead reveal">
+        <p>
+          Walk through the cleaning aisle of any Kansas City supermarket and count how many bottles claim
+          to be natural, eco-friendly, green or plant-based. The terms are almost entirely unregulated.
+          A product can be labelled “green” while containing the same quaternary ammonium compounds and
+          synthetic fragrances as the bottle next to it, and “made with essential oils” is a warning sign
+          rather than a reassurance in a home with cats.
+        </p>
+        <p>
+          We think the honest approach is to stop making vague claims and instead name the certifications,
+          list the products and explain the one place we deliberately use something stronger. So here it is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('badge', 15) %></span> Independent standards</p>
+        <h2 class="section__title reveal">The Certifications That Actually Mean Something</h2>
+        <p class="section__lede reveal">These are third-party verified programmes with ingredient-level review. They are not self-declared marketing labels.</p>
+      </header>
+
+      <ul class="cert-grid stagger">
+        <% [
+          { icon: 'award', t: 'EPA Safer Choice', d: 'A US Environmental Protection Agency programme that reviews every ingredient in a product against human health and environmental criteria, including pH, volatility and aquatic toxicity. Products must also perform to a published standard, not just be less harmful.' },
+          { icon: 'leaf', t: 'Green Seal Certified', d: 'An independent non-profit standard covering the full life cycle. Green Seal certification requires documented performance testing and on-site audits, which is why relatively few cleaning products carry it.' },
+          { icon: 'droplet', t: 'pH neutral by default', d: 'Our general-purpose cleaners sit at neutral pH, which is both gentler on your family, pets and surfaces and adequate for the great majority of routine household cleaning. Aggressive chemistry is reserved for where it is genuinely required.' },
+          { icon: 'info', t: 'Full ingredient disclosure', d: 'Safety data sheets and full ingredient lists are available for every product we bring into your home, on request, in plain English. If a company will not tell you what is in the bottle, that is the answer.' }
+        ].forEach(function (c) { %>
+          <li class="cert-card reveal">
+            <span class="cert-card__icon"><%- icon(c.icon, 30) %></span>
+            <h3 class="cert-card__title"><%= c.t %></h3>
+            <p class="cert-card__text"><%= c.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE USE ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('spray', 15) %></span> By task</p>
+        <h2 class="section__title reveal">What We Use Where — and Why</h2>
+        <p class="section__lede reveal">Different surfaces and different risks need different chemistry. Using one product everywhere is how grout gets etched and stone gets ruined.</p>
+      </header>
+
+      <div class="table-wrap reveal">
+        <table class="data-table data-table--wide">
+          <thead>
+            <tr><th scope="col">Task</th><th scope="col">What we use</th><th scope="col">Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>General surfaces &amp; dusting</td><td>pH-neutral, Safer Choice certified cleaner</td><td>Safe for stone, sealed wood, painted finishes and everyday skin contact</td></tr>
+            <tr><td>Kitchen grease</td><td>Plant-derived alkaline degreaser</td><td>Cuts grease without the solvent smell or residue of petroleum-based cleaners</td></tr>
+            <tr><td>Stone, quartz &amp; marble</td><td>Stone-specific neutral cleaner</td><td>Acidic products etch calcium-based stone permanently — this avoids that entirely</td></tr>
+            <tr><td>Glass &amp; mirrors</td><td>Ammonia-free alcohol glass cleaner</td><td>Streak-free on black frames and tinted glass; safe around pets and birds</td></tr>
+            <tr><td>Floors (hard)</td><td>Neutral pH floor concentrate, correct dilution</td><td>Protects sealers on timber, LVP and stone; over-dilution leaves film, over-concentration dulls</td></tr>
+            <tr><td>Carpet &amp; upholstery</td><td>Low-VOC, WoolSafe approved agents</td><td>No sticky residue that re-attracts soil, and safe on wool and delicate weaves</td></tr>
+            <tr><td>Toilets, sinks, high-touch points</td><td>EPA-registered hospital-grade disinfectant</td><td>Reserved for genuine infection-risk surfaces, at label dilution and fully dried before re-entry</td></tr>
+            <tr><td>Sensitive households</td><td>Fully fragrance-free kit</td><td>Standard issue for asthma, chemical sensitivity or nervous pets — never a paid upgrade</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HONEST LIMITS ============ -->
+  <section class="section section--alt">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Where We Still Use Strong Chemistry</h2>
+        <p>
+          A genuinely honest green claim has to admit its limits. We use an EPA-registered hospital-grade
+          disinfectant on toilets, sinks and high-touch points, and in medical, dental, childcare and
+          post-illness settings. That is a deliberate decision, not an oversight.
+        </p>
+        <p>
+          The reason is that a neutral, plant-derived cleaner left on a toilet for ten seconds is not
+          disinfection — it is theatre. Genuine pathogen reduction on a surface that carries real infection
+          risk requires a registered product used at the correct dilution with the correct dwell time.
+          Skipping that to preserve a green label would be prioritising marketing over your family's health,
+          which is the wrong trade.
+        </p>
+        <p>
+          What we will not do is use that product where it is not needed. It does not go on kitchen counters,
+          dining tables, children's toys, food preparation surfaces or anywhere a pet walks and then grooms
+          its paws. We use it exactly where it earns its place, at label dilution, and we let surfaces dry
+          completely before anyone re-enters the room. If you would prefer we skip registered disinfectants
+          entirely in your home, tell us and we will, and we will explain exactly what that trade-off means
+          for bathrooms.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUSTAINABILITY ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__icon"><%- icon('refresh', 15) %></span> Beyond chemicals</p>
+        <h2 class="section__title reveal">Green Cleaning Is Also About Waste and Water</h2>
+      </header>
+
+      <ul class="green-grid stagger">
+        <% [
+          { icon: 'brush', t: 'Microfiber systemisation', d: 'Colour-coded microfiber cloths and mops replace disposable paper and reduce water use by a large margin. They are laundered and reused rather than thrown away after each room.' },
+          { icon: 'droplet', t: 'Concentrates and correct dilution', d: 'We buy concentrates and dilute on site with measured dispensers. That eliminates dozens of plastic spray bottles per month and prevents the over-dilution that wastes product and under-cleans surfaces.' },
+          { icon: 'refresh', t: 'Refillable and reusable containers', d: 'Spray bottles are refilled from concentrate rather than replaced. It is a small change that removes a genuinely large amount of plastic from our waste stream each year.' },
+          { icon: 'leaf', t: 'Waste separation on site', d: 'On construction and commercial projects we separate recyclable waste from general waste and place it where you direct, rather than sending everything to landfill by default.' },
+          { icon: 'truck', t: 'Efficient routing by geography', d: 'Crews are assigned by neighbourhood rather than availability, which shortens drive times across the metro and genuinely reduces fuel use compared to a single-depot model.' },
+          { icon: 'award', t: 'Equipment that lasts', d: 'We buy commercial-grade vacuums and steamers that are repairable and serviced on a schedule, instead of cheap units replaced annually. Longer equipment life is the least glamorous green decision and one of the most effective.' }
+        ].forEach(function (g) { %>
+          <li class="green-card reveal">
+            <span class="green-card__icon"><%- icon(g.icon, 26) %></span>
+            <h3 class="green-card__title"><%= g.t %></h3>
+            <p class="green-card__text"><%= g.d %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ GREEN FAQ ============ -->
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose reveal">
+        <h2 class="section__title">Questions About Green Cleaning</h2>
+        <p>
+          Green cleaning attracts more marketing language than almost any other part of the industry, so
+          these answers stick to what is verifiable.
+        </p>
+        <p>
+          <strong>What actually makes a product green?</strong> Two things you can check yourself: a
+          recognised certification such as EPA Safer Choice, and a published ingredient list. Words like
+          &ldquo;natural&rdquo;, &ldquo;eco&rdquo; and &ldquo;plant-based&rdquo; are unregulated on
+          cleaning labels and mean nothing on their own. If a bottle cannot tell you its ingredients, treat
+          the claim as decoration.
+        </p>
+        <p>
+          <strong>Does green mean it cleans less effectively?</strong> Not with the right products and
+          dwell time. The reason green cleaners get a poor reputation is that many people, and some
+          companies, expect a plant-derived solution to act as fast as a caustic one. It does not. It needs
+          the contact time stated on the label, and given that, it performs comparably on the overwhelming
+          majority of household soils.
+        </p>
+        <p>
+          <strong>What about disinfecting?</strong> This is the honest limitation. A green cleaner can clean
+          thoroughly, but sanitising and disinfecting require an EPA-registered disinfectant applied at
+          label dilution with the full dwell time. For bathrooms, kitchens and high-touch points we carry
+          registered products, and where you prefer, we use fragrance-free options that are gentler while
+          still being effective.
+        </p>
+        <p>
+          <strong>Is it safe around pets and children?</strong> Our default range is chosen partly for this,
+          and a fully fragrance-free kit is available at no extra cost. The practical advice for any
+          cleaning visit is to keep pets and small children away from surfaces until they are dry, which
+          applies to green products too.
+        </p>
+        <p>
+          <strong>Does green cleaning cost more?</strong> Not with us. Safer Choice certified products and
+          the fragrance-free option are our standard, not a paid upgrade, so you are not paying a premium to
+          avoid harsh chemistry.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/cta', {
+    ctaEyebrow: 'Kid, pet &amp; asthma friendly',
+    ctaTitle: 'Want a Green Clean in Kansas City?',
+    ctaText: 'Our default kit is already Safer Choice certified, and a fully fragrance-free kit is available at no extra cost. Just tell us when you book.'
+  }) %>
+</main>
+
+<%- include('partials/footer') %>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><%- icon('chevronDown', 22) %></button>

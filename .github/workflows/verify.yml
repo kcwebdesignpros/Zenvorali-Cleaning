@@ -22,11 +22,15 @@ jobs:
           node-version: '22'
           cache: npm
 
-      # Runtime dependencies only. The build and audit scripts use nothing
-      # beyond Node's stdlib, so devDependencies (sharp, esbuild, netlify-cli)
-      # are not needed here.
+      # Runtime dependencies only — the build and audit scripts need nothing
+      # beyond Node's stdlib, so the heavy devDependencies (sharp, netlify-cli)
+      # are skipped. esbuild is installed separately below because the function
+      # verification bundles the entry point with it.
       - name: Install runtime dependencies
         run: npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+
+      - name: Install esbuild for bundle verification
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund esbuild@^0.23.0
 
       - name: Prepare publish directory
         run: npm run build

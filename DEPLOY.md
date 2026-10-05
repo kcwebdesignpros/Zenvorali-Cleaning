@@ -1,78 +1,58 @@
 # Deploying Zenvorali Cleaning to Netlify
 
-Everything is pre-configured. The only thing standing between you and a live
-site is a one-time browser login.
+The repository is live at
+**https://github.com/kcwebdesignpros/Zenvorali-Cleaning**
+
+`netlify.toml` contains the complete build configuration, so Netlify needs no
+dashboard setup — just point it at the repo.
 
 ---
 
-## Option A — CLI (fastest, recommended)
+## Option A — GitHub integration (recommended)
 
-Open a terminal in the project folder and run these two commands:
+Connect once, and every push to `main` deploys automatically.
+
+1. Go to [app.netlify.com](https://app.netlify.com) → **Add new site** →
+   **Import an existing project**
+2. Choose **GitHub**, authorise Netlify if prompted
+3. Select **kcwebdesignpros/Zenvorali-Cleaning**
+4. On the build settings screen, **change nothing** — Netlify reads
+   `netlify.toml` and fills everything in:
+
+   | Field | Auto-detected value |
+   |---|---|
+   | Build command | `npm run prepare:netlify` |
+   | Publish directory | `public` |
+   | Functions directory | `netlify/functions` |
+
+5. Click **Deploy site**
+
+First build takes roughly 1–2 minutes. After that, `git push` deploys.
+
+---
+
+## Option B — CLI
 
 ```bash
 cd "D:/Romen Roy Workspace/Zenvorali Cleaning"
 
-npx netlify login
+npx netlify login      # one-time, opens a browser
+npm run deploy         # netlify deploy --build --prod
 ```
 
-This opens your browser. Log in (or create a free Netlify account) and click
-**Authorize**. The token is saved to your machine — you only do this once.
-
-Then:
-
-```bash
-npm run deploy
-```
-
-That runs `netlify deploy --build --prod`. It will:
-
-1. Run `npm run build` (`prepare:netlify`) → copies 291 images into `public/img`
-2. Bundle `netlify/functions/server.js` with esbuild
-3. Upload `public/` + the function
-4. Print a **Production URL** like `https://zenvorali-cleaning.netlify.app`
-
-On first deploy it will ask **"Create & configure a new site?"** — choose
-**Yes**, then either accept the suggested name or type your own.
-
-If you'd rather do a dry run first:
-
-```bash
-npm run deploy:preview
-```
-
-That gives you a temporary draft URL without touching production.
+Use `npm run deploy:preview` for a draft URL that doesn't touch production.
 
 ---
 
-## Option B — Netlify Dashboard (drag & drop / Git)
+## Do not use drag & drop
 
-### Via Git (best for ongoing edits)
-
-```bash
-cd "D:/Romen Roy Workspace/Zenvorali Cleaning"
-git init
-git add .
-git commit -m "Zenvorali Cleaning — production site"
-git branch -M main
-git remote add origin <your-empty-repo-url>
-git push -u origin main
-```
-
-Then in Netlify: **Add new site → Import an existing project → GitHub →
-pick the repo**. Netlify reads `netlify.toml` automatically, so leave all
-build settings at their defaults.
-
-### Drag & drop (no Git)
-
-Not recommended here — the site is server-rendered (EJS + Express), so it
-**requires** the serverless function. A pure static drag-and-drop will not
-work. Use Option A or the Git route.
+This site is **server-rendered** (Express + EJS). A static drag-and-drop deploy
+would upload `public/` but no function, and every page would 404. Use Option A
+or B.
 
 ---
 
-## What is already configured
-
-`netlify.toml` handles all of this — nothing needs to be set in the dashboard:
+## What `netlify.toml` already handles
 
 | Setting | Value |
 |---|---|
@@ -82,6 +62,7 @@ work. Use Option A or the Git route.
 | Bundler | esbuild |
 | Node version | 22 |
 | `APP_ROOT` | `/var/task` |
+| `NODE_ENV` | `production` (skips devDependencies — faster builds) |
 | Redirect | `/*` → `/.netlify/functions/server` (200, `force = false`) |
 | Cache headers | `css/`, `js/`, `img/`, `fonts/` → 1 year immutable |
 | Security headers | nosniff, SAMEORIGIN, strict-origin-when-cross-origin, permissions |
@@ -94,32 +75,47 @@ work. Use Option A or the Git route.
 ```
 
 EJS reads templates from disk at runtime. esbuild's dependency graph cannot see
-those reads, so without `included_files` the function deploys without any
-templates and every page returns a 500. This is already in place — just don't
-remove it.
+those reads, so without `included_files` the function deploys with no templates
+and every page returns a 500. This is already configured — do not remove it.
+
+### Why `public/img/` is not in Git
+
+The 291 image files are generated, not source. `img/` (the source art) **is**
+committed; the build copies it into `public/img/` before publishing. This keeps
+the repository lean and guarantees the published assets always match the source.
 
 ---
 
-## After the first deploy
+## Post-deploy checklist
 
-Test these live URLs:
+Test these on the live URL:
 
 - `/` — homepage
 - `/services/deep-cleaning` — a service detail page
 - `/projects` — case-study hub
-- `/sitemap.xml` and `/robots.txt` — should return XML/plain text, not a 404
+- `/sitemap.xml` — should return XML
+- `/robots.txt` — should return plain text
 - `/this-page-should-404` — should show the styled 404 page
 
-If the site works but **every page 500s**, the cause is almost always the
+**If the site loads but every page 500s**, the cause is almost always the
 `included_files` block above.
 
 ---
 
-## Optional: custom domain
+## Custom domain
 
-In Netlify: **Site settings → Domain management → Add a domain**. Point your
-DNS at Netlify (either the Netlify DNS nameservers, or an `A`/`CNAME` record).
-Netlify provisions a free Let's Encrypt certificate automatically.
+Netlify → **Site settings → Domain management → Add a domain**. Point DNS at
+Netlify (their nameservers, or an `A`/`CNAME` record). A free Let's Encrypt
+certificate is provisioned automatically.
 
-Once live, update `data/site.js` (the `url` field) so canonical URLs, the
-sitemap, and Open Graph tags all point at the real domain, then redeploy.
+Then update the `url` field in `data/site.js` so canonical URLs, the sitemap and
+Open Graph tags point at the real domain, and push.
+
+---
+
+## Continuous integration
+
+`.github/workflows/verify.yml` runs on every push and pull request. It installs
+runtime dependencies on Ubuntu, runs the Netlify build, checks the serverless
+bundle, then audits SEO and word count. Because it runs on Linux — the same
+platform Netlify builds on — a green check means the deploy will build.

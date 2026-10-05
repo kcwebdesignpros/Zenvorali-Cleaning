@@ -41,14 +41,24 @@ npm start           # http://localhost:3000
 
 ## Deploy
 
+Repository: **https://github.com/kcwebdesignpros/Zenvorali-Cleaning**
+
+The recommended path is Netlify's GitHub integration — connect the repo once and
+every push to `main` deploys. `netlify.toml` supplies the build command, publish
+directory and function directory, so nothing needs configuring in the dashboard.
+
 ```bash
+# Alternative: deploy from the command line
 npx netlify login                        # one-time, opens a browser
 npm run deploy                           # netlify deploy --build --prod
 npm run deploy:preview                   # draft deploy, no production alias
 ```
 
-Set `NODE_VERSION=22` and `APP_ROOT=/var/task` are already declared in
-`netlify.toml`, so no dashboard configuration is required.
+See **[DEPLOY.md](DEPLOY.md)** for the full walkthrough, the post-deploy
+checklist, and the one `netlify.toml` setting that must not be removed.
+
+> Drag-and-drop deployment will **not** work — the site is server-rendered and
+> requires the serverless function.
 
 ---
 
